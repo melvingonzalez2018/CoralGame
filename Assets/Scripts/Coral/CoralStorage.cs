@@ -7,7 +7,6 @@ public class CoralStorage : MonoBehaviour
     List<Coral> corals = new List<Coral>();
     public void AddCoral(Coral coral) {
         corals.Add(coral);
-        Debug.Log("added");
     }
 
     // Trying to place an object in 
@@ -34,8 +33,6 @@ public class CoralStorage : MonoBehaviour
                 return true;
             }
         }
-
-        Debug.Log("Not found area");
 
         return false;
     }

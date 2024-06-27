@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: {fileID: 0}
-  timeForAdult: 3
+  timeForAdult: 5
   ageTimer: 0
-  pickUpTime: 2
+  pickUpTime: 3
   pickUpTimer: 0
-  hammerTime: 0
+  hammerTime: 3
   hammerTimer: 0
 --- !u!1 &5078473318120019661
 GameObject:
@@ -535,5 +535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 5070178682631075118}
+  canvas: {fileID: 8632996250235027957}
   fill: {fileID: 4730500650162746027}
   text: {fileID: 1857767577287337660}
