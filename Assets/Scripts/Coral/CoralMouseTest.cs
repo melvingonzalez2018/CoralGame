@@ -19,6 +19,13 @@ public class CoralMouseTest : MonoBehaviour
                 if(hit.collider.gameObject.TryGetComponent(out Coral coral)) {
                     coral.Interact();
                 }
+                // Putting down coral
+                CoralPlaceableArea[] areas = FindObjectsOfType<CoralPlaceableArea>();
+                foreach (CoralPlaceableArea area in areas) {
+                    if (area.ContainCollider(hit.collider)) {
+                        FindObjectOfType<CoralStorage>().TryPlaceCoral(area, hit.point);
+                    }
+                }
             }
         }
     }

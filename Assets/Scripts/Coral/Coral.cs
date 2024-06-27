@@ -6,15 +6,18 @@ public class Coral : MonoBehaviour {
     [SerializeField] CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
     [SerializeField] float timeForAdult; // Time it takes for the coral to mature
     [SerializeField] float ageTimer = 0f; // Inital age of the coral, if you want an adult just set it over the limit set above
-    [SerializeField] float pickUpTime; // time it takes to pick up coral
-    float pickUpTimer = 0;
-    [SerializeField] float hammerTime;
-    float hammerTimer = 0;
+    [SerializeField] public float pickUpTime; // time it takes to pick up coral
+    [HideInInspector] public float pickUpTimer = 0;
+    [SerializeField] public float hammerTime;
+    [HideInInspector] public float hammerTimer = 0;
 
     private void Start() {
         // Orient any coral to the current place
         if(area != null) {
             area.OrientCoralToSurface(transform, transform.position);
+            if(IsAdult()) {
+                hammerTimer = hammerTime;
+            }
         }
     }
     private void Update() {
@@ -51,11 +54,22 @@ public class Coral : MonoBehaviour {
     private void PickUpUpdate() {
         pickUpTimer += Time.deltaTime;
         if (pickUpTimer >= pickUpTime) {
-            Harvest();
+            PickUp();
             pickUpTimer = 0;
         }
     }
+    public bool IsPlaced() {
+        if(area != null) {
+            if(area.areaType == AreaType.REEF && IsHammeredIn()) {
+                return true;
+            }
+            else if(area.areaType == AreaType.NURSERY) {
+                return true;
+            }
+        }
 
+        return false;
+    }
     public bool IsHammeredIn() {
         return hammerTimer >= hammerTime;
     }
@@ -68,8 +82,13 @@ public class Coral : MonoBehaviour {
             ageTimer += Time.deltaTime;
         }
     }
-    private void Harvest() {
+    public void PickUp() {
         FindAnyObjectByType<CoralStorage>().AddCoral(this);
         gameObject.SetActive(false);
+    }
+    public void PutDown(CoralPlaceableArea newArea, Vector3 pos) {
+        gameObject.SetActive(true);
+        area = newArea;
+        area.OrientCoralToSurface(transform, pos);
     }
 }
