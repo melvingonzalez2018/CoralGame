@@ -20,9 +20,6 @@ public class CoralMouseTest : MonoBehaviour
                     coral.Interact();
                 }
             }
-            else if() {
-
-            }
         }
     }
 }
