@@ -22,13 +22,13 @@ public class FollowPath : MonoBehaviour
     private void OnDrawGizmos() {
         GetPoints();
         for (int i = 0; i < points.Count; i++) {
-            Gizmos.color = Color.Lerp(Color.blue, Color.red, (float)i / points.Count);
-            Gizmos.DrawWireSphere(points[i].position, 0.1f);
+            Gizmos.color = Color.Lerp(Color.blue, Color.red, (float)i / (points.Count-1));
+            //Gizmos.DrawWireSphere(points[i].position, 0.1f);
+            Gizmos.DrawLine(points[i].position, points[(i + 1)%points.Count].position);
         }
     }
     private void GetPoints() {
         points = new List<Transform>(GetComponentsInChildren<Transform>());
         points.Remove(transform);
-        Debug.Log(points.Count);
     }
 }
