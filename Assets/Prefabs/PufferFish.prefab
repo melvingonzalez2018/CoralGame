@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3411587382446352331}
   - component: {fileID: 5032659797398132170}
   - component: {fileID: 9058951452890689393}
-  - component: {fileID: 1555268731144877853}
+  - component: {fileID: 3189160716048297087}
   m_Layer: 0
   m_Name: PufferFish
   m_TagString: Untagged
@@ -73,7 +73,7 @@ MonoBehaviour:
   oxygenDamage: 5
   playerTag: Player
   collisionCooldown: 2
---- !u!114 &1555268731144877853
+--- !u!114 &3189160716048297087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,12 +82,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6782461118951492605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb9a7703698d777449a55036025d5211, type: 3}
+  m_Script: {fileID: 11500000, guid: 310a2f7d44d2de94a88c75e86279f4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.15
-  frequencyScale: 1.5
-  direction: {x: 0, y: 1, z: 0}
+  path: {fileID: 0}
+  reachPointDist: 0.1
+  speed: 1
 --- !u!1 &8619843378687980005
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5595002829895662284}
   - component: {fileID: 2919893642777606944}
   - component: {fileID: 6441858007043078208}
+  - component: {fileID: 7092796296943708956}
   m_Layer: 0
   m_Name: CapsuleModel
   m_TagString: Untagged
@@ -171,3 +172,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7092796296943708956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619843378687980005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9a7703698d777449a55036025d5211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.15
+  frequencyScale: 1.5
+  direction: {x: 0, y: 1, z: 0}
