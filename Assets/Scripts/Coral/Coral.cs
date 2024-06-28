@@ -89,9 +89,12 @@ public class Coral : MonoBehaviour {
         FindAnyObjectByType<CoralStorage>().AddCoral(this);
         gameObject.SetActive(false);
     }
-    public void PutDown(CoralPlaceableArea newArea, Vector3 pos) {
-        gameObject.SetActive(true);
-        area = newArea;
-        area.OrientCoralToSurface(transform, pos);
+    public bool TryPutDown(CoralPlaceableArea newArea, Vector3 pos) {
+        if (newArea.OrientCoralToSurface(transform, pos)) {
+            gameObject.SetActive(true);
+            area = newArea;
+            return true;
+        }
+        return false;
     }
 }

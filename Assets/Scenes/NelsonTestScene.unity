@@ -137,23 +137,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 528144079890778623, guid: 05cef5f9d1a2be847835c8efdd772753,
         type: 3}
+      propertyPath: areaCollider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 528144079890778623, guid: 05cef5f9d1a2be847835c8efdd772753,
+        type: 3}
       propertyPath: placeableSurfaces.Array.data[0]
       value: 
       objectReference: {fileID: 132106176}
     - target: {fileID: 1295777239622384608, guid: 05cef5f9d1a2be847835c8efdd772753,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.82
+      value: 1.217
       objectReference: {fileID: 0}
     - target: {fileID: 1295777239622384608, guid: 05cef5f9d1a2be847835c8efdd772753,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.56773806
+      value: 0.426
       objectReference: {fileID: 0}
     - target: {fileID: 1295777239622384608, guid: 05cef5f9d1a2be847835c8efdd772753,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.81254876
+      value: -0.105
       objectReference: {fileID: 0}
     - target: {fileID: 1295777239622384608, guid: 05cef5f9d1a2be847835c8efdd772753,
         type: 3}
@@ -195,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlaceableAreaReef
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -234,7 +243,7 @@ GameObject:
   - component: {fileID: 132106178}
   - component: {fileID: 132106177}
   - component: {fileID: 132106176}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestArea (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +330,7 @@ Transform:
   m_GameObject: {fileID: 132106175}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.41513214, y: 0.56773806, z: -0.81254876}
+  m_LocalPosition: {x: 0, y: -0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -612,6 +621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PufferFish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782461118951492605, guid: 0f798e518567a994dade791be9239786,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -926,7 +940,7 @@ GameObject:
   - component: {fileID: 1798157810}
   - component: {fileID: 1798157809}
   - component: {fileID: 1798157808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,6 +1153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051751661752468756, guid: 7eb057912bbe54647b053fcc8b24d002,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5008633058406471249, guid: 7eb057912bbe54647b053fcc8b24d002,
         type: 3}
@@ -1408,6 +1427,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlaceableAreaNursery
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

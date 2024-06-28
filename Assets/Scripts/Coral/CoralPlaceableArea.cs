@@ -12,7 +12,7 @@ public class CoralPlaceableArea : MonoBehaviour
 {
     [SerializeField] public AreaType areaType = AreaType.NULL;
     [SerializeField] List<Collider> placeableSurfaces;
-    [SerializeField] Collider areaCollider;
+    Collider areaCollider;
 
 
     private bool UseOverlapCollider() {
@@ -37,7 +37,9 @@ public class CoralPlaceableArea : MonoBehaviour
             Vector3 pointOnSurface = surface.ClosestPoint(pos);
 
             // Checking if within bounds
-            if(UseOverlapCollider()) {
+            Debug.DrawLine(pointOnSurface, pointOnSurface + Vector3.up);
+            if (UseOverlapCollider()) {
+                Debug.Log(areaCollider.bounds.Contains(pointOnSurface));
                 if(!areaCollider.bounds.Contains(pointOnSurface)) {
                     continue;
                 }
@@ -59,5 +61,21 @@ public class CoralPlaceableArea : MonoBehaviour
         }
 
         return distToClosest != float.MaxValue;
+    }
+
+    // Checks if a position is a valid position to place coral
+    public bool PositionWithinBounds(Vector3 pos) {
+        if (UseOverlapCollider()) {
+            foreach (Collider surface in placeableSurfaces) {
+                Vector3 pointOnSurface = surface.ClosestPoint(pos);
+
+                // Checking if within bounds
+                if (areaCollider.bounds.Contains(pointOnSurface)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return true;
     }
 }
