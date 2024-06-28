@@ -45,6 +45,14 @@ public class CoralUI : MonoBehaviour
                 text.gameObject.SetActive(false);
             }
         }
+        else if(owner.IsGrowing()) {
+            fill.gameObject.SetActive(true);
+            text.gameObject.SetActive(true);
+            text.text = "Growing";
+            if (owner.timeForAdult != 0) {
+                fill.fillAmount = owner.ageTimer / owner.timeForAdult;
+            }
+        }
         else {
             fill.gameObject.SetActive(false);
             text.gameObject.SetActive(false);

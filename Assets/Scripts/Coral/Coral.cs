@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Coral : MonoBehaviour {
     [SerializeField] CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
-    [SerializeField] float timeForAdult; // Time it takes for the coral to mature
-    [SerializeField] float ageTimer = 0f; // Inital age of the coral, if you want an adult just set it over the limit set above
+    [SerializeField] public float timeForAdult; // Time it takes for the coral to mature
+    [SerializeField] public float ageTimer = 0f; // Inital age of the coral, if you want an adult just set it over the limit set above
     [SerializeField] public float pickUpTime; // time it takes to pick up coral
     [HideInInspector] public float pickUpTimer = 0;
     [SerializeField] public float hammerTime;
@@ -57,6 +57,9 @@ public class Coral : MonoBehaviour {
             PickUp();
             pickUpTimer = 0;
         }
+    }
+    public bool IsGrowing() {
+        return !IsAdult() && area.areaType == AreaType.NURSERY;
     }
     public bool IsPlaced() {
         if(area != null) {
