@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class CoralMouseTest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +15,7 @@ public class CoralMouseTest : MonoBehaviour
                 }
                 // Putting down coral
                 CoralPlaceableArea[] areas = FindObjectsOfType<CoralPlaceableArea>();
+                Debug.DrawLine(hit.point, hit.point + Vector3.up);
                 foreach (CoralPlaceableArea area in areas) {
                     if (area.ContainCollider(hit.collider)) {
                         FindObjectOfType<CoralStorage>().TryPlaceCoral(area, hit.point);

@@ -11,19 +11,26 @@ public class CoralStorage : MonoBehaviour
 
     // Trying to place an object in 
     public bool TryPlaceCoral(CoralPlaceableArea area, Vector3 pos) {
+        // Checking position
+        if (!area.PositionWithinBounds(pos)) {
+            return false;
+        }
+        
         Coral foundCoral = null;
-        foreach(Coral coral in corals) {
+        foreach (Coral coral in corals) {
             switch(area.areaType) {
                 case AreaType.REEF:
                     if(coral.IsAdult()) {
-                        coral.PutDown(area, pos);
-                        foundCoral = coral;
+                        if(coral.TryPutDown(area, pos)) {
+                            foundCoral = coral;
+                        }
                     }
                     break;
                 case AreaType.NURSERY:
                     if (!coral.IsAdult()) {
-                        coral.PutDown(area, pos);
-                        foundCoral = coral;
+                        if (coral.TryPutDown(area, pos)) {
+                            foundCoral = coral;
+                        }
                     }
                     break;
             }

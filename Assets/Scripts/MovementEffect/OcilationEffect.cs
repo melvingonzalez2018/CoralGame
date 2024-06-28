@@ -10,12 +10,12 @@ public class OcilationEffect : MonoBehaviour
     float timer = 0;
     Vector3 initalPos;
     private void Start() {
-        initalPos = transform.position;
+        initalPos = transform.localPosition;
     }
 
     private void Update() {
         timer += Time.deltaTime * frequencyScale;
         timer = timer % (Mathf.Deg2Rad * 360f); // Limiting timer
-        transform.position = initalPos + (Mathf.Sin(timer)*direction.normalized*amplitude);
+        transform.localPosition = initalPos + (Mathf.Sin(timer)*direction.normalized*amplitude);
     }
 }
