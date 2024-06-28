@@ -19,6 +19,15 @@ public class CoralPlaceableArea : MonoBehaviour
         return areaCollider != null;
     }
 
+    public bool ContainCollider(Collider check) {
+        foreach (Collider surface in placeableSurfaces) {
+            if(surface == check) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Orients the given transform to the surface of the listed colliders, returns true if the orientation was successful
     public bool OrientCoralToSurface(Transform coral, Vector3 pos) {
         Vector3 closestPoint = Vector3.zero;
