@@ -19,7 +19,11 @@ public class PlayerMovement : MonoBehaviour
 
      float zMove = Input.GetAxisRaw("Vertical");
 
-     rb.velocity = new Vector3 (xMove,rb.velocity.y, zMove) * speed; 
+     float yMove = Input.GetAxisRaw("Jump"); 
+
+     rb.velocity = new Vector3 (xMove,yMove, zMove) * speed;
+      
+
 
     }
 }
