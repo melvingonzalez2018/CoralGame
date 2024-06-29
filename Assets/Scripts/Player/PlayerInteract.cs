@@ -13,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
     }
 
     private void InteractInput() {
-        Ray screenToWorld = Camera.main.ScreenPointToRay(Vector2.one/2);
+        Ray screenToWorld = Camera.main.ScreenPointToRay(new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight)/2);
         if (Physics.Raycast(screenToWorld, out RaycastHit hit, reach)) {
             // Interacting with coral
             if (hit.collider.gameObject.TryGetComponent(out Coral coral)) {
