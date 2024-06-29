@@ -13,6 +13,7 @@ public class Eel : MonoBehaviour {
     }
     public void StunPlayer(PlayerStun playerStun) {
         if (collisionTimer >= collisionCooldown) {
+            FindObjectOfType<StatTracking>().IterateEelCollision();
             playerStun.StunPlayer(stunDuration);
             collisionTimer = 0f;
         }
