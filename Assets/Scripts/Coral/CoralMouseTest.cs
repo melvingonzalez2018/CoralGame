@@ -24,7 +24,7 @@ public class CoralMouseTest : MonoBehaviour
                 if(hit.collider.gameObject.TryGetComponent(out PufferFish fish)) {
                     fish.ReduceOxygen();
                 }
-                if(hit.collider.gameObject.TryGetComponent(out Trash trash)) {
+                if (hit.collider.gameObject.TryGetComponent(out Trash trash)) {
                     trash.PickUpTrash();
                 }
             }

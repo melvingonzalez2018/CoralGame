@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class PufferFish : MonoBehaviour
 {
     [SerializeField] float oxygenDamage; // The reduction in oxygen on collision
     [SerializeField] string playerTag;
     [SerializeField] float collisionCooldown;
+    [HideInInspector] public UnityEvent OnCollide = new UnityEvent();
     float collisionTimer = 0;
     Oxygen oxygen;
 
@@ -18,6 +19,7 @@ public class PufferFish : MonoBehaviour
     }
     public void ReduceOxygen() {
         if(oxygen != null && collisionTimer >= collisionCooldown) {
+            FindObjectOfType<StatTracking>().IteratePufferCollision();
             oxygen.ReduceOxygen(oxygenDamage);
             collisionTimer = 0f;
         }

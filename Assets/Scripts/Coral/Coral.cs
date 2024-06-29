@@ -45,8 +45,11 @@ public class Coral : MonoBehaviour {
     }
 
     private void HammerUpdate() {
-        if(hammerTimer <= hammerTime) {
+        if(!IsHammeredIn()) {
             hammerTimer += Time.deltaTime;
+            if(IsHammeredIn()) {
+                FindObjectOfType<StatTracking>().IterateCoralHammered();
+            }
         }
     }
 
@@ -83,9 +86,13 @@ public class Coral : MonoBehaviour {
         // Age coral if its in the nursery
         if (area.areaType == AreaType.NURSERY && !IsAdult()) {
             ageTimer += Time.deltaTime;
+            if(IsAdult()) {
+                FindObjectOfType<StatTracking>().IterateCoralGrown();
+            }
         }
     }
     public void PickUp() {
+        FindObjectOfType<StatTracking>().IterateCoralPickup();
         FindAnyObjectByType<CoralStorage>().AddCoral(this);
         gameObject.SetActive(false);
     }
