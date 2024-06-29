@@ -27,11 +27,13 @@ public class LinearFollowPath : MonoBehaviour
         }
         else {
             transform.forward = difference.normalized; // Face target
-            transform.position += speed * Time.deltaTime * difference.normalized; // move to target
+            transform.position += speed * difference.normalized * Time.deltaTime; // move to target
         }
     }
     private void UpdateNextPoint() {
-        nextPoint = path.GetPathPoint(pathIndex);
-        pathIndex++;
+        if (path != null) {
+            nextPoint = path.GetPathPoint(pathIndex);
+            pathIndex++;
+        }
     }
 }

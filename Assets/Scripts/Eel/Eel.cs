@@ -19,9 +19,9 @@ public class Eel : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == playerTag) {
-            if(collision.gameObject.TryGetComponent(out PlayerStun playerStun)) {
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.tag == playerTag) {
+            if (other.gameObject.TryGetComponent(out PlayerStun playerStun)) {
                 StunPlayer(playerStun);
             }
         }
