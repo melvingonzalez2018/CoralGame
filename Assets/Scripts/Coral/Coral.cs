@@ -40,6 +40,9 @@ public class Coral : MonoBehaviour {
                         PickUpUpdate();
                     }
                     break;
+                case AreaType.NULL:
+                    PickUpUpdate();
+                    break;
             }
         }
     }

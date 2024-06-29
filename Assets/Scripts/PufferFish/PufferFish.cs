@@ -25,8 +25,8 @@ public class PufferFish : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if(collision.gameObject.tag == playerTag) {
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.tag == playerTag) {
             ReduceOxygen();
         }
     }

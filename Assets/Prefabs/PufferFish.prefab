@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5032659797398132170}
   - component: {fileID: 9058951452890689393}
   - component: {fileID: 3189160716048297087}
+  - component: {fileID: 8581535843365017260}
   m_Layer: 0
   m_Name: PufferFish
   m_TagString: Untagged
@@ -50,7 +51,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -70,9 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac345ad29791b3641ad5770f7178b848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenDamage: 5
+  oxygenDamage: 10
   playerTag: Player
   collisionCooldown: 2
+  OnCollide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3189160716048297087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +92,33 @@ MonoBehaviour:
   path: {fileID: 0}
   reachPointDist: 0.1
   speed: 1
+--- !u!54 &8581535843365017260
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782461118951492605}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8619843378687980005
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +131,7 @@ GameObject:
   - component: {fileID: 2919893642777606944}
   - component: {fileID: 6441858007043078208}
   - component: {fileID: 7092796296943708956}
+  - component: {fileID: 995981538291959978}
   m_Layer: 0
   m_Name: CapsuleModel
   m_TagString: Untagged
@@ -187,3 +219,26 @@ MonoBehaviour:
   amplitude: 0.15
   frequencyScale: 1.5
   direction: {x: 0, y: 1, z: 0}
+--- !u!136 &995981538291959978
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619843378687980005}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2.0000005
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
