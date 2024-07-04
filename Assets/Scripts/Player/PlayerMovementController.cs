@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] CharacterController controller;
-    [SerializeField] float speed;
     [SerializeField] PlayerStun stun;
+
+    [Header("References")]
+    [SerializeField] float acceleration;
+    [SerializeField] float maxSpeed;
+    [SerializeField] float friction;
+    [SerializeField] float gravity;
+    Vector3 currentVelocity;
 
     private void Start() {
         Cursor.visible = false;
@@ -14,10 +21,32 @@ public class PlayerMovementController : MonoBehaviour
     }
 
     private void Update() {
+        PhysicsUpdate();
+
         if (!stun.IsStunned()) {
+            // Player Input
             Transform camTransform = Camera.main.transform;
             Vector3 playerInput = camTransform.right * Input.GetAxis("Horizontal") + new Vector3(0f, Input.GetAxis("Jump"), 0f) + camTransform.forward * Input.GetAxis("Vertical");
-            controller.Move(playerInput.normalized * speed * Time.deltaTime);
+
+            currentVelocity += playerInput * acceleration;
         }
+
+        // Setting speed limit
+        if(currentVelocity.magnitude > maxSpeed) {
+            currentVelocity = currentVelocity.normalized * maxSpeed;
+        }
+
+
+        controller.Move(currentVelocity * Time.deltaTime);
     }
+
+    public void AddVelocity(Vector3 velocity) {
+        currentVelocity += velocity;
+    }
+
+    private void PhysicsUpdate() {
+        currentVelocity += (-currentVelocity.normalized) * friction; // Friction
+        currentVelocity += Vector3.down * gravity; // Gravity
+    }
+
 }
