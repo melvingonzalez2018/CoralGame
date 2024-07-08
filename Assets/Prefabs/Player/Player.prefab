@@ -250,8 +250,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 5052638343496156054}
-  speed: 12
   stun: {fileID: 8364193506925464743}
+  horizontalAcceleration: 3
+  horizontalMaxSpeed: 5
+  verticalAccelleration: 1
+  verticalMaxSpeed: 3
+  gravityAccel: 0.1
+  maxFallSpeed: 0.5
+  friction: 0.3
 --- !u!1001 &2609814056722920841
 PrefabInstance:
   m_ObjectHideFlags: 0
