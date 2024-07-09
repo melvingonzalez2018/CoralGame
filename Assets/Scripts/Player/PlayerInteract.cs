@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] float reach;
+    CoralStorage coralStorage;
+
+    private void Start() {
+        coralStorage = FindObjectOfType<CoralStorage>();
+    }
 
     private void Update() {
         if (Input.GetMouseButton(0)) {
@@ -25,7 +30,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.DrawLine(hit.point, hit.point + Vector3.up);
             foreach (CoralPlaceableArea area in areas) {
                 if (area.ContainCollider(hit.collider)) {
-                    FindObjectOfType<CoralStorage>().TryPlaceCoral(area, hit.point);
+                    coralStorage.TryPlaceCoral(area, hit.point);
                 }
             }
 

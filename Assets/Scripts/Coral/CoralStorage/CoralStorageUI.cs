@@ -12,6 +12,6 @@ public class CoralStorageUI : MonoBehaviour
         UpdateUI();
     }
     private void UpdateUI() {
-        text.text = "Adult Coral: " + owner.NumOfAdultCoral() + "\n" + "Young Coral: " + owner.NumOfYoungCoral();
+        text.text = "Fragmented Coral: " + owner.fragmentCoral + "\n" + "Juvenile Coral: " + owner.juvenileCoral;
     }
 }
