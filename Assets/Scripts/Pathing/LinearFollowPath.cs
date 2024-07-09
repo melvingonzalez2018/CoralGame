@@ -9,15 +9,19 @@ public class LinearFollowPath : MonoBehaviour
     [SerializeField] float speed; // How fast the object moves
     Transform nextPoint;
     int pathIndex = 0;
-
+    bool isFollowing = true;
     private void Start() {
         UpdateNextPoint();
     }
 
     private void Update() {
-        if (nextPoint != null) {
+        if (nextPoint != null && isFollowing) {
             MoveUpdate();
         }
+    }
+
+    public void SetIsFollow(bool value) {
+        isFollowing = value;
     }
 
     private void MoveUpdate() {
