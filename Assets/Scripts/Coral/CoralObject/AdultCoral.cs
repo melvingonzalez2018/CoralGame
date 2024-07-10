@@ -6,6 +6,10 @@ public class AdultCoral : Coral
 {
     bool fragmentAvailable = true;
 
+    public bool GetFragmentAvailable() {
+        return fragmentAvailable;
+    }
+
     public override void Interact() {
         if (fragmentAvailable) {
             FindObjectOfType<CoralStorage>().AddFragment();
