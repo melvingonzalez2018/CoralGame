@@ -13,6 +13,7 @@ public class StatTracking : MonoBehaviour
     public int trashTotal;
     public int eelCollisions;
     public int pufferCollisions;
+
     private void Start() {
         trashTotal = FindObjectsOfType<Trash>().Length;
     }
