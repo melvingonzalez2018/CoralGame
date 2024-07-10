@@ -6,10 +6,17 @@ public class WaterCurrents : MonoBehaviour
 {
     [SerializeField] Transform currentDirection;
     [SerializeField] float currentForce;
+    [SerializeField] float maxSpeed;
     [SerializeField] string playerTag;
+    PlayerMovementController movementController;
+
+    private void Start() {
+        movementController = FindObjectOfType<PlayerMovementController>();
+    }
+
     private void OnTriggerStay(Collider other) {
-        if(other.tag == playerTag) {
-            other.GetComponent<Rigidbody>().velocity += currentForce * currentDirection.forward * Time.deltaTime;
+        if (other.tag == playerTag && movementController != null) {
+            movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed);
         }
     }
 }

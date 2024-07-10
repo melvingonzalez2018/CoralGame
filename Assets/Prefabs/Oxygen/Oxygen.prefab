@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24e3d82d124cbf4a93d694ec7236011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenDuration: 100
+  OnOxygenDuration:
+    m_PersistentCalls:
+      m_Calls: []
+  oxygenDuration: 300
   timer: 0
