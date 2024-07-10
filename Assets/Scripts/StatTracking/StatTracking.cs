@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StatTracking : MonoBehaviour
 {
+    [SerializeField] public int adultCoralGoal;
+    [Header("Stats")]
     public int coralPickup;
     public int coralHammered;
     public int coralGrown;

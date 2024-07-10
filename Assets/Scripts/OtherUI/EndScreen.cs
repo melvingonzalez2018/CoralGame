@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
-    [SerializeField] GameObject coralPercent;
     [SerializeField] GameObject newDiveButton;
     [SerializeField] GameObject endSceneButton;
-    public void EndSceneObjects() {
-        coralPercent.SetActive(true);
+    public void EndOfLevel() {
         newDiveButton.SetActive(false);
         endSceneButton.SetActive(true);
+    }
+    public void EndOfDive() {
+        newDiveButton.SetActive(true);
+        endSceneButton.SetActive(false);
     }
 }

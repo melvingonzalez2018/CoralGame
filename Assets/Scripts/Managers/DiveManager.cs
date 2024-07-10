@@ -32,14 +32,23 @@ public class DiveManager : MonoBehaviour
     public int GetCurrentDive() {
         return currentDive;
     }
-
-    public void StartNewDive() {
+    // return true if a new dive is started
+    public bool StartNewDive() {
         if (currentDive < numberOfDives-1) {
             currentDive++;
             OnStartDiveEvents[currentDive].Invoke();
-        }
-        else {
+            UpdateCoral();
 
+            return true;
+        }
+        return false;
+    }
+
+    public void UpdateCoral() {
+        // Update coral
+        Coral[] corals = FindObjectsOfType<Coral>();
+        foreach (Coral coral in corals) {
+            coral.DiveStartUpdate();
         }
     }
 }

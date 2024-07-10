@@ -25,6 +25,9 @@ public class JuvenileCoral : Coral {
 
     public override void DiveStartUpdate() {
         if(IsOnReef() && IsHammeredIn()) {
+            FindObjectOfType<StatTracking>().IterateCoralGrown();
+
+
             GameObject currentCoral = Instantiate(adultCoralPrefab);
             currentCoral.transform.forward = transform.forward; // Setting orientation
             currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
