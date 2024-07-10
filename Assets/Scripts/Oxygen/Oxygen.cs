@@ -9,26 +9,21 @@ public class Oxygen : MonoBehaviour
     [SerializeField] public float oxygenDuration;
     [HideInInspector] public float timer = 0;
     bool runTimer = false;
-    private void Start() {
-        StartTime(); // Starting time for testing
-    }
 
     private void Update() {
         if(runTimer) {
-            timer = Mathf.Min(timer+Time.deltaTime, oxygenDuration);
-            if(timer >= oxygenDuration) {
-                OnOxygenDuration.Invoke();
-                runTimer = false;
-
-                // Re-enable cursor
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
+            ReduceOxygen(Time.deltaTime);
         }
     }
 
     public void StartTime() {
         runTimer = true;
+    }
+    public void EndTime() {
+        runTimer = false;
+    }
+    public void ResetTimer() {
+        timer = 0;
     }
 
     public void ReduceOxygen(float amount) {
@@ -36,6 +31,10 @@ public class Oxygen : MonoBehaviour
         if (timer >= oxygenDuration) {
             OnOxygenDuration.Invoke();
             runTimer = false;
+
+            // Re-enable cursor
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

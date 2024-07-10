@@ -18,15 +18,12 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] float friction;
     Vector3 currentVelocity;
 
-    private void Start() {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+    bool canMove = true;
 
     private void Update() {
         PhysicsUpdate();
 
-        if (!stun.IsStunned()) {
+        if (!stun.IsStunned() && canMove) {
             // Player Input
             Transform camTransform = Camera.main.transform;
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
@@ -40,6 +37,9 @@ public class PlayerMovementController : MonoBehaviour
         controller.Move(currentVelocity * Time.deltaTime);
     }
 
+    public void SetMove(bool value) {
+        canMove = value;
+    }
     public void AddVelocity(Vector3 velocity, float speedLimit) {
         if(Vector3.Dot(currentVelocity, velocity.normalized) < speedLimit) {
             currentVelocity += velocity;

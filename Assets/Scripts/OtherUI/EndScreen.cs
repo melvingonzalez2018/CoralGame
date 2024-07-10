@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [SerializeField] GameObject coralPercent;
+    [SerializeField] GameObject newDiveButton;
+    [SerializeField] GameObject endSceneButton;
+    public void EndSceneObjects() {
+        coralPercent.SetActive(true);
+        newDiveButton.SetActive(false);
+        endSceneButton.SetActive(true);
     }
 }

@@ -27,7 +27,7 @@ public class PlayerInteract : MonoBehaviour
 
             // Putting down coral
             CoralPlaceableArea[] areas = FindObjectsOfType<CoralPlaceableArea>();
-            Debug.DrawLine(hit.point, hit.point + Vector3.up);
+            //Debug.DrawLine(hit.point, hit.point + Vector3.up);
             foreach (CoralPlaceableArea area in areas) {
                 if (area.ContainCollider(hit.collider)) {
                     coralStorage.TryPlaceCoral(area, hit.point);
