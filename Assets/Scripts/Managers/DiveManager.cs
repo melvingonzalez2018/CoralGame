@@ -27,8 +27,8 @@ public class DiveManager : MonoBehaviour
     // return true if a new dive is started
     public void StartNewDive() {
         if(firstDive) {
-            firstDive = false;
             FirstDive();
+            firstDive = false;
         }
         else if (currentDive < numberOfDives-1) {
             currentDive++;

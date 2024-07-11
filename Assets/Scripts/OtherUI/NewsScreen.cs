@@ -5,19 +5,22 @@ using UnityEngine.Events;
 using TMPro;
 
 public class NewsScreen : MonoBehaviour {
-    [SerializeField] DiveManager diveManager;
     [SerializeField] TMP_Text headlineText;
     [SerializeField] TMP_Text dateText;
     [SerializeField] TMP_Text bossText;
     [SerializeField] List<NewsScreenData> screenDatas = new List<NewsScreenData>();
 
+    DiveManager diveManager;
     private void Start() {
-        foreach(UnityEvent startEvent in diveManager.OnStartDiveEvents) {
-            startEvent.AddListener(UpdateText);
+        diveManager = FindObjectOfType<DiveManager>();
+        for(int i = 0; i < diveManager.OnStartDiveEvents.Count; i++) {
+            diveManager.OnStartDiveEvents[i].AddListener(UpdateText);
         }
+        UpdateText();
     }
 
     public void UpdateText() {
+        Debug.Log("update text");
         int currentDive = diveManager.GetCurrentDive();
         if(currentDive <= screenDatas.Count) {
             headlineText.text = screenDatas[currentDive].headlineText;

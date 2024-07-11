@@ -9,13 +9,13 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] PlayerStun stun;
 
     [Header("Adjustable Variables")]
-    [SerializeField] float horizontalAcceleration;
-    [SerializeField] float horizontalMaxSpeed;
-    [SerializeField] float verticalAccelleration;
-    [SerializeField] float verticalMaxSpeed;
-    [SerializeField] float gravityAccel;
-    [SerializeField] float maxFallSpeed;
-    [SerializeField] float friction;
+    [SerializeField] public float horizontalAcceleration;
+    [SerializeField] public float horizontalMaxSpeed;
+    [SerializeField] public float verticalAccelleration;
+    [SerializeField] public float verticalMaxSpeed;
+    [SerializeField] public float gravityAccel;
+    [SerializeField] public float maxFallSpeed;
+    [SerializeField] public float friction;
     Vector3 currentVelocity;
 
     bool canMove = true;
