@@ -8,8 +8,7 @@ public class DiveManager : MonoBehaviour
     [SerializeField] public int numberOfDives;
     public List<UnityEvent> OnStartDiveEvents = new List<UnityEvent>();
     int currentDive = 0;
-
-    bool firstEvent = false;
+    bool firstDive = true;
 
     private void Awake() {
         // Initalize dive events
@@ -18,14 +17,7 @@ public class DiveManager : MonoBehaviour
         }
     }
 
-    private void Update() {
-        if(!firstEvent) {
-            FirstDive();
-            firstEvent = true;
-        }
-    }
-
-    public void FirstDive() {
+    private void FirstDive() {
         OnStartDiveEvents[currentDive].Invoke();
     }
 
@@ -33,15 +25,20 @@ public class DiveManager : MonoBehaviour
         return currentDive;
     }
     // return true if a new dive is started
-    public bool StartNewDive() {
-        if (currentDive < numberOfDives-1) {
+    public void StartNewDive() {
+        if(firstDive) {
+            firstDive = false;
+            FirstDive();
+        }
+        else if (currentDive < numberOfDives-1) {
             currentDive++;
             OnStartDiveEvents[currentDive].Invoke();
             UpdateCoral();
-
-            return true;
         }
-        return false;
+    }
+
+    public bool IsLastDive() {
+        return currentDive >= numberOfDives-1;
     }
 
     public void UpdateCoral() {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class JuvenileCoral : Coral {
     [SerializeField] GameObject adultCoralPrefab;
     [SerializeField] public float hammerTime;
+    [SerializeField] float hammerPerClick;
     [HideInInspector] public float hammerTimer = 0;
 
     public override void Interact() {
@@ -37,7 +38,7 @@ public class JuvenileCoral : Coral {
 
     private void HammerUpdate() {
         if (!IsHammeredIn()) {
-            hammerTimer += Time.deltaTime;
+            hammerTimer += hammerPerClick;
             if (IsHammeredIn()) {
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
             }

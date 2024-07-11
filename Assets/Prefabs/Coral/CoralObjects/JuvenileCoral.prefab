@@ -360,10 +360,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2b66e7a22cfd94a82023ad6a736f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStick: 1
   area: {fileID: 0}
   adultCoralPrefab: {fileID: 3938738571435580911, guid: 112626f7eb7705f40bf0d74e83d22014,
     type: 3}
   hammerTime: 2
+  hammerPerClick: 0.4
   hammerTimer: 0
 --- !u!1 &4014597111965731063
 GameObject:

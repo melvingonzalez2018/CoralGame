@@ -32,9 +32,6 @@ public class Oxygen : MonoBehaviour
             OnOxygenDuration.Invoke();
             runTimer = false;
 
-            // Re-enable cursor
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
     }
 

@@ -8,8 +8,16 @@ public class TransitionScreen : MonoBehaviour {
     [SerializeField] float transitionDuration;
     [SerializeField] Image screen;
     [SerializeField] AnimationCurve curve;
+    [SerializeField] UnityEvent OnStart;
+    [SerializeField] UnityEvent OnMidTransition;
     UnityAction OnEndAction;
     float timer = 0;
+    bool executeMidTransition = false;
+
+    private void Start() {
+        OnStart.Invoke();
+        StartTransitionHalf();
+    }
 
     private void Update() {
         if(timer <= transitionDuration) {
@@ -17,25 +25,33 @@ public class TransitionScreen : MonoBehaviour {
 
             // Setting color
             Color setColor;
-            if(timer <= transitionDuration/2) {
-                setColor = new Color(0, 0, 0, timer / (transitionDuration / 2));
-            }
-            else {
-                setColor = new Color(0, 0, 0, 1-(timer / (transitionDuration / 2)));
-            }
+            float halfDuration = transitionDuration / 2;
+            setColor = new Color(0, 0, 0, curve.Evaluate(timer / halfDuration));
             screen.color = setColor;
 
-            // Ending transition0
+            if (!executeMidTransition && timer >= halfDuration) {
+                OnMidTransition.Invoke();
+                executeMidTransition = true;
+            }
+
+            // Ending transition
             if (timer >= transitionDuration) {
                 if (OnEndAction != null) {
                     OnEndAction.Invoke();
                 }
-                screen.color = Color.clear;
+                gameObject.SetActive(false);
             }
         }
     }
-    public void StartTransition(UnityAction OnEndTransition = null) {
+
+    public void StartTransition() {
+        gameObject.SetActive(true);
         timer = 0;
-        OnEndAction = OnEndTransition;
+        executeMidTransition = false;
+    }
+    public void StartTransitionHalf() {
+        gameObject.SetActive(true);
+        timer = transitionDuration/2;
+        executeMidTransition = false;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] float reach;
+    [SerializeField] float coralOffsetFromSurface;
     CoralStorage coralStorage;
 
     private void Start() {
@@ -12,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             InteractInput();
         }
     }
@@ -30,7 +31,9 @@ public class PlayerInteract : MonoBehaviour
             //Debug.DrawLine(hit.point, hit.point + Vector3.up);
             foreach (CoralPlaceableArea area in areas) {
                 if (area.ContainCollider(hit.collider)) {
-                    coralStorage.TryPlaceCoral(area, hit.point);
+                    Vector3 coralPlacement = hit.point - (screenToWorld.direction * coralOffsetFromSurface);
+                    Debug.DrawLine(Camera.main.transform.position, coralPlacement, Color.blue, 3f);
+                    coralStorage.TryPlaceCoral(area, coralPlacement);
                 }
             }
 
