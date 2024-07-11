@@ -7,15 +7,20 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] float reach;
     [SerializeField] float coralOffsetFromSurface;
     CoralStorage coralStorage;
+    bool canInteract = true;
 
     private void Start() {
         coralStorage = FindObjectOfType<CoralStorage>();
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && canInteract) {
             InteractInput();
         }
+    }
+
+    public void SetCanInteract(bool value) {
+        canInteract = value;
     }
 
     private void InteractInput() {
@@ -42,6 +47,5 @@ public class PlayerInteract : MonoBehaviour
                 trash.PickUpTrash();
             }
         }
-        
     }
 }

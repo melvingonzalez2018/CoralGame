@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         cameraController = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerMovementController>().gameObject;
         playerInitalPosition = player.transform.position;
-        Debug.Log(playerInitalPosition);
 
         SetPlayerEnable(false);
     }
@@ -37,15 +36,13 @@ public class GameManager : MonoBehaviour
         else {
             endScreen.GetComponent<EndScreen>().EndOfDive();
         }
-
-        ResetLevel();
     }
 
     private void SetPlayerEnable(bool value) {
         player.GetComponent<PlayerMovementController>().SetMove(value);
+        player.GetComponentInChildren<PlayerInteract>().SetCanInteract(value);
         cameraController.SetRotationControl(value);
         playerCrosshair.SetActive(value);
-
 
         if (!value) {
             Cursor.visible = true;

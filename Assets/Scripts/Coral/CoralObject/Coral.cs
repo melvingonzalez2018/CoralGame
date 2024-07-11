@@ -39,12 +39,9 @@ public abstract class Coral : MonoBehaviour {
         InitalizeOnArea(closestPlaceableArea, transform.position); // Setting area and setting
     }
 
-    public bool InitalizeOnArea(CoralPlaceableArea newArea, Vector3 pos) {
+    public void InitalizeOnArea(CoralPlaceableArea newArea, Vector3 pos) {
         if (newArea.OrientCoralToSurface(transform, pos)) {
-            gameObject.SetActive(true);
             area = newArea;
-            return true;
         }
-        return false;
     }
 }

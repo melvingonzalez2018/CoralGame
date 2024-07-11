@@ -27,14 +27,16 @@ public class CoralStorage : MonoBehaviour {
             case AreaType.REEF:
                 if (juvenileCoral > 0) {
                     GameObject currentCoral = Instantiate(juvenileCoralPrefab);
-                    currentCoral.GetComponent<Coral>().InitalizeOnArea(area, pos);
+                    Coral coral = currentCoral.GetComponent<Coral>();
+                    coral.InitalizeOnArea(area, pos);
                     juvenileCoral--;
                 }
                 break;
             case AreaType.NURSERY:
                 if (fragmentCoral > 0) {
                     GameObject currentCoral = Instantiate(fragmentedCoralPrefab);
-                    currentCoral.GetComponent<Coral>().InitalizeOnArea(area, pos);
+                    Coral coral = currentCoral.GetComponent<Coral>();
+                    coral.InitalizeOnArea(area, pos);
                     fragmentCoral--;
                 }
                 break;

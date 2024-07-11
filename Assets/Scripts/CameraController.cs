@@ -8,11 +8,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] CinemachineFreeLook freeLook;
     float currentX;
     float currentY;
-    private void Start() {
+    private void Awake() {
         currentX = freeLook.m_XAxis.m_MaxSpeed;
         currentY = freeLook.m_YAxis.m_MaxSpeed;
     }
-
     public void SetRotationControl(bool value) {
         if(value) {
             freeLook.m_XAxis.m_MaxSpeed = currentX;

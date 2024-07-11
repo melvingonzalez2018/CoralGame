@@ -37,8 +37,8 @@ public class CoralPlaceableArea : MonoBehaviour
         // Orienting transform
         if(FindClosestPoint(pos, out Vector3 closestPoint)) {
             Vector3 dirToSurface = closestPoint - pos;
-            coral.up = -dirToSurface.normalized;
             coral.position = closestPoint;
+            coral.up = -dirToSurface.normalized;
             return true;
         }
 
