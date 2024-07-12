@@ -13,7 +13,12 @@ public class StatTrackingUI : MonoBehaviour
     }
 
     private void UpdateUI() {
-        string output = "Coral Pickup: " + owner.coralPickup + "\n" +
+        AdultCoral[] corals = FindObjectsOfType<AdultCoral>();
+        float adultCoralPercent = (float)corals.Length / owner.adultCoralGoal;
+        adultCoralPercent = Mathf.Floor(adultCoralPercent * 100f);
+
+        string output = "Coral Percent: " + adultCoralPercent + "%" + "\n" +
+            "Coral Pickup: " + owner.coralPickup + "\n" +
             "Coral Hammered: " + owner.coralHammered + "\n" +
             "Coral Grown: " + owner.coralGrown + "\n" +
             "Trash Collected: " + owner.trashCollected + "/" + owner.trashTotal + "\n" +

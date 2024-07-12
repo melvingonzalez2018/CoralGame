@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StatTracking : MonoBehaviour
 {
+    [SerializeField] public int adultCoralGoal;
+    [Header("Stats")]
     public int coralPickup;
     public int coralHammered;
     public int coralGrown;
@@ -11,6 +13,7 @@ public class StatTracking : MonoBehaviour
     public int trashTotal;
     public int eelCollisions;
     public int pufferCollisions;
+
     private void Start() {
         trashTotal = FindObjectsOfType<Trash>().Length;
     }

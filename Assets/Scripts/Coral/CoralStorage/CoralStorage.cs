@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoralStorage : MonoBehaviour
-{
-    List<Coral> corals = new List<Coral>();
-    public void AddCoral(Coral coral) {
-        corals.Add(coral);
+public class CoralStorage : MonoBehaviour {
+    [SerializeField] GameObject juvenileCoralPrefab;
+    [SerializeField] GameObject fragmentedCoralPrefab;
+    public int fragmentCoral = 0;
+    public int juvenileCoral = 0;
+
+    public void AddJuvenile() {
+        juvenileCoral++;
+    }
+
+    public void AddFragment() {
+        fragmentCoral++;
     }
 
     // Trying to place an object in 
@@ -15,57 +22,25 @@ public class CoralStorage : MonoBehaviour
         if (!area.PositionWithinBounds(pos)) {
             return false;
         }
-        
-        Coral foundCoral = null;
-        foreach (Coral coral in corals) {
-            switch(area.areaType) {
-                case AreaType.REEF:
-                    if(coral.IsAdult()) {
-                        if(coral.TryPutDown(area, pos)) {
-                            foundCoral = coral;
-                        }
-                    }
-                    break;
-                case AreaType.NURSERY:
-                    if (!coral.IsAdult()) {
-                        if (coral.TryPutDown(area, pos)) {
-                            foundCoral = coral;
-                        }
-                    }
-                    break;
-            }
 
-            // Breaking early if the coral is found and placed
-            if(foundCoral != null) {
+        switch (area.areaType) {
+            case AreaType.REEF:
+                if (juvenileCoral > 0) {
+                    GameObject currentCoral = Instantiate(juvenileCoralPrefab);
+                    Coral coral = currentCoral.GetComponent<Coral>();
+                    coral.InitalizeOnArea(area, pos);
+                    juvenileCoral--;
+                }
                 break;
-            }
+            case AreaType.NURSERY:
+                if (fragmentCoral > 0) {
+                    GameObject currentCoral = Instantiate(fragmentedCoralPrefab);
+                    Coral coral = currentCoral.GetComponent<Coral>();
+                    coral.InitalizeOnArea(area, pos);
+                    fragmentCoral--;
+                }
+                break;
         }
-
-        // Removing the placed coral
-        if (foundCoral != null) {
-            corals.Remove(foundCoral);
-            return true;
-        }
-
         return false;
-    }
-
-    public int NumOfAdultCoral() {
-        int output = 0;
-        foreach (Coral coral in corals) {
-            if(coral.IsAdult()) {
-                output++;
-            }
-        }
-        return output;
-    }
-    public int NumOfYoungCoral() {
-        int output = 0;
-        foreach (Coral coral in corals) {
-            if (!coral.IsAdult()) {
-                output++;
-            }
-        }
-        return output;
     }
 }

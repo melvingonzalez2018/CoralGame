@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] GameObject newDiveButton;
+    [SerializeField] GameObject endSceneButton;
+    public void EndOfLevel() {
+        newDiveButton.SetActive(false);
+        endSceneButton.SetActive(true);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void EndOfDive() {
+        newDiveButton.SetActive(true);
+        endSceneButton.SetActive(false);
     }
 }
