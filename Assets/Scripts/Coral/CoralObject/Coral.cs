@@ -10,14 +10,21 @@ public abstract class Coral : MonoBehaviour {
     public abstract void DiveStartUpdate();
 
     private void Start() {
+        SetAreaUpdate();
+    }
+
+    private void SetAreaUpdate() {
         // Orient any coral to the current place
-        if(area != null) {
+        if (area != null) {
             area.OrientCoralToSurface(transform, transform.position);
         }
         else {
             SetClosestPlaceable();
         }
     }
+    //public static GameObject InstantiateCoral(GameObject prefab, CoralPlaceableArea area, Vector3 pos) {
+
+    //}
 
     private void SetClosestPlaceable() {
         CoralPlaceableArea closestPlaceableArea = null;
@@ -26,8 +33,8 @@ public abstract class Coral : MonoBehaviour {
         // Finding closest valid placeable
         foreach(CoralPlaceableArea placeableArea in FindObjectsOfType<CoralPlaceableArea>()) {
             if(placeableArea.areaType == defaultStick) { // Checking default stick
-                if(placeableArea.FindClosestPoint(transform.position, out Vector3 closestPoint)) { // Checking distance
-                    float currentDistToPoint = (closestPoint - transform.position).magnitude;
+                if(placeableArea.FindClosestPoint(transform.position, out RaycastHit hit)) { // Checking distance
+                    float currentDistToPoint = (hit.point - transform.position).magnitude;
                     if (lowestDistToPoint > currentDistToPoint) {
                         lowestDistToPoint = currentDistToPoint;
                         closestPlaceableArea = placeableArea;
@@ -43,5 +50,8 @@ public abstract class Coral : MonoBehaviour {
         if (newArea.OrientCoralToSurface(transform, pos)) {
             area = newArea;
         }
+    }
+    public void SetArea(CoralPlaceableArea newArea) {
+        area = newArea;
     }
 }

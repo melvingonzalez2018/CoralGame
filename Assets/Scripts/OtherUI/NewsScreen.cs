@@ -20,7 +20,6 @@ public class NewsScreen : MonoBehaviour {
     }
 
     public void UpdateText() {
-        Debug.Log("update text");
         int currentDive = diveManager.GetCurrentDive();
         if(currentDive <= screenDatas.Count) {
             headlineText.text = screenDatas[currentDive].headlineText;
