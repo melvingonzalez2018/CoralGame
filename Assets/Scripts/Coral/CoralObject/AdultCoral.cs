@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AdultCoral : Coral
 {
+    [SerializeField] AudioSource harvestSource;
     bool fragmentAvailable = true;
 
     public bool GetFragmentAvailable() {
@@ -12,6 +13,7 @@ public class AdultCoral : Coral
 
     public override void Interact() {
         if (fragmentAvailable) {
+            harvestSource.Play();
             FindObjectOfType<CoralStorage>().AddFragment();
             fragmentAvailable = false;
         }

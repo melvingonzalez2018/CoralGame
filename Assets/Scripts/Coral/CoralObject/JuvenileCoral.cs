@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JuvenileCoral : Coral {
+    [SerializeField] AudioSource takeAudio;
     [SerializeField] GameObject adultCoralPrefab;
     [SerializeField] public float hammerTime;
     [SerializeField] float hammerPerClick;
@@ -55,6 +56,7 @@ public class JuvenileCoral : Coral {
     }
 
     public void PickUp() {
+        takeAudio.Play();
         FindObjectOfType<StatTracking>().IterateCoralPickup();
         FindAnyObjectByType<CoralStorage>().AddJuvenile();
         Destroy(gameObject);
