@@ -6,6 +6,7 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] float reach;
     [SerializeField] float coralOffsetFromSurface;
+    [SerializeField] AudioSource placeCoral;
     CoralStorage coralStorage;
     bool canInteract = true;
 
@@ -38,7 +39,9 @@ public class PlayerInteract : MonoBehaviour
                 if (area.ContainCollider(hit.collider)) {
                     Vector3 coralPlacement = hit.point - (screenToWorld.direction * coralOffsetFromSurface);
                     Debug.DrawLine(Camera.main.transform.position, coralPlacement, Color.blue, 3f);
-                    coralStorage.TryPlaceCoral(area, coralPlacement);
+                    if(coralStorage.TryPlaceCoral(area, coralPlacement)) {
+                        placeCoral.Play();
+                    }
                 }
             }
 
