@@ -14,6 +14,14 @@ public class Oxygen : MonoBehaviour
         if(runTimer) {
             ReduceOxygen(Time.deltaTime);
         }
+
+        if(Input.GetKeyDown(KeyCode.N)) {
+            KillOxygen();
+        }
+    }
+
+    private void KillOxygen() {
+        ReduceOxygen(float.MaxValue);
     }
 
     public void StartTime() {
