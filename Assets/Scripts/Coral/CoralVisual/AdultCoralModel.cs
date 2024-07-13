@@ -2,25 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdultCoralModel : MonoBehaviour
+public class AdultCoralModel : CoralModel
 {
     [SerializeField] AdultCoral owner;
-    [SerializeField] [Range(0f,1f)] float thinScale;
-    Vector3 intialScale;
-    
-    // Start is called before the first frame update
-    void Start() {
-        intialScale = transform.localScale;
-    }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(owner.GetFragmentAvailable()) {
-            transform.localScale = intialScale;
+    void Update() {
+        if(currentVisual != null) {
+            VisualUpdate();
+        }
+    }
+
+    public void VisualUpdate() {
+        if (owner.GetFragmentAvailable()) {
+            // Setting regular adult
+            currentVisual.transform.GetChild(0).gameObject.SetActive(true);
+            currentVisual.transform.GetChild(1).gameObject.SetActive(false);
         }
         else {
-            transform.localScale = new Vector3(intialScale.x * thinScale, intialScale.y, intialScale.z*thinScale);
+            // Setting fragemented adult
+            currentVisual.transform.GetChild(0).gameObject.SetActive(false);
+            currentVisual.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }

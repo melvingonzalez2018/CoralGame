@@ -7,6 +7,8 @@ public class PlayerMovementController : MonoBehaviour
     [Header("References")]
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerStun stun;
+    [SerializeField] SmoothRotateTo rotate;
+    [SerializeField] Animator anim;
 
     [Header("Adjustable Variables")]
     [SerializeField] public float horizontalAcceleration;
@@ -23,16 +25,20 @@ public class PlayerMovementController : MonoBehaviour
     private void Update() {
         PhysicsUpdate();
 
+        Vector3 playerInput = Vector3.zero;
         if (!stun.IsStunned() && canMove) {
             // Player Input
             Transform camTransform = Camera.main.transform;
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
             Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + camTransform.forward * Input.GetAxis("Vertical");
-            
+
+            playerInput = verticalInput + horizontalInput;
+            rotate.SetTargetDirection(playerInput.normalized);
+
             AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
             AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
         }
-
+        anim.SetFloat("InputMag", playerInput.magnitude);
 
         controller.Move(currentVelocity * Time.deltaTime);
     }
