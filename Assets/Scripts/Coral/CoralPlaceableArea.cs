@@ -37,7 +37,10 @@ public class CoralPlaceableArea : MonoBehaviour
         // Orienting transform
         if(FindClosestPoint(pos, out Vector3 closestPoint)) {
             Vector3 dirToSurface = closestPoint - pos;
+
+            Physics.Raycast(pos, dirToSurface, gameObject.layer, out RaycastHit hit);
             coral.position = closestPoint;
+            Debug.DrawLine(closestPoint, closestPoint + -dirToSurface.normalized, Color.red, 3f);
             coral.up = -dirToSurface.normalized;
             return true;
         }
@@ -51,7 +54,7 @@ public class CoralPlaceableArea : MonoBehaviour
         float distToClosest = float.MaxValue;
 
         foreach (Collider surface in placeableSurfaces) {
-            Vector3 pointOnSurface = surface.ClosestPoint(pos);
+            Vector3 pointOnSurface = surface.ClosestPointOnBounds(pos);
 
             // Checking if within bounds
             if (UseOverlapCollider()) {

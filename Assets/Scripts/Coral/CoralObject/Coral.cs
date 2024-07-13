@@ -5,13 +5,18 @@ using UnityEngine;
 public abstract class Coral : MonoBehaviour {
     [SerializeField] AreaType defaultStick;
     [SerializeField] protected CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
+    bool startAreaUpdate = false;
 
     public abstract void Interact();
     public abstract void DiveStartUpdate();
 
     private void Start() {
+        SetAreaUpdate();
+    }
+
+    private void SetAreaUpdate() {
         // Orient any coral to the current place
-        if(area != null) {
+        if (area != null) {
             area.OrientCoralToSurface(transform, transform.position);
         }
         else {
@@ -19,9 +24,16 @@ public abstract class Coral : MonoBehaviour {
         }
     }
 
-    public void InstantiateCoral() {
-
+    private void LateUpdate() {
+        if(!startAreaUpdate) {
+            startAreaUpdate = true;
+            SetAreaUpdate();
+        }
     }
+
+    //public static GameObject InstantiateCoral(GameObject prefab, CoralPlaceableArea area, Vector3 pos) {
+
+    //}
 
     private void SetClosestPlaceable() {
         CoralPlaceableArea closestPlaceableArea = null;
@@ -47,5 +59,8 @@ public abstract class Coral : MonoBehaviour {
         if (newArea.OrientCoralToSurface(transform, pos)) {
             area = newArea;
         }
+    }
+    public void SetArea(CoralPlaceableArea newArea) {
+        area = newArea;
     }
 }
