@@ -32,10 +32,8 @@ public class HydroVents : MonoBehaviour
 	{
         if (collision.gameObject.CompareTag("Player") && movementController != null)
 		{
-            FindAnyObjectByType<Oxygen>();
-            Vector3 bounceHeight = new Vector3(0f, currentForce, 0f);
-			movementController.AddVelocity(currentForce * currentDirection.up, maxSpeed);
-			Oxygen =  Oxygen - timer; 
+			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed); 
+
 		}
 	}
 }
