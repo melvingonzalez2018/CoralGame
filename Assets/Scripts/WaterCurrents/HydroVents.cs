@@ -17,6 +17,7 @@ public class HydroVents : MonoBehaviour
 	[SerializeField] public UnityEvent OnOxygenDuration = new UnityEvent(); 
 	[SerializeField] public float oxygenDuration; 
 	[HideInInspector] public float timer = 0; 
+	
 	PlayerMovementController movementController; 
 
 	private void Start()
@@ -27,8 +28,9 @@ public class HydroVents : MonoBehaviour
 
 	private void OnTriggerStay(Collider collision)
 	{
-		if (collision.tag == playerTag && movementController != null){
-			movementController.AddVelocity(currentForce * currentDirection.up, maxSpeed); 
+		if (collision.gameObject.tag == "Player" && movementController != null)
+		{
+			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed); 
 		}
 	 FindAnyObjectByType<Oxygen>();
 	}
