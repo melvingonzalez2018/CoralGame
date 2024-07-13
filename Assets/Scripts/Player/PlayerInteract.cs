@@ -5,11 +5,22 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] float reach;
+    [SerializeField] float coralOffsetFromSurface;
+    CoralStorage coralStorage;
+    bool canInteract = true;
+
+    private void Start() {
+        coralStorage = FindObjectOfType<CoralStorage>();
+    }
 
     private void Update() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0) && canInteract) {
             InteractInput();
         }
+    }
+
+    public void SetCanInteract(bool value) {
+        canInteract = value;
     }
 
     private void InteractInput() {
@@ -22,10 +33,12 @@ public class PlayerInteract : MonoBehaviour
 
             // Putting down coral
             CoralPlaceableArea[] areas = FindObjectsOfType<CoralPlaceableArea>();
-            Debug.DrawLine(hit.point, hit.point + Vector3.up);
+            //Debug.DrawLine(hit.point, hit.point + Vector3.up);
             foreach (CoralPlaceableArea area in areas) {
                 if (area.ContainCollider(hit.collider)) {
-                    FindObjectOfType<CoralStorage>().TryPlaceCoral(area, hit.point);
+                    Vector3 coralPlacement = hit.point - (screenToWorld.direction * coralOffsetFromSurface);
+                    Debug.DrawLine(Camera.main.transform.position, coralPlacement, Color.blue, 3f);
+                    coralStorage.TryPlaceCoral(area, coralPlacement);
                 }
             }
 
@@ -34,6 +47,5 @@ public class PlayerInteract : MonoBehaviour
                 trash.PickUpTrash();
             }
         }
-        
     }
 }
