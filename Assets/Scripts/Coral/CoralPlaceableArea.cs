@@ -11,6 +11,7 @@ public enum AreaType {
 public class CoralPlaceableArea : MonoBehaviour
 {
     [SerializeField] public AreaType areaType = AreaType.NULL;
+    [SerializeField] float surfaceCheckOffset;
     List<Collider> placeableSurfaces = new List<Collider>();
     Collider areaCollider;
     private void Awake() {
@@ -35,13 +36,9 @@ public class CoralPlaceableArea : MonoBehaviour
     // Orients the given transform to the surface of the listed colliders, returns true if the orientation was successful
     public bool OrientCoralToSurface(Transform coral, Vector3 pos) {
         // Orienting transform
-        if(FindClosestPoint(pos, out Vector3 closestPoint)) {
-            Vector3 dirToSurface = closestPoint - pos;
-
-            Physics.Raycast(pos, dirToSurface, gameObject.layer, out RaycastHit hit);
-            coral.position = closestPoint;
-            Debug.DrawLine(closestPoint, closestPoint + -dirToSurface.normalized, Color.red, 3f);
-            coral.up = -dirToSurface.normalized;
+        if(FindClosestPoint(pos, out RaycastHit hit)) {
+            coral.position = hit.point;
+            coral.up = hit.normal;
             return true;
         }
 
@@ -49,12 +46,20 @@ public class CoralPlaceableArea : MonoBehaviour
     }
 
     // Return true if you found a valid point false otherwise
-    public bool FindClosestPoint(Vector3 pos, out Vector3 closestPoint) {
-        closestPoint = Vector3.zero;
+    public bool FindClosestPoint(Vector3 pos, out RaycastHit hit) {
+        hit = new RaycastHit();
         float distToClosest = float.MaxValue;
 
         foreach (Collider surface in placeableSurfaces) {
             Vector3 pointOnSurface = surface.ClosestPointOnBounds(pos);
+
+            if(pointOnSurface == pos) {
+                pos -= (surface.gameObject.transform.position - pos)*surfaceCheckOffset;
+            }
+            
+            Vector3 dirToSurface = pointOnSurface - pos;
+
+            surface.Raycast(new Ray(pos, dirToSurface), out RaycastHit hitSurface, float.MaxValue);
 
             // Checking if within bounds
             if (UseOverlapCollider()) {
@@ -66,7 +71,7 @@ public class CoralPlaceableArea : MonoBehaviour
             // Checking closest collider
             float checkClosest = (pos - pointOnSurface).magnitude;
             if (checkClosest < distToClosest) {
-                closestPoint = pointOnSurface;
+                hit = hitSurface;
                 distToClosest = checkClosest;
             }
         }

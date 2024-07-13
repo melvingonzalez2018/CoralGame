@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Coral : MonoBehaviour {
     [SerializeField] AreaType defaultStick;
     [SerializeField] protected CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
-    bool startAreaUpdate = false;
 
     public abstract void Interact();
     public abstract void DiveStartUpdate();
@@ -23,14 +22,6 @@ public abstract class Coral : MonoBehaviour {
             SetClosestPlaceable();
         }
     }
-
-    private void LateUpdate() {
-        if(!startAreaUpdate) {
-            startAreaUpdate = true;
-            SetAreaUpdate();
-        }
-    }
-
     //public static GameObject InstantiateCoral(GameObject prefab, CoralPlaceableArea area, Vector3 pos) {
 
     //}
@@ -42,8 +33,8 @@ public abstract class Coral : MonoBehaviour {
         // Finding closest valid placeable
         foreach(CoralPlaceableArea placeableArea in FindObjectsOfType<CoralPlaceableArea>()) {
             if(placeableArea.areaType == defaultStick) { // Checking default stick
-                if(placeableArea.FindClosestPoint(transform.position, out Vector3 closestPoint)) { // Checking distance
-                    float currentDistToPoint = (closestPoint - transform.position).magnitude;
+                if(placeableArea.FindClosestPoint(transform.position, out RaycastHit hit)) { // Checking distance
+                    float currentDistToPoint = (hit.point - transform.position).magnitude;
                     if (lowestDistToPoint > currentDistToPoint) {
                         lowestDistToPoint = currentDistToPoint;
                         closestPlaceableArea = placeableArea;
