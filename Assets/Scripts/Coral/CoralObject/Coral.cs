@@ -19,6 +19,10 @@ public abstract class Coral : MonoBehaviour {
         }
     }
 
+    public void InstantiateCoral() {
+
+    }
+
     private void SetClosestPlaceable() {
         CoralPlaceableArea closestPlaceableArea = null;
         float lowestDistToPoint = float.MaxValue;
