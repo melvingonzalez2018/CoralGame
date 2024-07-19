@@ -22,9 +22,6 @@ public abstract class Coral : MonoBehaviour {
             SetClosestPlaceable();
         }
     }
-    //public static GameObject InstantiateCoral(GameObject prefab, CoralPlaceableArea area, Vector3 pos) {
-
-    //}
 
     private void SetClosestPlaceable() {
         CoralPlaceableArea closestPlaceableArea = null;

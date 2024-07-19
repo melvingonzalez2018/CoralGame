@@ -29,8 +29,8 @@ public class JuvenileCoral : Coral {
         if(IsOnReef() && IsHammeredIn()) {
             FindObjectOfType<StatTracking>().IterateCoralGrown();
 
-            GameObject currentCoral = Instantiate(adultCoralPrefab);
-            currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
+            GameObject currentCoral = Instantiate(adultCoralPrefab, transform.position, Quaternion.identity);
+            //currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
             area.MinusCoralCount();
             Destroy(gameObject);
         }
@@ -43,6 +43,10 @@ public class JuvenileCoral : Coral {
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
             }
         }
+    }
+
+    public void FullyHammerIn() {
+        hammerTimer = hammerTime;
     }
 
     public bool IsOnReef() {

@@ -55,14 +55,13 @@ public class CoralPlaceableArea : MonoBehaviour
         float distToClosest = float.MaxValue;
 
         foreach (Collider surface in placeableSurfaces) {
-            Vector3 pointOnSurface = surface.ClosestPointOnBounds(pos);
+            Vector3 pointOnSurface = surface.ClosestPoint(pos);
 
             if(pointOnSurface == pos) {
                 pos -= (surface.gameObject.transform.position - pos)*surfaceCheckOffset;
             }
             
             Vector3 dirToSurface = pointOnSurface - pos;
-
             surface.Raycast(new Ray(pos, dirToSurface), out RaycastHit hitSurface, float.MaxValue);
 
             // Checking if within bounds
