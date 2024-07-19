@@ -12,6 +12,10 @@ public class CoralPlaceableArea : MonoBehaviour
 {
     [SerializeField] public AreaType areaType = AreaType.NULL;
     [SerializeField] float surfaceCheckOffset;
+    [SerializeField] public int maxCoralPlacable;
+    [SerializeField] public bool limitedCoral = true;
+    [HideInInspector] public int placedCoral = 0;
+
     List<Collider> placeableSurfaces = new List<Collider>();
     Collider areaCollider;
     private void Awake() {
@@ -93,5 +97,20 @@ public class CoralPlaceableArea : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    public void AddCoralCount() {
+        placedCoral++;
+    }
+    public void MinusCoralCount() {
+        placedCoral--;
+    }
+
+    public bool CanPlaceCoral() {
+        if(!limitedCoral) {
+            return true;
+        }
+
+        return placedCoral < maxCoralPlacable;
     }
 }

@@ -48,10 +48,11 @@ public abstract class Coral : MonoBehaviour {
 
     public void InitalizeOnArea(CoralPlaceableArea newArea, Vector3 pos) {
         if (newArea.OrientCoralToSurface(transform, pos)) {
+            if(area != null) {
+                area.MinusCoralCount();
+            }
             area = newArea;
+            area.AddCoralCount();
         }
-    }
-    public void SetArea(CoralPlaceableArea newArea) {
-        area = newArea;
     }
 }
