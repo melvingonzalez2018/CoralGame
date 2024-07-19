@@ -1433,6 +1433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReefPlaceableArea
       objectReference: {fileID: 0}
+    - target: {fileID: 3815071485032318319, guid: 457f260afa528014baf4da204274ffce,
+        type: 3}
+      propertyPath: maxCoralPlacable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5495176051878891572, guid: 457f260afa528014baf4da204274ffce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1501,10 +1506,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: JuvenileCoral
       objectReference: {fileID: 0}
+    - target: {fileID: 3689873980207742186, guid: 62866b7fc225072488987e68bdf805af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7048579054531444908, guid: 62866b7fc225072488987e68bdf805af,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.17
+      value: -4.01
       objectReference: {fileID: 0}
     - target: {fileID: 7048579054531444908, guid: 62866b7fc225072488987e68bdf805af,
         type: 3}
@@ -1514,7 +1524,7 @@ PrefabInstance:
     - target: {fileID: 7048579054531444908, guid: 62866b7fc225072488987e68bdf805af,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.36
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 7048579054531444908, guid: 62866b7fc225072488987e68bdf805af,
         type: 3}
@@ -1569,10 +1579,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: NurseryPlaceableArea
       objectReference: {fileID: 0}
+    - target: {fileID: 7396736289807992129, guid: d1aa3647499a5e64e927dd3fd1247623,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396736289807992129, guid: d1aa3647499a5e64e927dd3fd1247623,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396736289807992129, guid: d1aa3647499a5e64e927dd3fd1247623,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7396736289807992129, guid: d1aa3647499a5e64e927dd3fd1247623,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8119143618341366774, guid: d1aa3647499a5e64e927dd3fd1247623,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.98
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 8119143618341366774, guid: d1aa3647499a5e64e927dd3fd1247623,
         type: 3}
@@ -1582,7 +1612,7 @@ PrefabInstance:
     - target: {fileID: 8119143618341366774, guid: d1aa3647499a5e64e927dd3fd1247623,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.81254876
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 8119143618341366774, guid: d1aa3647499a5e64e927dd3fd1247623,
         type: 3}
@@ -1635,7 +1665,7 @@ PrefabInstance:
     - target: {fileID: 2207781389720153405, guid: 4fe0fa46276c88048820de9fc7ecd27b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 2207781389720153405, guid: 4fe0fa46276c88048820de9fc7ecd27b,
         type: 3}
@@ -1645,7 +1675,7 @@ PrefabInstance:
     - target: {fileID: 2207781389720153405, guid: 4fe0fa46276c88048820de9fc7ecd27b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 2207781389720153405, guid: 4fe0fa46276c88048820de9fc7ecd27b,
         type: 3}
@@ -1691,6 +1721,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FragmentedCoral
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133843982912026339, guid: 4fe0fa46276c88048820de9fc7ecd27b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1806,7 +1841,7 @@ PrefabInstance:
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.10729654
+      value: -0.10729641
       objectReference: {fileID: 0}
     - target: {fileID: 843022135020907096, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
@@ -1901,7 +1936,7 @@ PrefabInstance:
     - target: {fileID: 9104841417505073503, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97281754
+      value: 0.9728176
       objectReference: {fileID: 0}
     - target: {fileID: 9104841417505073503, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}

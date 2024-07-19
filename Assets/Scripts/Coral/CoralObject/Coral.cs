@@ -22,9 +22,6 @@ public abstract class Coral : MonoBehaviour {
             SetClosestPlaceable();
         }
     }
-    //public static GameObject InstantiateCoral(GameObject prefab, CoralPlaceableArea area, Vector3 pos) {
-
-    //}
 
     private void SetClosestPlaceable() {
         CoralPlaceableArea closestPlaceableArea = null;
@@ -48,10 +45,11 @@ public abstract class Coral : MonoBehaviour {
 
     public void InitalizeOnArea(CoralPlaceableArea newArea, Vector3 pos) {
         if (newArea.OrientCoralToSurface(transform, pos)) {
+            if(area != null) {
+                area.MinusCoralCount();
+            }
             area = newArea;
+            area.AddCoralCount();
         }
-    }
-    public void SetArea(CoralPlaceableArea newArea) {
-        area = newArea;
     }
 }
