@@ -43,6 +43,10 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
+            if(hit.collider.gameObject.TryGetComponent(out Trash trash)) {
+                trash.InteractHighlight();
+            }
+
             // Checking for placeable area
             bool found = false;
             foreach (CoralPlaceableArea area in areas) {

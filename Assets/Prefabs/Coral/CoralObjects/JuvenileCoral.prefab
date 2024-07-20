@@ -99,9 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coralVisualIndex: 0
-  coralModel:
-  - {fileID: 6907786673532364066}
-  - {fileID: 3151056801634064087}
+  coralModels: []
   currentVisualIndex: 0
 --- !u!1 &962725646790987293
 GameObject:
@@ -420,10 +418,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.26
-  m_Height: 0.98
+  m_Radius: 0.41
+  m_Height: 1.08
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!82 &6295195104147326729
 AudioSource:
   m_ObjectHideFlags: 0
