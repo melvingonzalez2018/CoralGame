@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1274261526814894488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -102,6 +102,7 @@ MonoBehaviour:
   coralModel:
   - {fileID: 5450689600028313969}
   - {fileID: 9166752240077965070}
+  currentVisualIndex: 0
 --- !u!1 &5450689600028313969
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +146,7 @@ GameObject:
   - component: {fileID: 2207781389720153405}
   - component: {fileID: -8644633209254669382}
   - component: {fileID: 9169625165112664535}
+  - component: {fileID: 1233076319120568312}
   m_Layer: 0
   m_Name: FragmentedCoral
   m_TagString: Untagged
@@ -207,6 +209,24 @@ CapsuleCollider:
   m_Height: 0.48
   m_Direction: 1
   m_Center: {x: 0, y: 0.11, z: 0}
+--- !u!114 &1233076319120568312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133843982912026339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &9166752240077965070
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,12 +5,29 @@ using UnityEngine;
 public abstract class Coral : MonoBehaviour {
     [SerializeField] AreaType defaultStick;
     [SerializeField] protected CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
+    float highlightTimer;
+    Outline outline;
 
     public abstract void Interact();
     public abstract void DiveStartUpdate();
+    public abstract bool CanInteract();
 
     private void Start() {
         SetAreaUpdate();
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
+    }
+
+    private void LateUpdate() {
+        highlightTimer -= Time.deltaTime;
+        if (highlightTimer < 0) {
+            outline.enabled = false;
+        }
+    }
+
+    public void InteractHighlight() {
+        highlightTimer = Time.deltaTime;
+        outline.enabled = true;
     }
 
     private void SetAreaUpdate() {

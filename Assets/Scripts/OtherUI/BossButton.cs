@@ -19,16 +19,12 @@ public class BossButton : MonoBehaviour
 
     private void ResetSeen() {
         seen = false;
+        notificationIcon.SetActive(!seen);
     }
 
     public void ToggleNote() {
         seen = true;
-        bossNote.SetActive(!bossNote.activeSelf);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         notificationIcon.SetActive(!seen);
+        bossNote.SetActive(!bossNote.activeSelf);
     }
 }

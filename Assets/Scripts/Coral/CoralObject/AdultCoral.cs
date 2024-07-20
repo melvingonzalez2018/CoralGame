@@ -24,4 +24,8 @@ public class AdultCoral : Coral
             fragmentAvailable = true;
         }
     }
+
+    public override bool CanInteract() {
+        return fragmentAvailable;
+    }
 }
