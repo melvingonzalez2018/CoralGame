@@ -597,7 +597,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1146,6 +1146,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2001389976}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &220004225688290188
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 221669364124763322, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 151.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 221669364124763322, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 269.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221669364124763322, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_Offset.z
+      value: 134.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -68.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525131753659358485, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651388109310451459, guid: ccb638eefdb0a2a489ee1ad6479c35c9,
+        type: 3}
+      propertyPath: m_Name
+      value: CuasticEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ccb638eefdb0a2a489ee1ad6479c35c9, type: 3}
 --- !u!1001 &491921998437991610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1857,7 +1940,7 @@ PrefabInstance:
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.10729642
+      value: -0.10729654
       objectReference: {fileID: 0}
     - target: {fileID: 843022135020907096, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
@@ -1947,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 9104841417505073503, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97281754
+      value: 0.9728176
       objectReference: {fileID: 0}
     - target: {fileID: 9104841417505073503, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
@@ -1975,6 +2058,7 @@ SceneRoots:
   - {fileID: 8926127910956274709}
   - {fileID: 417586075}
   - {fileID: 363429674}
+  - {fileID: 220004225688290188}
   - {fileID: 9177830647668192791}
   - {fileID: 2001389976}
   - {fileID: 491921998437991610}
