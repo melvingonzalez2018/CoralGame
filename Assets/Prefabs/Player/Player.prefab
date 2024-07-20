@@ -191,6 +191,9 @@ MonoBehaviour:
   render: {fileID: 3658171238383925359}
   anim: {fileID: 1882949988266270038}
   stunColor: {r: 0.3735848, g: 0.3735848, b: 0.3735848, a: 1}
+  OnLoseOxygen:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &958061061493206826
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -622,6 +625,11 @@ PrefabInstance:
     - target: {fileID: 5280981164430297407, guid: ae2c43d0ac9702647a1e1243590ffb7c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828435615576915031, guid: ae2c43d0ac9702647a1e1243590ffb7c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8141640272214075407, guid: ae2c43d0ac9702647a1e1243590ffb7c,
