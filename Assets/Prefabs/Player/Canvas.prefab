@@ -849,6 +849,7 @@ GameObject:
   - component: {fileID: 6041266000104943781}
   - component: {fileID: 3242656892962414591}
   - component: {fileID: 7914645339092508231}
+  - component: {fileID: 4808277536556000324}
   m_Layer: 5
   m_Name: Gague
   m_TagString: Untagged
@@ -929,6 +930,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1.3333334
+--- !u!114 &4808277536556000324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142228136660736919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a92fcaf158e074692031b997659ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.003333331
+      value: 1.0028274
+      inSlope: -2.3141267
+      outSlope: -2.3141267
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0522869
+    - serializedVersion: 3
+      time: 1.0023776
+      value: 0.017832875
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  startColor: {r: 1, g: 0, b: 0, a: 1}
+  image: {fileID: 3242656892962414591}
+  duration: 0.5
 --- !u!1 &7459133554089196812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,6 +2506,11 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 8611845657497311583}
+    - target: {fileID: 1026728495529180528, guid: c2e9f6e1eec9cc6439c8daa85169623c,
+        type: 3}
+      propertyPath: gagueEffect
+      value: 
+      objectReference: {fileID: 4808277536556000324}
     - target: {fileID: 4824920012132219840, guid: c2e9f6e1eec9cc6439c8daa85169623c,
         type: 3}
       propertyPath: m_AnchorMax.x
