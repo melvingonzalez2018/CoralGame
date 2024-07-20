@@ -22,6 +22,9 @@ public class CoralStorage : MonoBehaviour {
         if (!area.PositionWithinBounds(pos)) {
             return false;
         }
+        if(!area.CanPlaceCoral()) {
+            return false;
+        }
 
         switch (area.areaType) {
             case AreaType.REEF:
