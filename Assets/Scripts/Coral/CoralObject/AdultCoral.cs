@@ -14,7 +14,9 @@ public class AdultCoral : Coral
     public override void Interact() {
         if (fragmentAvailable) {
             harvestSource.Play();
-            FindObjectOfType<CoralStorage>().AddFragment();
+
+            int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
+            FindObjectOfType<CoralStorage>().AddFragment(new StoredCoralData(modelIndex));
             fragmentAvailable = false;
         }
     }

@@ -15,7 +15,6 @@ public abstract class Coral : MonoBehaviour {
     private void Start() {
         SetAreaUpdate();
         outline = GetComponent<Outline>();
-        outline.enabled = false;
     }
 
     private void LateUpdate() {

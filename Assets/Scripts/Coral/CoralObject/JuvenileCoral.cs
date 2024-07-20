@@ -71,7 +71,10 @@ public class JuvenileCoral : Coral {
     public void PickUp() {
         takeAudio.Play();
         FindObjectOfType<StatTracking>().IterateCoralPickup();
-        FindAnyObjectByType<CoralStorage>().AddJuvenile();
+
+        int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
+        FindAnyObjectByType<CoralStorage>().AddJuvenile(new StoredCoralData(modelIndex));
+        area.MinusCoralCount();
         Destroy(gameObject);
     }
 }
