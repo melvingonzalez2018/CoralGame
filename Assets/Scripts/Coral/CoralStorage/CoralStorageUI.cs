@@ -14,7 +14,7 @@ public class CoralStorageUI : MonoBehaviour
         UpdateUI();
     }
     private void UpdateUI() {
-        babyText.text = owner.fragmentCoral.ToString();
-        juvenileText.text = owner.juvenileCoral.ToString();
+        babyText.text = owner.GetFragmentCount().ToString();
+        juvenileText.text = owner.GetJuvenileCount().ToString();
     }
 }

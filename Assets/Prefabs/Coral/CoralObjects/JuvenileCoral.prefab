@@ -99,9 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coralVisualIndex: 0
-  coralModel:
-  - {fileID: 6907786673532364066}
-  - {fileID: 3151056801634064087}
+  coralModels: []
   currentVisualIndex: 0
 --- !u!1 &962725646790987293
 GameObject:
@@ -356,6 +354,7 @@ GameObject:
   - component: {fileID: 6036555521796658167}
   - component: {fileID: 474983242210355545}
   - component: {fileID: 6295195104147326729}
+  - component: {fileID: 9120575881782353567}
   m_Layer: 0
   m_Name: JuvenileCoral
   m_TagString: Untagged
@@ -419,10 +418,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.26
-  m_Height: 0.98
+  m_Radius: 0.41
+  m_Height: 1.08
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!82 &6295195104147326729
 AudioSource:
   m_ObjectHideFlags: 0
@@ -519,6 +518,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9120575881782353567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689873980207742186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &4014597111965731063
 GameObject:
   m_ObjectHideFlags: 0
