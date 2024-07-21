@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStun : MonoBehaviour {
     [SerializeField] Renderer render;
     [SerializeField] Animator anim;
     [SerializeField] Color stunColor;
+    public UnityEvent OnLoseOxygen = new UnityEvent();
     Color startColor;
     Oxygen oxygen;
     
@@ -36,5 +38,6 @@ public class PlayerStun : MonoBehaviour {
     public void ReduceOxygen(float amount) {
         oxygen.ReduceOxygen(amount);
         anim.SetTrigger("Hurt");
+        OnLoseOxygen.Invoke();
     }
 }

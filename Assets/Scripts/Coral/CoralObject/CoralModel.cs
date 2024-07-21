@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class CoralModel : MonoBehaviour {
     [SerializeField] int coralVisualIndex;
-    [SerializeField] List<GameObject> coralModel;
+    [SerializeField] public List<GameObject> coralModels = new List<GameObject>();
     public int currentVisualIndex;
     protected GameObject currentVisual;
     private void Awake() {
+        for(int i = 0; i < transform.childCount; i++) {
+            coralModels.Add(transform.GetChild(i).gameObject);
+        }
+
         if(currentVisual == null) {
-            SetCoralVisual(Mathf.FloorToInt(Random.value * coralModel.Count));
+            int possibleIndex = Mathf.FloorToInt(Random.value * coralModels.Count); // Setting random visual
+            if(possibleIndex == coralModels.Count) { possibleIndex--; } // Dealing with edge case
+            SetCoralVisual(possibleIndex);
         }
     }
 
     public void SetCoralVisual(int visualIndex) {
-        foreach(GameObject model in coralModel) {
+        foreach(GameObject model in coralModels) {
             model.SetActive(false);
         }
-        coralModel[visualIndex].SetActive(true);
-        currentVisual = coralModel[visualIndex];
+        coralModels[visualIndex].SetActive(true);
+        currentVisual = coralModels[visualIndex];
         currentVisualIndex = visualIndex;
     }
 }

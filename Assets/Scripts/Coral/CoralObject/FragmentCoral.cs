@@ -14,4 +14,8 @@ public class FragmentCoral : Coral {
         area.MinusCoralCount();
         Destroy(gameObject);
     }
+
+    public override bool CanInteract() {
+        return false;
+    }
 }
