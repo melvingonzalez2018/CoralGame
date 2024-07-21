@@ -1855,6 +1855,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterCurrents
       objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 8250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 52968
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936063643860574421, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.43
+      objectReference: {fileID: 0}
     - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1921,7 +1971,7 @@ PrefabInstance:
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9942271
+      value: 0.99422705
       objectReference: {fileID: 0}
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
