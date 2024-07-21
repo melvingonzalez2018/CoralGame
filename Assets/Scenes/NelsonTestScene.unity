@@ -1154,6 +1154,16 @@ PrefabInstance:
       propertyPath: swimmingClip
       value: 
       objectReference: {fileID: 8300000, guid: 0f60109475818a741b9225ec25c9331f, type: 3}
+    - target: {fileID: 4456530886413883721, guid: 79a881f8945e82248b3a3e5b435de725,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456530886413883721, guid: 79a881f8945e82248b3a3e5b435de725,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minScalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5313869904144954789, guid: 79a881f8945e82248b3a3e5b435de725,
         type: 3}
       propertyPath: m_Name
@@ -1845,26 +1855,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterCurrents
       objectReference: {fileID: 0}
-    - target: {fileID: 400083302549303066, guid: e27169579ea445a42aa2a4597e750bb9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.68
-      objectReference: {fileID: 0}
     - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1878,7 +1868,7 @@ PrefabInstance:
     - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.42
+      value: -15.75
       objectReference: {fileID: 0}
     - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
         type: 3}
@@ -1915,11 +1905,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6741767259841378562, guid: e27169579ea445a42aa2a4597e750bb9,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1941,7 +1926,7 @@ PrefabInstance:
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.10729643
+      value: -0.10729654
       objectReference: {fileID: 0}
     - target: {fileID: 843022135020907096, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
