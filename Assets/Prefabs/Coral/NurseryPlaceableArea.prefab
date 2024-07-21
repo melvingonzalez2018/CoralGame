@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaType: 1
   surfaceCheckOffset: 0.01
-  maxCoralPlacable: 10
+  maxCoralPlacable: 8
   limitedCoral: 1
   placedCoral: 0
 --- !u!1 &8408985663596933331
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 7396736289807992129}
   - component: {fileID: 3050052100608282888}
   - component: {fileID: 1630383181901746757}
-  - component: {fileID: 1175891274611077489}
+  - component: {fileID: 9075066487078187077}
   m_Layer: 6
   m_Name: TestArea
   m_TagString: Untagged
@@ -344,7 +344,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8119143618341366774}
@@ -399,8 +399,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1175891274611077489
-SphereCollider:
+--- !u!64 &9075066487078187077
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -417,6 +417,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
