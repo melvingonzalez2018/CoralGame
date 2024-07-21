@@ -11,6 +11,7 @@ public abstract class Coral : MonoBehaviour {
     public abstract void Interact();
     public abstract void DiveStartUpdate();
     public abstract bool CanInteract();
+    public abstract string GetInteractText();
 
     private void Start() {
         SetAreaUpdate();
