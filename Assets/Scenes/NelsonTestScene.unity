@@ -1154,6 +1154,16 @@ PrefabInstance:
       propertyPath: swimmingClip
       value: 
       objectReference: {fileID: 8300000, guid: 0f60109475818a741b9225ec25c9331f, type: 3}
+    - target: {fileID: 4456530886413883721, guid: 79a881f8945e82248b3a3e5b435de725,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456530886413883721, guid: 79a881f8945e82248b3a3e5b435de725,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minScalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5313869904144954789, guid: 79a881f8945e82248b3a3e5b435de725,
         type: 3}
       propertyPath: m_Name
@@ -1911,7 +1921,7 @@ PrefabInstance:
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99422705
+      value: 0.9942271
       objectReference: {fileID: 0}
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
@@ -2006,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 9104841417505073503, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97281754
+      value: 0.9728176
       objectReference: {fileID: 0}
     - target: {fileID: 9104841417505073503, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
