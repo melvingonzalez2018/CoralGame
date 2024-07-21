@@ -8,20 +8,13 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] AudioClip swimmingClip;
     bool isSwimming = false;
 
-    private void Start() {
+    private void Update() {
         SwimUpdate();
     }
 
-    private void Update() {
-        //SwimUpdate();
-    }
-
     private void SwimUpdate() {
-        if (isSwimming) {
-            audioSource.volume = 1;
-        }
-        else {
-            audioSource.volume = 0;
+        if(!audioSource.isPlaying && isSwimming) {
+            audioSource.Play();
         }
     }
 

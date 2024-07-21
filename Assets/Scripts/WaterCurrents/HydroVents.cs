@@ -14,23 +14,27 @@ public class HydroVents : MonoBehaviour
 	[SerializeField] float maxSpeed;
 
 	[SerializeField] string playerTag;
-	[SerializeField] public UnityEvent OnOxygenDuration = new UnityEvent(); 
-	[SerializeField] public float oxygenDuration; 
+	[SerializeField] public UnityEvent OnOxygenDuration = new UnityEvent();
+	[SerializeField] public float oxygenDuration;
 	[HideInInspector] public float timer = 0; 
-	
+
+	Oxygen oxygen; 
+	Vector3 bounceHeight; 
+
 	PlayerMovementController movementController; 
 
 	private void Start()
 	{
 		movementController = FindObjectOfType<PlayerMovementController>();
 		rb = GetComponent<Rigidbody>();
-	}
+        oxygen = FindObjectOfType<Oxygen>();
+    }
 
 	private void OnTriggerStay(Collider collision)
 	{
-		if (collision.gameObject.tag == "Player" && movementController != null)
-		{
+		if (collision.gameObject.tag == "Player" && movementController != null) { 
 			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed); 
+			oxygen.ReduceOxygen(oxygenDuration); 
 		}
 	 FindAnyObjectByType<Oxygen>();
 	}
