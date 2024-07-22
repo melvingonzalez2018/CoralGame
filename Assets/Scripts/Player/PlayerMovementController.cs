@@ -7,7 +7,7 @@ public class PlayerMovementController : MonoBehaviour
     [Header("References")]
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerStun stun;
-    [SerializeField] PlayerAudio audio;
+    [SerializeField] PlayerAudio movementAudio;
     [SerializeField] SmoothRotateTo rotate;
     [SerializeField] Animator anim;
 
@@ -22,6 +22,7 @@ public class PlayerMovementController : MonoBehaviour
     Vector3 currentVelocity;
 
     bool canMove = true;
+
 
     private void Update() {
         PhysicsUpdate();
@@ -40,7 +41,7 @@ public class PlayerMovementController : MonoBehaviour
             AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
         }
         anim.SetFloat("InputMag", playerInput.magnitude);
-        audio.IsSwimming(playerInput.magnitude > 0);
+        movementAudio.IsSwimming(playerInput.magnitude > 0);
         controller.Move(currentVelocity * Time.deltaTime);
     }
 

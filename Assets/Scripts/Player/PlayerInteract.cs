@@ -10,12 +10,15 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] AudioSource placeCoral;
     CoralPlaceableArea[] areas;
     CoralStorage coralStorage;
+    InteractText interactText;
     bool canInteract = true;
 
     private void Start() {
         coralStorage = FindObjectOfType<CoralStorage>();
         coralPlacementDisplay.SetActive(false);
         areas = FindObjectsOfType<CoralPlaceableArea>();
+        interactText = FindObjectOfType<InteractText>(true);
+        Debug.Log(interactText);
     }
 
     private void Update() {
@@ -35,20 +38,26 @@ public class PlayerInteract : MonoBehaviour
     }
 
     private void CoralInteractDisplay(Ray ray) {
+        // Default value
+        interactText.SetText("");
+        coralPlacementDisplay.SetActive(false);
+
+        // Raycasting
         if (Physics.Raycast(ray, out RaycastHit hit, reach)) {
             // Interacting with coral
             if (hit.collider.gameObject.TryGetComponent(out Coral coral)) {
                 if(coral.CanInteract()) {
                     coral.InteractHighlight();
+                    interactText.SetText(coral.GetInteractText());
                 }
             }
 
             if(hit.collider.gameObject.TryGetComponent(out Trash trash)) {
                 trash.InteractHighlight();
+                interactText.SetText("Pick Up");
             }
 
             // Checking for placeable area
-            bool found = false;
             foreach (CoralPlaceableArea area in areas) {
                 if (area.ContainCollider(hit.collider)) {
                     // Enable and orienting to surface
@@ -64,6 +73,7 @@ public class PlayerInteract : MonoBehaviour
                         case AreaType.NURSERY:
                             if(coralStorage.GetFragmentCount() > 0) {
                                 display.SetCoral(coralStorage.fragmentCoral.Peek().modelIndex, true);
+                                interactText.SetText("Put Down"); // Interact UI
                             }
                             else {
                                 display.SetCoral(-1, false); // setting null if there isnt any
@@ -72,18 +82,15 @@ public class PlayerInteract : MonoBehaviour
                         case AreaType.REEF:
                             if (coralStorage.GetJuvenileCount() > 0) {
                                 display.SetCoral(coralStorage.juvenileCoral.Peek().modelIndex, false);
+                                interactText.SetText("Put Down"); // Interact UI
                             }
                             else {
                                 display.SetCoral(-1, false); // setting null if there isnt any
                             }
                             break;
                     }
-
-                    // Found area
-                    found = true;
                 }
             }
-            if(!found) { coralPlacementDisplay.SetActive(false); } // Disable display when not found
         }
     }
 

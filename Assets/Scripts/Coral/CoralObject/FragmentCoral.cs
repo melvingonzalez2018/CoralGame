@@ -18,4 +18,7 @@ public class FragmentCoral : Coral {
     public override bool CanInteract() {
         return false;
     }
+    public override string GetInteractText() {
+        return "No Interact";
+    }
 }

@@ -46,6 +46,16 @@ public class JuvenileCoral : Coral {
         return false;
     }
 
+    public override string GetInteractText() {
+        if (area.areaType == AreaType.NURSERY) {
+            return "Pick Up";
+        }
+        if (area.areaType == AreaType.REEF && !IsHammeredIn()) {
+            return "Hammer In";
+        }
+        return "No Interact";
+    }
+
     private void HammerUpdate() {
         if (!IsHammeredIn()) {
             hammerTimer += hammerPerClick;
