@@ -10,8 +10,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 78207729660718366}
-    m_Position: {x: 117.600006, y: 230.4, z: 0}
+    m_State: {fileID: 5589395073410158046}
+    m_Position: {x: 69.600006, y: 234.4, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -21,7 +21,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 78207729660718366}
+  m_DefaultState: {fileID: 5589395073410158046}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -44,14 +44,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &78207729660718366
+--- !u!1102 &5589395073410158046
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature|SwimIdle
+  m_Name: Armature|ArmatureAction
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 3263702291011598974, guid: b17e8f2b9a804864cb9d7bcf0c8d6f55,
+  m_Motion: {fileID: 4781951162920444690, guid: 50c9d31f688afbb4e9f0a14d817d83de,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
