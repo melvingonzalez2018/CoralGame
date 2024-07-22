@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaType: 0
   surfaceCheckOffset: 0.01
-  maxCoralPlacable: 10
+  maxCoralPlacable: 6
   limitedCoral: 1
   placedCoral: 0
 --- !u!1 &2902011879345146209
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 8702443036759081503}
   - component: {fileID: 316897521381021361}
   - component: {fileID: 3658999354805798139}
-  - component: {fileID: 4800494448585078072}
+  - component: {fileID: 5306051962483005084}
   m_Layer: 6
   m_Name: TestArea (1)
   m_TagString: Untagged
@@ -80,7 +80,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.54, z: 0}
-  m_LocalScale: {x: 4.4224, y: 4.4224, z: 4.4224}
+  m_LocalScale: {x: 4.4224, y: 2.2112, z: 4.4224}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5495176051878891572}
@@ -135,8 +135,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4800494448585078072
-SphereCollider:
+--- !u!64 &5306051962483005084
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,9 +153,10 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4977630068348851997
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,8 +184,8 @@ RectTransform:
   m_GameObject: {fileID: 4977630068348851997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1773045249470825746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -248,8 +249,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
