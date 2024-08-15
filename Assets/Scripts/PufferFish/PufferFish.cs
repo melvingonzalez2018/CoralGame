@@ -9,18 +9,18 @@ public class PufferFish : MonoBehaviour
     [SerializeField] float collisionCooldown;
     [HideInInspector] public UnityEvent OnCollide = new UnityEvent();
     float collisionTimer = 0;
-    Oxygen oxygen;
+    PlayerStun playerStun;
 
     private void Start() {
-        oxygen = FindObjectOfType<Oxygen>();
+        playerStun = FindObjectOfType<PlayerStun>();
     }
     private void Update() {
         collisionTimer = Mathf.Min(collisionTimer+Time.deltaTime, collisionCooldown);
     }
     public void ReduceOxygen() {
-        if(oxygen != null && collisionTimer >= collisionCooldown) {
+        if(playerStun != null && collisionTimer >= collisionCooldown) {
             FindObjectOfType<StatTracking>().IteratePufferCollision();
-            oxygen.ReduceOxygen(oxygenDamage);
+            playerStun.ReduceOxygen(oxygenDamage);
             collisionTimer = 0f;
         }
     }

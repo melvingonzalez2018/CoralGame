@@ -9,9 +9,16 @@ public class FragmentCoral : Coral {
     }
 
     public override void DiveStartUpdate() {
-        GameObject currentCoral = Instantiate(juvenileCoralPrefab);
-        currentCoral.transform.forward = transform.forward; // Setting orientation
-        currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
+        GameObject currentCoral = Instantiate(juvenileCoralPrefab, transform.position, Quaternion.identity);
+        //currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
+        area.MinusCoralCount();
         Destroy(gameObject);
+    }
+
+    public override bool CanInteract() {
+        return false;
+    }
+    public override string GetInteractText() {
+        return "No Interact";
     }
 }

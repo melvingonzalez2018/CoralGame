@@ -7,11 +7,14 @@ using TMPro;
 public class CoralStorageUI : MonoBehaviour
 {
     [SerializeField] CoralStorage owner;
-    [SerializeField] TMP_Text text;
+    [SerializeField] TMP_Text babyText;
+    [SerializeField] TMP_Text juvenileText;
+
     private void Update() {
         UpdateUI();
     }
     private void UpdateUI() {
-        text.text = "Fragmented Coral: " + owner.fragmentCoral + "\n" + "Juvenile Coral: " + owner.juvenileCoral;
+        babyText.text = owner.GetFragmentCount().ToString();
+        juvenileText.text = owner.GetJuvenileCount().ToString();
     }
 }

@@ -5,13 +5,34 @@ using UnityEngine;
 public abstract class Coral : MonoBehaviour {
     [SerializeField] AreaType defaultStick;
     [SerializeField] protected CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
+    float highlightTimer;
+    Outline outline;
 
     public abstract void Interact();
     public abstract void DiveStartUpdate();
+    public abstract bool CanInteract();
+    public abstract string GetInteractText();
 
     private void Start() {
+        SetAreaUpdate();
+        outline = GetComponent<Outline>();
+    }
+
+    private void LateUpdate() {
+        highlightTimer -= Time.deltaTime;
+        if (highlightTimer < 0) {
+            outline.enabled = false;
+        }
+    }
+
+    public void InteractHighlight() {
+        highlightTimer = Time.deltaTime;
+        outline.enabled = true;
+    }
+
+    private void SetAreaUpdate() {
         // Orient any coral to the current place
-        if(area != null) {
+        if (area != null) {
             area.OrientCoralToSurface(transform, transform.position);
         }
         else {
@@ -26,8 +47,8 @@ public abstract class Coral : MonoBehaviour {
         // Finding closest valid placeable
         foreach(CoralPlaceableArea placeableArea in FindObjectsOfType<CoralPlaceableArea>()) {
             if(placeableArea.areaType == defaultStick) { // Checking default stick
-                if(placeableArea.FindClosestPoint(transform.position, out Vector3 closestPoint)) { // Checking distance
-                    float currentDistToPoint = (closestPoint - transform.position).magnitude;
+                if(placeableArea.FindClosestPoint(transform.position, out RaycastHit hit)) { // Checking distance
+                    float currentDistToPoint = (hit.point - transform.position).magnitude;
                     if (lowestDistToPoint > currentDistToPoint) {
                         lowestDistToPoint = currentDistToPoint;
                         closestPlaceableArea = placeableArea;
@@ -41,7 +62,11 @@ public abstract class Coral : MonoBehaviour {
 
     public void InitalizeOnArea(CoralPlaceableArea newArea, Vector3 pos) {
         if (newArea.OrientCoralToSurface(transform, pos)) {
+            if(area != null) {
+                area.MinusCoralCount();
+            }
             area = newArea;
+            area.AddCoralCount();
         }
     }
 }

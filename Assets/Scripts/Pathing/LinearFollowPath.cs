@@ -7,6 +7,7 @@ public class LinearFollowPath : MonoBehaviour
     [SerializeField] FollowPath path;
     [SerializeField] float reachPointDist; // The distance away from the next point 
     [SerializeField] float speed; // How fast the object moves
+    [SerializeField] [Range(0f,1f)] float rotationMag;
     Transform nextPoint;
     int pathIndex = 0;
     bool isFollowing = true;
@@ -30,7 +31,7 @@ public class LinearFollowPath : MonoBehaviour
             UpdateNextPoint();
         }
         else {
-            transform.forward = difference.normalized; // Face target
+            transform.forward = Vector3.Lerp(transform.forward, difference.normalized, rotationMag); // Face target
             transform.position += speed * difference.normalized * Time.deltaTime; // move to target
         }
     }

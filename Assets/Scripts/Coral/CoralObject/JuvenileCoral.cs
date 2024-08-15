@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JuvenileCoral : Coral {
+    [SerializeField] AudioSource takeAudio;
     [SerializeField] GameObject adultCoralPrefab;
     [SerializeField] public float hammerTime;
     [SerializeField] float hammerPerClick;
@@ -28,12 +29,31 @@ public class JuvenileCoral : Coral {
         if(IsOnReef() && IsHammeredIn()) {
             FindObjectOfType<StatTracking>().IterateCoralGrown();
 
-
-            GameObject currentCoral = Instantiate(adultCoralPrefab);
-            currentCoral.transform.forward = transform.forward; // Setting orientation
-            currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
+            GameObject currentCoral = Instantiate(adultCoralPrefab, transform.position, Quaternion.identity);
+            //currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
+            area.MinusCoralCount();
             Destroy(gameObject);
         }
+    }
+
+    public override bool CanInteract() {
+        if(area.areaType == AreaType.NURSERY) {
+            return true;
+        }
+        if(area.areaType == AreaType.REEF && !IsHammeredIn()) {
+            return true;
+        }
+        return false;
+    }
+
+    public override string GetInteractText() {
+        if (area.areaType == AreaType.NURSERY) {
+            return "Pick Up";
+        }
+        if (area.areaType == AreaType.REEF && !IsHammeredIn()) {
+            return "Hammer In";
+        }
+        return "No Interact";
     }
 
     private void HammerUpdate() {
@@ -43,6 +63,10 @@ public class JuvenileCoral : Coral {
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
             }
         }
+    }
+
+    public void FullyHammerIn() {
+        hammerTimer = hammerTime;
     }
 
     public bool IsOnReef() {
@@ -55,8 +79,12 @@ public class JuvenileCoral : Coral {
     }
 
     public void PickUp() {
+        takeAudio.Play();
         FindObjectOfType<StatTracking>().IterateCoralPickup();
-        FindAnyObjectByType<CoralStorage>().AddJuvenile();
+
+        int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
+        FindAnyObjectByType<CoralStorage>().AddJuvenile(new StoredCoralData(modelIndex));
+        area.MinusCoralCount();
         Destroy(gameObject);
     }
 }
