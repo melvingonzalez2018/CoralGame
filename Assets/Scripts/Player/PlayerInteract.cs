@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] float reach;
     [SerializeField] float coralOffsetFromSurface;
     [SerializeField] AudioSource placeCoral;
+    [SerializeField] LayerMask interactable;
     CoralPlaceableArea[] areas;
     CoralStorage coralStorage;
     InteractText interactText;
@@ -43,7 +44,7 @@ public class PlayerInteract : MonoBehaviour
         coralPlacementDisplay.SetActive(false);
 
         // Raycasting
-        if (Physics.Raycast(ray, out RaycastHit hit, reach)) {
+        if (Physics.Raycast(ray, out RaycastHit hit, reach, interactable)) {
             // Interacting with coral
             if (hit.collider.gameObject.TryGetComponent(out Coral coral)) {
                 if(coral.CanInteract()) {
@@ -95,7 +96,7 @@ public class PlayerInteract : MonoBehaviour
     }
 
     private void InteractInput(Ray ray) {
-        if (Physics.Raycast(ray, out RaycastHit hit, reach)) {
+        if (Physics.Raycast(ray, out RaycastHit hit, reach, interactable)) {
             // Interacting with coral
             if (hit.collider.gameObject.TryGetComponent(out Coral coral)) {
                 coral.Interact();

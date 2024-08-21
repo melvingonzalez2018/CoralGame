@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8739313642538713772}
   - component: {fileID: 1404257999874412744}
   - component: {fileID: 1478544260679257514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5948289255797575984}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coral1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: -8644633209254669382}
   - component: {fileID: 9169625165112664535}
   - component: {fileID: 1233076319120568312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FragmentedCoral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8316774346904784568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coral2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: baby coral 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a5585a12682644ab94f747a7e1801d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -423,6 +428,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: baby coral 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0349adfbe4e493d4699cce929b6c4dcf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -44,5 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083a0317f6ec08c459e0c5da7b9f0a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coralPlacementDisplay: {fileID: 0}
   reach: 1
   coralOffsetFromSurface: 0.05
+  placeCoral: {fileID: 0}
+  interactable:
+    serializedVersion: 2
+    m_Bits: 128

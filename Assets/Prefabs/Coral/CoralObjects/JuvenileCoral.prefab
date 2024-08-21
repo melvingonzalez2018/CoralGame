@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4444342450244678342}
   - component: {fileID: 2958597708039879623}
   - component: {fileID: 2248263916941653761}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 3824038496053562474}
   - component: {fileID: 850435226274000727}
   - component: {fileID: 2780266815969552148}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603364814578011714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coral2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 7683966631904135597}
   - component: {fileID: 5956755164354425970}
   - component: {fileID: 8969217478292628805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 474983242210355545}
   - component: {fileID: 6295195104147326729}
   - component: {fileID: 9120575881782353567}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JuvenileCoral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 4214427260384681632}
   - component: {fileID: 3355421536364769913}
   - component: {fileID: 6137925616061565000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6573651259074773850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FillGague
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7540674213108544404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coral1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,6 +797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: teen coral 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b1fac1ef20899e4bb21970248402cfe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -875,6 +880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: teen coral 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09e4d05f0dd39a64193ed4b69be07899,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
