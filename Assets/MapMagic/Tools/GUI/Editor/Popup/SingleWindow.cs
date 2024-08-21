@@ -38,11 +38,12 @@ namespace Den.Tools.GUI.Popup
 		private void DrawGUI ()
 		{
 			ui.scrollZoom.allowScroll = false;
-			ui.scrollZoom.allowZoom = false;
+			ui.scrollZoom.allowZoomX = false;
+			ui.scrollZoom.allowZoomY = false;
 
 			ui.optimizeElements = false;
 
-			Draw.Rect(StylesCache.isPro ? backgroundColorPro : backgroundColor);
+			Draw.Rect(UI.current.styles.isPro ? backgroundColorPro : backgroundColor);
 
 			//smoothly scrolling
 			float deltaTime = (float)(DateTime.Now-lastFrameTime).TotalSeconds;
@@ -215,7 +216,7 @@ namespace Den.Tools.GUI.Popup
 		public void DefaultItemDraw (Item item, int num, bool selected, bool colored=false)
 		{
 			if (selected && !item.disabled)
-				Draw.Rect(StylesCache.isPro ? highlightColorPro : highlightColor);	
+				Draw.Rect(UI.current.styles.isPro ? highlightColorPro : highlightColor);	
 
 			Cell.current.disabled = item.disabled;
 

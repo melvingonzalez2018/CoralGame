@@ -7,12 +7,13 @@ namespace Den.Tools.GUI
 	[System.Serializable]
 	public class ScrollZoom
 	{
-		public float zoom = 1;
+		public Vector2 zoom = new Vector2(1,1);
 		//public int zoomStage = 0; //number of scroll wheel ticks from zoom 1
 		public float zoomStep = 0.0625f;
 		public float minZoom = 0.25f;
 		public float maxZoom = 2;
-		public bool allowZoom = false; //read externally before zooming
+		public bool allowZoomX = false; //read externally before zooming
+		public bool allowZoomY = false;
 		
 		public int scrollWheelStep = 18;
 
@@ -27,15 +28,34 @@ namespace Den.Tools.GUI
 
 		public void Zoom () 
 		{ 
-			if (!allowZoom) return;
-			Zoom(Event.current.mousePosition); 
+			Vector2 newZoom = zoom;
+			bool zoomXchanged = allowZoomX && MouseZoom(ref newZoom.x);
+			bool zoomYchanged = allowZoomY && MouseZoom(ref newZoom.y);
+
+			if (zoomXchanged || zoomYchanged) // if (MouseZoom(ref newZoom.x)  ||  MouseZoom(ref newZoom.y)) will not execute Y after X is true
+			{
+				ZoomTo(newZoom, Event.current.mousePosition); 
+				zoom = newZoom;
+			}
 		}
 
-		public void Zoom (Vector2 pivot)
-		/// Zooms with mouse wheel
-		{
+		public void Zoom (Vector2 pivot) 
+		{ 
+			Vector2 newZoom = zoom;
+			bool zoomXchanged = allowZoomX && MouseZoom(ref newZoom.x);
+			bool zoomYchanged = allowZoomY && MouseZoom(ref newZoom.y);
 
-			if (Event.current == null) return;
+			if (zoomXchanged || zoomYchanged)
+			{
+				ZoomTo(newZoom, pivot); 
+				zoom = newZoom;
+			}
+		}
+
+		public bool MouseZoom (ref float zoom)
+		/// Calculates to zoom with mouse wheel
+		{
+			if (Event.current == null) return false;
 
 			//reading control
 			#if UNITY_EDITOR_OSX
@@ -49,7 +69,7 @@ namespace Den.Tools.GUI
 			//else if (Event.current.type == EventType.MouseDrag && Event.current.button == 0 && control) delta = Event.current.delta.y / 15f;
 			//else if (control && Event.current.alt && Event.current.type==EventType.KeyDown && Event.current.keyCode==KeyCode.Equals) delta --;
 			//else if (control && Event.current.alt && Event.current.type==EventType.KeyDown && Event.current.keyCode==KeyCode.Minus) delta ++;
-			if (Mathf.Abs(delta) < 0.001f) return;
+			if (Mathf.Abs(delta) < 0.001f) return false;
 
 			//calculating current zoom stage - number of scroll wheel ticks from zoom 1
 			int zoomStage = 0;
@@ -87,10 +107,11 @@ namespace Den.Tools.GUI
 				}
 			}
 
-			Zoom(newZoom, pivot);
+			zoom = newZoom;
+			return true;
 		}
 
-		public void Zoom (float zoomVal, Vector2 pivot)
+		public void ZoomTo (Vector2 zoomVal, Vector2 pivot)
 		/// Zooms to zoomVal
 		/// Pivot is usually mouse position
 		{
@@ -98,7 +119,7 @@ namespace Den.Tools.GUI
 			Vector2 worldMousePos = (pivot - scroll) / zoom;
 
 			//changing zoom
-			float zoomChange = zoomVal - zoom;
+			Vector2 zoomChange = zoomVal - zoom;
 			zoom = zoomVal;
 
 			//scrolling around pivot
@@ -177,8 +198,8 @@ namespace Den.Tools.GUI
 
 		public void FocusWindowOn (Vector2 center, Vector2 windowSize)
 		{
-			//Scroll( -center*zoom + windowSize/2 );
-			Scroll( (windowSize/2 - center) * zoom );
+			Scroll( -center*zoom + windowSize/2 );
+			//Scroll( (windowSize/2 - center) * zoom );
 		}
 
 
@@ -186,7 +207,7 @@ namespace Den.Tools.GUI
 
 			public Vector2 ToScreen(Vector2 pos)
 			{
-				return new Vector2(pos.x * zoom + scroll.x, pos.y * zoom + scroll.y);
+				return new Vector2(pos.x * zoom.x + scroll.x, pos.y * zoom.y + scroll.y);
 			}
 
 			public Rect ToScreen (Vector2 pos, Vector2 size, bool pixelPerfect=true)
@@ -204,10 +225,10 @@ namespace Den.Tools.GUI
 				float dpiFactor = UI.current.DpiScaleFactor;
 				minX*=dpiFactor; minY*=dpiFactor; sizeX*=dpiFactor; sizeY*=dpiFactor;
 
-				minX = minX*zoom + scroll.x*dpiFactor;
-				minY = minY*zoom + scroll.y*dpiFactor;
-				sizeX *= zoom;
-				sizeY *= zoom;
+				minX = minX*zoom.x + scroll.x*dpiFactor;
+				minY = minY*zoom.y + scroll.y*dpiFactor;
+				sizeX *= zoom.x;
+				sizeY *= zoom.y;
 
 				if (pixelPerfect)
 				{
@@ -238,37 +259,32 @@ namespace Den.Tools.GUI
 			public Rect ToInternal(Rect rect)
 			{
 				Vector2 offset = new Vector2(
-					(rect.x - scroll.x) / zoom, 
-					(rect.y - scroll.y) / zoom );
+					(rect.x - scroll.x) / zoom.x, 
+					(rect.y - scroll.y) / zoom.y );
 				Vector2 size = new Vector2(
-					rect.width / zoom, 
-					rect.height / zoom);
+					rect.width / zoom.x, 
+					rect.height / zoom.y);
 				return new Rect(offset, size);
 			}
 
 			public Vector2 ToInternal(Vector2 pos)
 			{
 				return new Vector2 (
-					(pos.x - scroll.x) / zoom,
-					(pos.y - scroll.y) / zoom );
-			}
-
-			public float ToInternal(float val)
-			{
-				return val / zoom;
+					(pos.x - scroll.x) / zoom.x,
+					(pos.y - scroll.y) / zoom.y );
 			}
 
 
 			public Vector2 RoundToZoom (Vector2 vec)
 			/// Queer thing
 			{
-				vec.x /= zoom;
+				vec.x /= zoom.x;
 				vec.x = Mathf.Round(vec.x);
-				vec.x *= zoom;
+				vec.x *= zoom.x;
 
-				vec.y /= zoom;
+				vec.y /= zoom.y;
 				vec.y = Mathf.Round(vec.y);
-				vec.y *= zoom;
+				vec.y *= zoom.y;
 
 				return vec;
 			}

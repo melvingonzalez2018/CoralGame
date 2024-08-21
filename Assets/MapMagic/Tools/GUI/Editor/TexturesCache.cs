@@ -112,7 +112,10 @@ namespace Den.Tools.GUI
 		{
 			Texture2D texture;
 
-			bool isPro = StylesCache.isPro;
+			bool isPro = true; 
+			if (UI.current != null  &&  UI.current.styles != null) 
+				isPro = UI.current.styles.isPro;
+
 			if (forceLight) isPro = false;
 			if (forcePro) isPro = true;
 
