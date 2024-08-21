@@ -23,7 +23,7 @@ namespace MapMagic.Nodes.GUI
 			{
 				Item genItems = new Item("Group");
 				genItems.onDraw = RightClick.DrawItem;
-				genItems.icon = RightClick.texturesCache.GetTexture("MapMagic/Popup/Generator");
+				genItems.icon = RightClick.texturesCache.GetTexture("MapMagic/Popup/Group");
 				genItems.color = RightClick.defaultColor;
 				genItems.subItems = new List<Item>();
 				genItems.priority = priority;
@@ -60,11 +60,14 @@ namespace MapMagic.Nodes.GUI
 			}
 
 
-			public static Group CreateGroup (Vector2 mousePos, Graph graph)
+			public static Group CreateGroup (Vector2 mousePos, Graph graph) => CreateAuxilary(mousePos, graph, ()=>new Group() ) as Group;
+			public static Comment CreateComment (Vector2 mousePos, Graph graph) => CreateAuxilary(mousePos, graph,  ()=>new Comment() ) as Comment;
+			
+			public static Auxiliary CreateAuxilary (Vector2 mousePos, Graph graph, Func<Auxiliary> createFunc)
 			{
 					GraphWindow.RecordCompleteUndo();
 
-					Group grp = new Group();
+					Auxiliary grp = createFunc(); //new Group();
 					grp.guiPos = mousePos;
 					graph.Add(grp);
 
@@ -117,7 +120,7 @@ namespace MapMagic.Nodes.GUI
 			}
 
 
-			public static void DrawGroupColorSelector (Group group)
+			public static void DrawGroupColorSelector (Auxiliary group)
 			{
 				Item menuItem = new Item("Colors");
 				menuItem.subItems = new List<Item> 
@@ -165,7 +168,7 @@ namespace MapMagic.Nodes.GUI
 				UnityEditor.EditorGUI.LabelField(labelRect, item.name, itemTextStyle);
 			}
 
-			private static Item GetGroupColorSelectorItem (Group group, string name, Color color, int priority)
+			private static Item GetGroupColorSelectorItem (Auxiliary group, string name, Color color, int priority)
 			{
 				TexturesCache texturesCache = UI.current.textures;
 				return new Item() 

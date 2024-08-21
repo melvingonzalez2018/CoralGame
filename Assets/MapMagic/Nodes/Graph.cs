@@ -21,7 +21,7 @@ namespace MapMagic.Nodes
 	{
 		[NonSerialized] public Generator[] generators = new Generator[0];  //it's all serialized via callback
 		[NonSerialized] public Dictionary<IInlet<object>, IOutlet<object>> links = new Dictionary<IInlet<object>, IOutlet<object>>();
-		[NonSerialized] public Group[] groups = new Group[0];
+		[NonSerialized] public Auxiliary[] groups = new Auxiliary[0]; //Auxiliary is group and comment. Name 'groups' for compatibility
 		[NonSerialized] public Noise random = new Noise(12345, 32768); //noise created on serialization as well, nb when changing noise arr length
 
 		[NonSerialized] public Exposed exposed = new Exposed();
@@ -30,6 +30,7 @@ namespace MapMagic.Nodes
 		public int serializedVersion = 0; //mapmagic version graph was last serialized to update it
 //		public int instanceId; //cached instanceId during serialization
 
+		public static Action<Graph, TileData> OnBeforeClearPrepareGenerate; //called on any significant generate-related action
 		public static Action<Generator, TileData> OnBeforeNodeCleared;
 		public static Action<Generator, TileData> OnAfterNodeGenerated;
 		public static Action<Type, TileData, IApplyData, StopToken> OnOutputFinalized; //TODO: rename onAfterFinalize? onBeforeApplyAssign?
@@ -42,6 +43,7 @@ namespace MapMagic.Nodes
 		public Vector2 guiMiniAnchor = new Vector2(0,0);
 
 		#if MM_DEBUG
+		public string debugName;
 		public bool debugGenerate = true;
 		public bool debugGenInfo = false;
 		public bool debugGraphBackground = true;
@@ -83,6 +85,16 @@ namespace MapMagic.Nodes
 				//gen.id = NewGenId; //id is assigned on create
 
 				ArrayTools.Add(ref generators, gen);
+				//cachedGuidLut = null;
+			}
+
+
+			public void Add (Auxiliary grp)
+			{
+				if (ArrayTools.Contains(groups, grp))
+						throw new Exception("Could not add group " + grp + " since it is already in graph");
+
+				ArrayTools.Add(ref groups, grp);
 				//cachedGuidLut = null;
 			}
 
@@ -656,7 +668,16 @@ namespace MapMagic.Nodes
 							ids += layer.Id;
 				}
 
-				return (ulong)(random.Seed<<24) + ids + versions;
+				//return (ulong)(random.Seed<<24) + ids + versions;
+				return (ulong)(ids<<16) + versions;
+			}
+
+
+			public string IdsVersionsHash ()
+			{
+				ulong idsVers = IdsVersions();
+				int hashCode = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(idsVers);
+				return Convert.ToBase64String( BitConverter.GetBytes(idsVers) );
 			}
 
 
@@ -738,6 +759,8 @@ namespace MapMagic.Nodes
 			/// Removes ready state if any of prev gens is not ready
 			/// Clears all relevants if prior generator is clear
 			{
+				OnBeforeClearPrepareGenerate?.Invoke(this, data);
+
 				RefreshInputHashIds();
 
 				//clearing nodes that are not in graph
@@ -822,6 +845,8 @@ namespace MapMagic.Nodes
 			/// Executed in main thread to perform terrain reads or something
 			/// Not recursive just for performance reasons. Prepares only on-ready generators
 			{
+				OnBeforeClearPrepareGenerate?.Invoke(this, data);
+
 				if (ovd==null)
 					ovd = defaults;
 
@@ -871,11 +896,11 @@ namespace MapMagic.Nodes
 
 			public void Generate (TileData data, StopToken stop=null, Override ovd=null)
 			{
+				OnBeforeClearPrepareGenerate?.Invoke(this, data);
+
 				#if MM_DEBUG
-				if (data.area != null) //can be null on clearing
-					Log.Add("Generate (draft:" + data.isDraft + ")", $"{data.area.Coord.x}, {data.area.Coord.z}");
-				else
-					Log.Add("Generate (draft:" + data.isDraft + ")", "area null");
+				string cs = data.area != null ? data.area.Coord.ToString() : "null";
+				Log.AddThreaded("Graph.Generate Started", idName:(data.area.Coord.x + "," + data.area.Coord.z + (data.isDraft?" draft":"main")), ("name:",debugName), ("ver:", IdsVersionsHash()), ("draft:",data.isDraft), ("stop:",stop.stop));
 				#endif
 
 				//refreshing link ids lut (only for top level graph)
@@ -891,14 +916,30 @@ namespace MapMagic.Nodes
 				//main generate pass - all changed gens recursively
 				foreach (Generator relGen in RelevantGenerators(data.isDraft))
 				{
-					if (stop!=null && stop.stop) return;
+					if (stop!=null && stop.stop) 
+					{
+						#if MM_DEBUG
+						Log.AddThreaded("Graph.Generate StopExit", ("coord:",cs), ("name:",debugName), ("ver:", IdsVersionsHash()), ("draft:",data.isDraft), ("stop:",stop.stop));
+						#endif
+
+						return;
+					}
+
 					GenerateRecursive(relGen, data, ovd,  stop:stop); //will not generate if it has not changed
 				}
+
+				#if MM_DEBUG
+				Log.AddThreaded("Graph.Generate Complete", ("coord:",cs), ("name:",debugName), ("ver:", IdsVersionsHash()), ("draft:",data.isDraft), ("stop:",stop.stop));
+				#endif
 			}
 
 
 			public void GenerateRecursive (Generator gen, TileData data, Override ovd, StopToken stop=null)
 			{
+				#if MM_DEBUG
+				Log.AddThreaded("Graph.GenerateRecursive Started", ("coord:",data.area.Coord), ("node:",gen.GetType().Name), ("ready:",data.IsReady(gen)), ("stop:",stop.stop), ("ver:", IdsVersionsHash()));
+				#endif
+
 				if (stop!=null && stop.stop) return;
 				if (data.IsReady(gen)) return;
 				ulong startedVersion = gen.version;
@@ -964,13 +1005,31 @@ namespace MapMagic.Nodes
 				//if (gen.version==startedVersion || data.isDraft)
 				//if it's still relevant (or draft - drafts allowed to be partly wrong) - theoretically it should be so, but MM worked all the way without it
 				data.MarkReady(gen);
+
+				#if MM_DEBUG
+				Log.AddThreaded("Graph.GenerateRecursive Complete", ("coord:",data.area.Coord), ("node:",gen.GetType().Name), ("ready:",data.IsReady(gen)), ("stop:",stop.stop), ("ver:", IdsVersionsHash()));
+				#endif
+
 				OnAfterNodeGenerated?.Invoke(gen, data);
 			}
 
 
 			public void Finalize (TileData data, StopToken stop=null)
 			{
-				if (stop!=null && stop.stop) { data.ClearFinalize(); return; } //no need to leave finalize for further generate
+				#if MM_DEBUG
+				Log.AddThreaded("Graph.Finalize Starting", ("coord:",data.area.Coord), ("stop:",stop.stop), ("ver:", IdsVersionsHash()));
+				#endif
+
+				if (stop!=null && stop.stop) 
+				{ 
+					data.ClearFinalize(); //no need to leave finalize for further generate
+
+					#if MM_DEBUG
+					Log.AddThreaded("Graph.Finalize Exit", ("coord:",data.area.Coord), ("stop:",stop.stop), ("ver:", IdsVersionsHash()), ("val:",data.heights.arr[100]));
+					#endif
+
+					return; 
+				} 
 				
 				while (data.FinalizeMarksCount > 0)
 				{
@@ -984,9 +1043,23 @@ namespace MapMagic.Nodes
 					//}
 					//can't use ObjectsGenerators since they are in the other module. Using OnOutputFinalized event instead.
 
-					if (stop!=null && stop.stop) { data.ClearFinalize(); return; }
+					if (stop!=null && stop.stop) 
+					{ 
+						data.ClearFinalize(); 
+
+						#if MM_DEBUG
+						Log.AddThreaded("Graph.Finalize Stopped", ("coord:",data.area.Coord), ("stop:",stop.stop), ("ver:", IdsVersionsHash()), ("val:",data.heights.arr[100]));
+						#endif
+
+						return; 
+					}
 					action(data, stop);
 				}
+
+				#if MM_DEBUG
+				if (data.heights != null)
+					Log.AddThreaded("Graph.Finalize Complete", ("coord:",data.area.Coord), ("stop:",stop.stop), ("ver:", IdsVersionsHash()), ("val:",data.heights.arr[100]));
+				#endif
 			}
 
 
