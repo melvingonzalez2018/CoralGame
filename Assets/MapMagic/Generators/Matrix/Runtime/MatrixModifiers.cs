@@ -1091,7 +1091,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 		public override void Generate (TileData data, StopToken stop)
 		{
 			#if MM_DEBUG
-			Log.Add("Generating Erosion (draft:" + data.isDraft + " pos:" + data.area.active.worldPos);
+			Log.AddThreaded("Generating Erosion (draft:" + data.isDraft + " pos:" + data.area.active.worldPos);
 			#endif
 
 			MatrixWorld src = data.ReadInletProduct(this);

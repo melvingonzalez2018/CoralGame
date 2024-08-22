@@ -83,10 +83,10 @@ namespace Den.Tools.GUI
 		}}
 
 
-		public static UI ScrolledUI (float maxZoom=1, float minZoom=0.4375f)
+		public static UI ScrolledUI (float maxZoom=1, float minZoom=0.4375f, Vector2 defaultScroll=new Vector2())
 		{
 			return new UI {
-				scrollZoom = new ScrollZoom() { allowScroll=true, allowZoom=true, maxZoom = maxZoom, minZoom = minZoom },
+				scrollZoom = new ScrollZoom() { allowScroll=true, allowZoomX=true, allowZoomY=true, maxZoom = maxZoom, minZoom = minZoom, scroll=defaultScroll },
 				optimizeEvents = true,
 				optimizeElements = true };
 		}
@@ -182,7 +182,7 @@ namespace Den.Tools.GUI
 					styles = new StylesCache();
 				styles.CheckInit();
 				if (scrollZoom != null) 
-					styles.Resize(scrollZoom.zoom);
+					styles.Resize(scrollZoom.zoom.y); //make it switchable to Y
 			
 				//mouse button
 				if (Event.current.type == EventType.MouseDown)

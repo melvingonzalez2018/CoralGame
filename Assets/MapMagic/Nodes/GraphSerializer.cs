@@ -31,7 +31,7 @@ namespace MapMagic.Nodes
 			//public Dictionary<IInlet<object>, IOutlet<object>> links;
 			public IInlet<object>[] linkInlets;
 			public IOutlet<object>[] linkOutlets;
-			public Group[] groups;
+			public Auxiliary[] groups; //Auxiliary is group and comment. Name 'groups' for compatibility
 			public int seed = 12345;
 
 			public Exposed exposed = new Exposed();
@@ -40,6 +40,10 @@ namespace MapMagic.Nodes
 
 		public void Serialize (Graph graph)
 		{
+			foreach (Generator gen in graph.generators)
+				if (gen is ICustomSerialize sg)
+					sg.OnBeforeSerialize(graph);
+
 			SerializedDataProt prot = new SerializedDataProt() {
 				ver = MapMagicObject.version,
 				generators = graph.generators,
@@ -80,6 +84,10 @@ namespace MapMagic.Nodes
 					graph.CheckFixIds();
 
 				CheckInletsGensAssigned(graph);
+
+				foreach (Generator gen in graph.generators)
+					if (gen is ICustomSerialize sg)
+						sg.OnAfterDeserialize(graph);
 			}
 		}
 

@@ -120,6 +120,10 @@ namespace MapMagic.Terrains
 			terrain.preserveTreePrototypeLayers = preserveTreePrototypeLayers;
 			#endif
 
+			#if UNITY_2022_2_OR_NEWER
+			terrain.terrainData.SetDetailScatterMode(DetailScatterMode.InstanceCountMode);
+			#endif
+
 			terrain.terrainData.wavingGrassSpeed = windSpeed;
 			terrain.terrainData.wavingGrassAmount = windSize;
 			terrain.terrainData.wavingGrassStrength = windBending;

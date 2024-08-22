@@ -385,7 +385,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 				Matrix.ReadMatrix(srcMatrix, dstMatrix, wrapMode);
 
 			else if (srcMatrix.PixelSize.x >= dstMatrix.PixelSize.x)
-				ImportWithEnlarge(srcMatrix, dstMatrix, wrapMode, stop);
+				ImportWithEnlarge(srcMatrix, dstMatrix, wrapMode, stop, compatibility:true);
 
 			else
 				ImportWithDownscale(srcMatrix, dstMatrix, wrapMode, stop);
@@ -412,7 +412,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 		}
 
 
-		public static void ImportWithEnlarge (MatrixWorld src, MatrixWorld dst, CoordRect.TileMode wrapMode, StopToken stop)
+		public static void ImportWithEnlarge (MatrixWorld src, MatrixWorld dst, CoordRect.TileMode wrapMode, StopToken stop, bool compatibility=false)
 		/// Takes a part of raw (src) and expands it to fill tile (dst)
 		/// The new function, but doesn't work for some reason (no offset)
 		{
@@ -421,7 +421,8 @@ namespace MapMagic.Nodes.MatrixGenerators
 			Vector2D rectRatio = (Vector2D)dst.rect.size / (Vector2D)src.rect.size;
 
 			Vector2D ratio = worldRatio / rectRatio;
-			Vector2D readPos = (Vector2D)dst.rect.offset * ratio  -  (Vector2D)src.worldPos / src.PixelSize; 
+			Vector2D readPos = (Vector2D)dst.rect.offset * ratio;
+			if (compatibility) readPos -= (Vector2D)src.worldPos / src.PixelSize; //IDK why. Works properly _without_ this for clusters, but it will change the way Import works
 			Vector2D readSize = (Vector2D)dst.rect.size * ratio; //was /ratio, but we need dst-1 for size
 
 			//int pixelMarg = Mathf.Max((int)(0.5f/ratio.x), 2); //2 initially, but increases for big scale values  //can't rescale when src dst pixelsizes are about the same

@@ -67,7 +67,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 				data.RemoveFinalize(finalizeAction);
 
 			#if MM_DEBUG
-			Log.Add("Height generated (id:" + id + " draft:" + data.isDraft + ")");
+			Log.AddThreaded("HeightOut.Generated", ("coord:",data.area.Coord), ("node id:",id), ("value:",src.arr[100]), ("draft:",data.isDraft));
 			#endif
 		}
 
@@ -200,7 +200,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 			data.MarkApply(applyData);
 
 			#if MM_DEBUG
-			Log.Add("HeightOut Finalized");
+			Log.AddThreaded("HeightOutput200.Finalized", ("coord:",data.area.Coord), ("value:",data.heights.arr[100]), ("draft:",data.isDraft));
 			#endif
 		}
 
@@ -263,7 +263,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 				terrain.Flush();
 
 				#if MM_DEBUG
-				Log.Add("HeightOut Applied Set");
+				Log.AddThreaded("HeightOut Applied Set");
 				#endif
 			}
 
@@ -508,7 +508,7 @@ namespace MapMagic.Nodes.MatrixGenerators
 					}
 
 				#if MM_DEBUG
-				Log.Add("HeightOut Applied Texture");
+				Log.Add("HeightOut Applied Texture", ("pos:",terrain.transform.position), ("val:",data.GetHeights(10,10,4,4)[1,1]));
 				#endif
 			}
 

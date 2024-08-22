@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6974045520793948033}
   - component: {fileID: 5641332920893804845}
   - component: {fileID: 3436882296663818125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CoralCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3490308927602793806}
   - component: {fileID: 8652540403593675761}
   - component: {fileID: 6350555237184347120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8119143618341366774}
   - component: {fileID: 364080445160802739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NurseryPlaceableArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 3050052100608282888}
   - component: {fileID: 1630383181901746757}
   - component: {fileID: 1175891274611077489}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: TestArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,15 +499,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4122695295942315512, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2845779275431937956, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -2845779275431937956, guid: dd83b73cde20fbb4c85ada634c99331e,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2080457890992082625, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dd83b73cde20fbb4c85ada634c99331e,
         type: 3}
       propertyPath: m_Name
       value: limestone final
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971701308670321999, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154102670046073027, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525340365550858921, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953606483559150473, guid: dd83b73cde20fbb4c85ada634c99331e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

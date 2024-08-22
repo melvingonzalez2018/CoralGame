@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 43425e045863e4f49ad82e3f2ce8d8e7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -4261,7 +4261,7 @@ PrefabInstance:
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9942271
+      value: 0.99422705
       objectReference: {fileID: 0}
     - target: {fileID: 321144819121886446, guid: c1efce23c0660fc4d95be6a57c430472,
         type: 3}
@@ -9597,7 +9597,7 @@ GameObject:
   - component: {fileID: 654256424}
   - component: {fileID: 654256423}
   - component: {fileID: 654256422}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12230,7 +12230,7 @@ PrefabInstance:
     - target: {fileID: 4105357991958286436, guid: bbb40bce167f66b4aa43b93ba54acfec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.9
+      value: -7.97
       objectReference: {fileID: 0}
     - target: {fileID: 4105357991958286436, guid: bbb40bce167f66b4aa43b93ba54acfec,
         type: 3}
@@ -23377,7 +23377,7 @@ PrefabInstance:
     - target: {fileID: 5752221756549997546, guid: 4904426f1e817c143a253084a6c0ef71,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Michael's Level
+      value: Michael's Level Edits v1
       objectReference: {fileID: 0}
     - target: {fileID: 7625795021019292034, guid: 4904426f1e817c143a253084a6c0ef71,
         type: 3}

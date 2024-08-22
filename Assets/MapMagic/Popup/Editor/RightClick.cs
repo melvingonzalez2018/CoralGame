@@ -107,7 +107,7 @@ namespace MapMagic.Nodes.GUI
 
 			//checking links
 			float minDist = 10; //10 pixels is max dist to link
-			if (UI.current.scrollZoom != null) minDist /= UI.current.scrollZoom.zoom;
+			if (UI.current.scrollZoom != null) minDist /= UI.current.scrollZoom.zoom.x;
 			foreach (var kvp in GraphWindow.current.graph.links)
 			{
 				float dist = GeneratorDraw.DistToLink(mousePos, kvp.Value, kvp.Key);
