@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject endScreen;
-    [SerializeField] GameObject newsScreen;
+    [SerializeField] GameObject ipad;
     [SerializeField] GameObject playerCrosshair;
     CameraController cameraController;
     DiveManager diveManager;
@@ -32,9 +32,11 @@ public class GameManager : MonoBehaviour
         // Starting new dive
         if(diveManager.IsLastDive()) {
             endScreen.GetComponent<EndScreen>().EndOfLevel();
+            ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
         }
         else {
             endScreen.GetComponent<EndScreen>().EndOfDive();
+            ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
         }
     }
 
