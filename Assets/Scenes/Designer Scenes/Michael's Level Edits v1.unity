@@ -27678,6 +27678,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 354f2dede5fd36941bcc014c50584701,
         type: 2}
+    - target: {fileID: 551060107888805104, guid: 4904426f1e817c143a253084a6c0ef71,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: EndScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 3139351333471743774, guid: 4904426f1e817c143a253084a6c0ef71,
         type: 3}
       propertyPath: m_Enabled
