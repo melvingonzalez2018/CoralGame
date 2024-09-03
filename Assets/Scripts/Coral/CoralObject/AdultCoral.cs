@@ -30,4 +30,8 @@ public class AdultCoral : Coral
     public override bool CanInteract() {
         return fragmentAvailable;
     }
+
+    public override string GetInteractText() {
+        return "Break Fragment";
+    }
 }

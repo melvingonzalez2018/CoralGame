@@ -18,6 +18,11 @@ public class HydroVents : MonoBehaviour
 	[SerializeField] public float oxygenDuration; 
 	[HideInInspector] public float timer = 0; 
 
+	
+=======
+	
+	[HideInInspector] public float timer = 0;
+
 	Oxygen oxygen; 
 	Vector3 bounceHeight; 
 
@@ -34,9 +39,12 @@ public class HydroVents : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Player" && movementController != null)
 		{
+<<<<<<< Updated upstream
 			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed); 
+=======
 			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed);
 				oxygen.ReduceOxygen(oxygenDuration); 
+>>>>>>> Stashed changes
 		}
 	 FindAnyObjectByType<Oxygen>();
 	}
