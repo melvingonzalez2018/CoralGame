@@ -10,6 +10,7 @@ public class TransitionScreen : MonoBehaviour {
     [SerializeField] AnimationCurve curve;
     [SerializeField] UnityEvent OnStart;
     [SerializeField] UnityEvent OnMidTransition;
+    [SerializeField] UnityEvent OnEndTransition;
     UnityAction OnEndAction;
     float timer = 0;
     bool executeMidTransition = false;
@@ -39,6 +40,7 @@ public class TransitionScreen : MonoBehaviour {
                 if (OnEndAction != null) {
                     OnEndAction.Invoke();
                 }
+                OnEndTransition.Invoke();
                 gameObject.SetActive(false);
             }
         }
