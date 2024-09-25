@@ -10,7 +10,7 @@ public class HydroVents : MonoBehaviour
 {
     [Header("Hydro Vent Collider")]
     [SerializeField] GameObject hydroVentCollider;
-	[SerializeField] float forceAdd;
+	[SerializeField] float acceleration;
 	[SerializeField] float maxSpeed;
     [SerializeField] float oxygenDurationLoss;
     [SerializeField] float ventHeight;
@@ -26,7 +26,7 @@ public class HydroVents : MonoBehaviour
 
     private void SpawnVent() {
         GameObject vent = Instantiate(hydroVentCollider, transform);
-        vent.GetComponent<HydroVentCollider>().InitalizeVent(forceAdd, maxSpeed, oxygenDurationLoss, ventDuration, ventHeight, ventWidth);
+        vent.GetComponent<HydroVentCollider>().InitalizeVent(acceleration, maxSpeed, oxygenDurationLoss, ventDuration, ventHeight, ventWidth);
         vent.transform.position += Vector3.up * (ventHeight / 2);
         Invoke("SpawnVent", timeBetweenVents);
     }
