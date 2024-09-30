@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4462389807492452605}
   - component: {fileID: 1548247202513883342}
   - component: {fileID: 7194179245154632151}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4731630171729768937}
   - component: {fileID: 5576225676827531504}
   - component: {fileID: 7929019272680704853}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TrashModels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 7761370048371606998}
   - component: {fileID: 768355987414023420}
   - component: {fileID: 4075394594273335727}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,6 +329,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4137516498873866053, guid: dcc4ba63dd149ef428ebdd759385f02c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2845779275431937956, guid: dcc4ba63dd149ef428ebdd759385f02c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -2845779275431937956, guid: dcc4ba63dd149ef428ebdd759385f02c,
         type: 3}
       propertyPath: m_IsActive
@@ -338,6 +348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: water bottle final
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dcc4ba63dd149ef428ebdd759385f02c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -450,13 +465,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2845779275431937956, guid: 16f789f42f1fc9b479ad2fabd59798f0,
         type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2845779275431937956, guid: 16f789f42f1fc9b479ad2fabd59798f0,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2740283282859717407, guid: 16f789f42f1fc9b479ad2fabd59798f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 16f789f42f1fc9b479ad2fabd59798f0,
         type: 3}
       propertyPath: m_Name
       value: soda can final
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 16f789f42f1fc9b479ad2fabd59798f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

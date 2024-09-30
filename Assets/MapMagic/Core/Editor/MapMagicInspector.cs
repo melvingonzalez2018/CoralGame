@@ -238,45 +238,78 @@ namespace MapMagic.Core.GUI
 			//Infinite Terrain
 			Cell.EmptyLinePx(4);
 			using (Cell.LineStd)
-				using (new Draw.FoldoutGroup(ref mapMagic.guiInfiniteTerrains, "Infinite Terrain (Playmode)", isLeft:true))
+				using (new Draw.FoldoutGroup(ref mapMagic.guiInfiniteTerrains, "Tiles Generation", isLeft:true))
 					if (mapMagic.guiInfiniteTerrains)
 					{
-						using (Cell.LineStd) Draw.ToggleLeft(ref mapMagic.tiles.generateInfinite, "Generate Infinite Terrain");
 
-						using (Cell.LineStd) Draw.Field(ref mapMagic.mainRange, "Main Range");
+						using (Cell.LineStd) Draw.ToggleLeft(ref mapMagic.tiles.generateInfinite, "Generate Terrain in Playmode");
 						using (Cell.LineStd) 
 						{
-							if (!mapMagic.draftsInPlaymode) 
+							Cell.current.disabled = !mapMagic.tiles.generateInfinite;
+
+							using (Cell.LineStd) 
 							{
-								Cell.current.disabled = true;
-								mapMagic.tiles.generateRange = mapMagic.mainRange;
+								using (Cell.LineStd) Draw.Field(ref mapMagic.mainRange, "Main Range");
+								using (Cell.LineStd) 
+								{
+									if (!mapMagic.draftsInPlaymode) 
+									{
+										Cell.current.disabled = true;
+										mapMagic.tiles.generateRange = mapMagic.mainRange;
+									}
+
+									Draw.Field(ref mapMagic.tiles.generateRange, "Drafts Range");
+								}
 							}
 
-							Draw.Field(ref mapMagic.tiles.generateRange, "Drafts Range");
+							Cell.EmptyLinePx(4);
+							using (Cell.LineStd) Draw.Label("Generate Terrain Markers:");
+							
+							//main camera
+							using (Cell.LineStd) Draw.Toggle(ref mapMagic.tiles.genAroundMainCam, "Around Main Camera");
+							
+							//tags
+							using (Cell.LineStd) 
+							{
+								using (Cell.RowRel(1-Cell.current.fieldWidth))
+									Draw.Label("Around Objects Tagged");
+
+								using (Cell.RowRel(Cell.current.fieldWidth))
+								{
+									using (Cell.RowPx(20))
+										Draw.Toggle(ref mapMagic.tiles.genAroundObjsTag);
+
+									using (Cell.Row)
+										mapMagic.tiles.genAroundTag = Draw.Field(
+											mapMagic.tiles.genAroundTag, 
+											drawFn:(Rect rect, string oldVal) => { return EditorGUI.TagField(rect, (string)oldVal); } );
+								}
+							}
+
+							//coord
+							using (Cell.LineStd) 
+							{
+								using (Cell.RowRel(1-Cell.current.fieldWidth))
+									using (Cell.LineStd) //to make it at top line
+										Draw.Label("Around Coordinate");
+
+								using (Cell.RowRel(Cell.current.fieldWidth))
+								{
+									using (Cell.RowPx(20))
+										Draw.Toggle(ref mapMagic.tiles.genAroundCoordinate);
+
+									using (Cell.Row)
+									{
+										Cell.current.disabled = mapMagic.tiles.genAroundCoordinate;
+										Draw.Field(ref mapMagic.tiles.genCoordinate);
+									}
+								}
+							}
 						}
 
 						Cell.EmptyLinePx(4);
 						using (Cell.LineStd) Draw.ToggleLeft(ref mapMagic.hideFarTerrains, "Hide Out-of-Range Terrains");
 					
-						Cell.EmptyLinePx(4);
-						using (Cell.LineStd) Draw.Label("Generate Terrain Markers:");
-						using (Cell.LineStd) Draw.Toggle(ref mapMagic.tiles.genAroundMainCam, "Around Main Camera");
-						using (Cell.LineStd) 
-						{
-							using (Cell.RowRel(1-Cell.current.fieldWidth))
-								Draw.Label("Around Objects Tagged");
-
-							using (Cell.RowRel(Cell.current.fieldWidth))
-							{
-								using (Cell.RowPx(20))
-									Draw.Toggle(ref mapMagic.tiles.genAroundObjsTag);
-
-								using (Cell.Row)
-									mapMagic.tiles.genAroundTag = Draw.Field(
-										mapMagic.tiles.genAroundTag, 
-										drawFn:(Rect rect, string oldVal) => { return EditorGUI.TagField(rect, (string)oldVal); } );
-							}
-						}
 					}
 
 			//Size and Resolution

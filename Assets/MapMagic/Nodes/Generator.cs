@@ -180,6 +180,13 @@ namespace MapMagic.Nodes
 		//void ClearAny (Generator gen, TileData data); //Called at top level graph each time any node changes. Iterating in sub-graph is done with this
 	}
 
+	public interface ICustomSerialize
+	/// Same as ISerializationCallbackReciever but with provided graph
+	{
+		void OnBeforeSerialize (Graph graph);
+		void OnAfterDeserialize (Graph graph);
+	}
+
 
 	public sealed class GeneratorMenuAttribute : Attribute
 	{

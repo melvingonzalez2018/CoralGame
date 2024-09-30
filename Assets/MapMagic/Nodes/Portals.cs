@@ -25,8 +25,8 @@ namespace MapMagic.Nodes
 
 	public interface IPortalExit<out T> :  IOutlet<T> where T:class
 	{
-		IPortalEnter<T> Enter { get; }
 		void AssignEnter (IPortalEnter<object> enter, Graph graph);
+		IPortalEnter<T> RefreshEnter (Graph graph); //gets enter at the same time
 	}
 
 
@@ -48,33 +48,74 @@ namespace MapMagic.Nodes
 	}
 
 
+	
+
 	[Serializable]
 	[GeneratorMenu (name ="Generic Portal Exit")]
-	public class PortalExit<T> : Generator, IOutlet<T>, IPortalExit<T>, ICustomDependence   where T: class, ICloneable 
+	public class PortalExit<T> : Generator, IOutlet<T>, IPortalExit<T>, ICustomDependence, ICustomSerialize  where T: class, ICloneable 
 	{
-		public PortalEnter<T> enter; //TODO: don't serialize, keep name only for serialization simplicity
-		public IPortalEnter<T> Enter => enter;
+		public PortalEnter<T> enter; //older versions used to save enter as class. TODO 3.0 rename tempEnter to enter
+		[NonSerialized] public PortalEnter<T> tempEnter;
+		//public IPortalEnter<T> Enter => enter;
+
+		public ulong enterId = 0; 
+
+
+		public void OnBeforeSerialize (Graph graph) => enterId = tempEnter.Id;
+		public void OnAfterDeserialize (Graph graph) => RefreshEnter(graph);
+
+
+		public IPortalEnter<T> RefreshEnter (Graph graph)
+		{
+			//switching old portal to new format
+			if (enter != null)
+			{
+				tempEnter = enter;
+				enterId = enter.id;
+				enter = null;
+			}
+
+			//refreshing enter
+			if (tempEnter == null  ||  tempEnter.id != enterId)
+			{
+				Generator gen = graph.GetGeneratorById(enterId);
+				if (gen != null)
+					tempEnter = (PortalEnter<T>)gen;
+			}
+
+			return tempEnter;
+		}
 
 		public void AssignEnter (IPortalEnter<object> ienter, Graph graph)
 		{
+			//removing enter
+			if (ienter == null)
+			{
+				tempEnter = null;
+				enterId = 0;
+				return;
+			}
+
 			if (!(ienter is PortalEnter<T> enter)) return;
 			//TODO: other validity check
-			this.enter = enter;
+
+			tempEnter = enter;
+			enterId = enter.id;
 		}
 
 		public override void Generate (TileData data, StopToken stop) 
 		{ 
-			if (enter != null   &&  !stop.stop) 
+			if (tempEnter != null   &&  !stop.stop) 
 			{
-				data.StoreProduct(this, data.ReadInletProduct(enter));
+				data.StoreProduct(this, data.ReadInletProduct(tempEnter));
 				//TODO: clone?
 			}
 		}
 
 		public IEnumerable<Generator> PriorGens () 
 		{
-			if (enter != null)
-				yield return enter;
+			if (tempEnter != null)
+				yield return tempEnter;
 		}
 	}
 }

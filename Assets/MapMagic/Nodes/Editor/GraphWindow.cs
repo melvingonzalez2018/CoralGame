@@ -114,7 +114,7 @@ namespace MapMagic.Nodes.GUI
 		UI dragUI = new UI();
 		UI miniSelectedUI = new UI();
 
-		public bool IsMini => graphUI.scrollZoom.zoom < 0.4f; //minimum full-version zoom is 0.4375. Next step (0.375) switches to mini
+		public bool IsMini => graphUI.scrollZoom.zoom.x < 0.4f; //minimum full-version zoom is 0.4375. Next step (0.375) switches to mini
 		public const float miniZoom = 0.375f;
 
 		bool wasGenerating = false; //to update final frame when generate is finished
@@ -148,6 +148,11 @@ namespace MapMagic.Nodes.GUI
 			ScrollZoomOnOpen(); //focusing after script re-compile
 
 			selected.Clear(); //removing selection from previous graph
+
+			//setting debug name
+			#if MM_DEBUG
+			graph.debugName = name;
+			#endif
 		}
 
 		public void OnDisable () 
@@ -232,7 +237,7 @@ namespace MapMagic.Nodes.GUI
 
 			//storing graph pivot to focus it on load
 			Vector3 scrollZoom = graphUI.scrollZoom.GetWindowCenter(position.size);
-			scrollZoom.z = graphUI.scrollZoom.zoom;
+			scrollZoom.z = graphUI.scrollZoom.zoom.x;
 			if (graphsScrollZooms.ContainsKey(graph)) graphsScrollZooms[graph] = scrollZoom;
 			else graphsScrollZooms.Add(graph, scrollZoom);
 
@@ -247,6 +252,11 @@ namespace MapMagic.Nodes.GUI
 				}
 				mapMagicObject.guiDraggingField = newForceDrafts;
 			}
+
+			//setting debug name
+			#if MM_DEBUG
+			graph.debugName = name;
+			#endif
 
 			//showing fps
 			#if MM_DEBUG
@@ -272,8 +282,8 @@ namespace MapMagic.Nodes.GUI
 			bool isMini = IsMini;
 
 			//background
-			float gridColor = !StylesCache.isPro ? 0.45f : 0.12f;
-			float gridBackgroundColor = !StylesCache.isPro ? 0.5f : 0.15f;
+			float gridColor = !UI.current.styles.isPro ? 0.45f : 0.12f;
+			float gridBackgroundColor = !UI.current.styles.isPro ? 0.5f : 0.15f;
 
 			#if MM_DEBUG
 				if (!graph.debugGraphBackground)
@@ -299,11 +309,19 @@ namespace MapMagic.Nodes.GUI
 			#endif
 
 			//drawing groups
-			foreach (Group group in graph.groups)
-				using (Cell.Custom(group.guiPos.x, group.guiPos.y, group.guiSize.x, group.guiSize.y)) 
+			foreach (Auxiliary aux in graph.groups)
+				using (Cell.Custom(aux.guiPos.x, aux.guiPos.y, aux.guiSize.x, aux.guiSize.y)) 
 				{
-					GroupDraw.DragGroup(group, graph.generators);
-					GroupDraw.DrawGroup(group, isMini:isMini);
+					if (aux is Group group)
+					{
+						GroupDraw.DragGroup(group, graph.generators, graph.groups);
+						GroupDraw.DrawGroup(group, isMini:isMini);
+					}
+					if (aux is Comment comment)
+					{
+						GroupDraw.ResizeComment(comment);
+						GroupDraw.DrawComment(comment, isMini:isMini);
+					}
 				}
 
 
@@ -386,6 +404,19 @@ namespace MapMagic.Nodes.GUI
 			//delete selected generators
 			if (selected!=null  &&  selected.Count!=0  &&  Event.current.type==EventType.KeyDown  &&  Event.current.keyCode==KeyCode.Delete)
 				GraphEditorActions.RemoveGenerators(graph, selected);
+
+			//copy-paste selected generators
+			if (!UI.current.layout  &&  Event.current.type == EventType.KeyDown  && Event.current.control)
+			{
+				if (Event.current.keyCode == KeyCode.C)
+					GeneratorRightClick.copiedGenerators = graph.Export(selected);
+				if (Event.current.keyCode == KeyCode.V)
+				{
+					Generator[] imported = graph.Import(GeneratorRightClick.copiedGenerators); 
+					Graph.Reposition(imported, graphUI.mousePos);
+				}
+			}
+			
 		}
 
 		private void DrawMiniSelected () 
@@ -575,8 +606,8 @@ namespace MapMagic.Nodes.GUI
 								mapMagic.GetProgress();
 								Draw.Texture(backgroundTex);
 
-								Texture2D fillTex = UI.current.textures.GetBlankTexture(StylesCache.isPro ? Color.grey : Color.white);
-								Color color = StylesCache.isPro ? new Color(0.24f, 0.37f, 0.58f) : new Color(0.44f, 0.574f, 0.773f);
+								Texture2D fillTex = UI.current.textures.GetBlankTexture(UI.current.styles.isPro ? Color.grey : Color.white);
+								Color color = UI.current.styles.isPro ? new Color(0.24f, 0.37f, 0.58f) : new Color(0.44f, 0.574f, 0.773f);
 								Draw.ProgressBarGauge(progress, fillTex, color);
 							}
 
@@ -608,7 +639,11 @@ namespace MapMagic.Nodes.GUI
 						if (!isGenerating)
 						{
 							Cell.EmptyRow();
+							#if !MM_DEBUG
 							using (Cell.RowPx(40)) Draw.Label("Ready");
+							#else
+							using (Cell.RowPx(140)) Draw.Label(graph.IdsVersions().ToString());
+							#endif
 						}
 					}
 
@@ -627,15 +662,15 @@ namespace MapMagic.Nodes.GUI
 
 				using (Cell.RowPx(20))
 				{
-					if (graphUI.scrollZoom.zoom < 0.999f)
+					if (graphUI.scrollZoom.zoom.x < 0.999f)
 					{
 						if (Draw.Button(null, icon:UI.current.textures.GetTexture("DPUI/Icons/ZoomSmallPlus"), iconScale:0.5f, visible:false))
-							graphUI.scrollZoom.Zoom(1f, position.size/2);
+							graphUI.scrollZoom.ZoomTo(Vector2.one, position.size/2);
 					}
 					else
 					{
 						if (Draw.Button(null, icon:UI.current.textures.GetTexture("DPUI/Icons/ZoomSmallMinus"), iconScale:0.5f, visible:false))
-							graphUI.scrollZoom.Zoom(miniZoom, position.size/2); 
+							graphUI.scrollZoom.ZoomTo(new Vector2(miniZoom,miniZoom), position.size/2); 
 					}
 				}
 			}
@@ -1066,7 +1101,7 @@ namespace MapMagic.Nodes.GUI
 				if (graphsScrollZooms.TryGetValue(graph, out Vector3 scrollZoom))
 				{
 					graphUI.scrollZoom.FocusWindowOn(new Vector2(scrollZoom.x, scrollZoom.y), position.size);
-					graphUI.scrollZoom.zoom = scrollZoom.z;
+					graphUI.scrollZoom.zoom = new Vector2(scrollZoom.z,scrollZoom.z);
 				}
 
 				else

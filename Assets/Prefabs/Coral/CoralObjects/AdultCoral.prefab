@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5573659715988758708}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coral1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5759934317746818218}
   - component: {fileID: 5209163597643507312}
   - component: {fileID: 7104916144175968179}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7581440157739951949}
   - component: {fileID: 6148800577261236427}
   - component: {fileID: 2977803021527940711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AdultCoral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 559203625127268215}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Coral2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,6 +423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: adult coral 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f6590499c5aed44a8d540abb40647ae,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -523,6 +528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: adult coral 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34db420efa9630643aea91a54c7f4c57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -601,6 +611,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: broken coral 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8d376c47bc9459842a03754747340aa4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8d376c47bc9459842a03754747340aa4,
         type: 3}
@@ -705,6 +720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: broken coral 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc728af0f66bb424c81293c3c1a68ddf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dc728af0f66bb424c81293c3c1a68ddf,
         type: 3}

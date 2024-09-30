@@ -376,6 +376,11 @@ namespace MapMagic.Nodes.GUI
 					using (Cell.LineStd) grassOut.prototype.dryColor = Draw.Field(grassOut.prototype.dryColor, "Dry");
 					using (Cell.LineStd) grassOut.prototype.healthyColor = Draw.Field(grassOut.prototype.healthyColor, "Healthy");
 
+					#if UNITY_2022_2_OR_NEWER
+					using (Cell.LineStd) grassOut.prototype.alignToGround = Draw.Field(grassOut.prototype.alignToGround, "Align Ground");
+					using (Cell.LineStd) grassOut.prototype.positionJitter = Draw.Field(grassOut.prototype.positionJitter, "Pos Jitter");
+					#endif
+
 					Vector2 temp = new Vector2(grassOut.prototype.minWidth, grassOut.prototype.maxWidth);
 					using (Cell.LineStd) Draw.Field(ref temp, "Width", xName:"Min", yName:"Max", xyWidth:25);
 					grassOut.prototype.minWidth = temp.x; grassOut.prototype.maxWidth = temp.y;
