@@ -97,6 +97,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void InteractInput(Ray ray) {
         if (Physics.Raycast(ray, out RaycastHit hit, reach, interactable)) {
+            Debug.Log(hit.transform.gameObject.name);
             // Interacting with coral
             if (hit.collider.gameObject.TryGetComponent(out Coral coral)) {
                 coral.Interact();

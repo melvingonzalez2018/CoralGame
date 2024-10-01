@@ -782,7 +782,7 @@ PrefabInstance:
     - target: {fileID: 7750767033338072888, guid: 3420bf1c9cc30cf47896f4f43fb9d0e4,
         type: 3}
       propertyPath: reach
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7750767033338072888, guid: 3420bf1c9cc30cf47896f4f43fb9d0e4,
         type: 3}
@@ -1118,6 +1118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.m_Scale.z
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423650451364228263, guid: 756df88c0c8b0dd49ba86bc6645bbb8b,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8423650451364228263, guid: 756df88c0c8b0dd49ba86bc6645bbb8b,
         type: 3}
