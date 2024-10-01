@@ -11,12 +11,12 @@ public class Oxygen : MonoBehaviour
     bool runTimer = false;
 
     private void Update() {
-        if(runTimer) {
-            ReduceOxygen(Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.N)) {
+            KillOxygen();
         }
 
-        if(Input.GetKeyDown(KeyCode.N)) {
-            KillOxygen();
+        if (runTimer) {
+            ReduceOxygen(Time.deltaTime);
         }
     }
 
