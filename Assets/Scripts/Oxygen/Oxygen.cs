@@ -37,9 +37,8 @@ public class Oxygen : MonoBehaviour
     public void ReduceOxygen(float amount) {
         timer = Mathf.Min(timer + amount, oxygenDuration);
         if (timer >= oxygenDuration) {
-            OnOxygenDuration.Invoke();
             runTimer = false;
-
+            OnOxygenDuration.Invoke();
         }
     }
 
