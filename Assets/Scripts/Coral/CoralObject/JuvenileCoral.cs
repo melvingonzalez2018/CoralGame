@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JuvenileCoral : Coral {
-    [SerializeField] AudioSource takeAudio;
+    [SerializeField] AudioSource hammerAudio;
+    [SerializeField] GameObject takeCoralOneShot;
     [SerializeField] GameObject adultCoralPrefab;
     [SerializeField] public float hammerTime;
     [SerializeField] float hammerPerClick;
@@ -59,6 +60,8 @@ public class JuvenileCoral : Coral {
     private void HammerUpdate() {
         if (!IsHammeredIn()) {
             hammerTimer += hammerPerClick;
+            hammerAudio.Stop();
+            hammerAudio.Play();
             if (IsHammeredIn()) {
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
             }
@@ -79,9 +82,8 @@ public class JuvenileCoral : Coral {
     }
 
     public void PickUp() {
-        takeAudio.Play();
         FindObjectOfType<StatTracking>().IterateCoralPickup();
-
+        Instantiate(takeCoralOneShot, transform.position, Quaternion.identity); // Playing pickup audio
         int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
         FindAnyObjectByType<CoralStorage>().AddJuvenile(new StoredCoralData(modelIndex));
         area.MinusCoralCount();
