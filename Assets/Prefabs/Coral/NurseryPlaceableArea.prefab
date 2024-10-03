@@ -316,6 +316,61 @@ MonoBehaviour:
   maxCoralPlacable: 10
   limitedCoral: 1
   placedCoral: 0
+  placeableSurfaces:
+  - {fileID: 3434508588420711925}
+--- !u!1 &5831675395031578548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8139115710586713040}
+  - component: {fileID: 698088559823560397}
+  m_Layer: 0
+  m_Name: PreventingPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8139115710586713040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831675395031578548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 355045322697460257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &698088559823560397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831675395031578548}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.25, y: 1.45, z: 5.67}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8256547236130208726
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +382,7 @@ GameObject:
   - component: {fileID: 2340133033623485118}
   - component: {fileID: 3434508588420711925}
   m_Layer: 7
-  m_Name: Collider
+  m_Name: PlaceableCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +422,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.25, y: 0.01, z: 5.67}
+  m_Size: {x: 5.25, y: 0.0001, z: 5.67}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8408985663596933331
 GameObject:
@@ -734,6 +789,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2340133033623485118}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7da1ef700b4783246a9fc6800f0f385e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8139115710586713040}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7da1ef700b4783246a9fc6800f0f385e, type: 3}
 --- !u!4 &355045322697460257 stripped
