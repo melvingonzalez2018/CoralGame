@@ -11,17 +11,24 @@ public class TransitionScreen : MonoBehaviour {
     [SerializeField] UnityEvent OnStart;
     [SerializeField] UnityEvent OnMidTransition;
     [SerializeField] UnityEvent OnEndTransition;
+    [SerializeField] bool startOnStart;
     UnityAction OnEndAction;
     float timer = 0;
     bool executeMidTransition = false;
+    bool transitionActive = false;
 
     private void Start() {
-        OnStart.Invoke();
-        StartTransitionHalf();
+        if (startOnStart) {
+            OnStart.Invoke();
+            StartTransitionHalf();
+        }
+        else { 
+            EndTransition(); 
+        }
     }
 
     private void Update() {
-        if(timer <= transitionDuration) {
+        if(timer <= transitionDuration && transitionActive) {
             timer += Time.deltaTime;
 
             // Setting color
@@ -40,19 +47,25 @@ public class TransitionScreen : MonoBehaviour {
                 if (OnEndAction != null) {
                     OnEndAction.Invoke();
                 }
-                OnEndTransition.Invoke();
-                gameObject.SetActive(false);
+                EndTransition();
             }
         }
+    }
+    public void EndTransition() {
+        OnEndTransition.Invoke();
+        gameObject.SetActive(false);
+        transitionActive = false;
     }
 
     public void StartTransition() {
         gameObject.SetActive(true);
+        transitionActive = true;
         timer = 0;
         executeMidTransition = false;
     }
     public void StartTransitionHalf() {
         gameObject.SetActive(true);
+        transitionActive = true;
         timer = transitionDuration/2;
         executeMidTransition = false;
     }

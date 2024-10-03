@@ -393,7 +393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultStick: 1
   area: {fileID: 0}
-  takeAudio: {fileID: 6295195104147326729}
+  hammerAudio: {fileID: 6295195104147326729}
+  takeCoralOneShot: {fileID: 8828595712044948236, guid: f3ae81e890368d9408966d281549e76e,
+    type: 3}
   adultCoralPrefab: {fileID: 3938738571435580911, guid: 112626f7eb7705f40bf0d74e83d22014,
     type: 3}
   hammerTime: 3
@@ -432,7 +434,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 94f5cad2760760a418059926479b4d7d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 198f7039fc8863b48bba24248d8fb556, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

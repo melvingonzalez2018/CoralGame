@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] float reach;
     [SerializeField] float coralOffsetFromSurface;
     [SerializeField] AudioSource placeCoral;
+    [SerializeField] AudioSource garbagePickup;
     [SerializeField] LayerMask interactable;
     CoralPlaceableArea[] areas;
     CoralStorage coralStorage;
@@ -97,6 +98,8 @@ public class PlayerInteract : MonoBehaviour
 
     private void InteractInput(Ray ray) {
         if (Physics.Raycast(ray, out RaycastHit hit, reach, interactable)) {
+            //Debug.Log(hit.transform.gameObject.name);
+            
             // Interacting with coral
             if (hit.collider.gameObject.TryGetComponent(out Coral coral)) {
                 coral.Interact();
@@ -107,6 +110,7 @@ public class PlayerInteract : MonoBehaviour
                 if (area.ContainCollider(hit.collider)) {
                     Vector3 coralPlacement = hit.point - (ray.direction * coralOffsetFromSurface);
                     if(coralStorage.TryPlaceCoral(area, coralPlacement)) {
+                        placeCoral.Stop();
                         placeCoral.Play();
                     }
                 }
@@ -114,6 +118,8 @@ public class PlayerInteract : MonoBehaviour
 
             // Picking up trash
             if (hit.collider.gameObject.TryGetComponent(out Trash trash)) {
+                garbagePickup.Stop();
+                garbagePickup.Play();
                 trash.PickUpTrash();
             }
         }
