@@ -11,12 +11,12 @@ public class Oxygen : MonoBehaviour
     bool runTimer = false;
 
     private void Update() {
-        if(runTimer) {
-            ReduceOxygen(Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.N)) {
+            KillOxygen();
         }
 
-        if(Input.GetKeyDown(KeyCode.N)) {
-            KillOxygen();
+        if (runTimer) {
+            ReduceOxygen(Time.deltaTime);
         }
     }
 
@@ -37,9 +37,8 @@ public class Oxygen : MonoBehaviour
     public void ReduceOxygen(float amount) {
         timer = Mathf.Min(timer + amount, oxygenDuration);
         if (timer >= oxygenDuration) {
-            OnOxygenDuration.Invoke();
             runTimer = false;
-
+            OnOxygenDuration.Invoke();
         }
     }
 

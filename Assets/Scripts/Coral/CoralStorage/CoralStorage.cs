@@ -53,6 +53,7 @@ public class CoralStorage : MonoBehaviour {
                     Coral coral = currentCoral.GetComponent<Coral>();
                     coral.InitalizeOnArea(area, pos);
                     coral.GetComponentInChildren<CoralModel>().SetCoralVisual(coralData.modelIndex);
+                    return true;
                 }
                 break;
             case AreaType.NURSERY:
@@ -63,6 +64,7 @@ public class CoralStorage : MonoBehaviour {
                     Coral coral = currentCoral.GetComponent<Coral>();
                     coral.InitalizeOnArea(area, pos);
                     coral.GetComponentInChildren<CoralModel>().SetCoralVisual(coralData.modelIndex);
+                    return true;
                 }
                 break;
         }

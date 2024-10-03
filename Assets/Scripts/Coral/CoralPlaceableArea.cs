@@ -16,12 +16,12 @@ public class CoralPlaceableArea : MonoBehaviour
     [SerializeField] public bool limitedCoral = true;
     [HideInInspector] public int placedCoral = 0;
 
-    List<Collider> placeableSurfaces = new List<Collider>();
+    [SerializeField] List<Collider> placeableSurfaces;
     Collider areaCollider;
     private void Awake() {
-        foreach (Collider childCollider in transform.GetComponentsInChildren<Collider>()) {
-            placeableSurfaces.Add(childCollider);
-        }
+        //foreach (Collider childCollider in transform.GetComponentsInChildren<Collider>()) {
+        //    placeableSurfaces.Add(childCollider);
+        //}
     }
 
     private bool UseOverlapCollider() {
@@ -42,7 +42,10 @@ public class CoralPlaceableArea : MonoBehaviour
         // Orienting transform
         if(FindClosestPoint(pos, out RaycastHit hit)) {
             coral.position = hit.point;
-            coral.up = hit.normal;
+
+            // Handling nursury edge case, ensuring only on surface
+            if (areaType == AreaType.NURSERY) { coral.up = Vector3.up; }
+            else { coral.up = hit.normal; }
             return true;
         }
 
@@ -60,9 +63,10 @@ public class CoralPlaceableArea : MonoBehaviour
             if(pointOnSurface == pos) {
                 pos -= (surface.gameObject.transform.position - pos)*surfaceCheckOffset;
             }
-            
+
             Vector3 dirToSurface = pointOnSurface - pos;
             surface.Raycast(new Ray(pos, dirToSurface), out RaycastHit hitSurface, float.MaxValue);
+
 
             // Checking if within bounds
             if (UseOverlapCollider()) {
