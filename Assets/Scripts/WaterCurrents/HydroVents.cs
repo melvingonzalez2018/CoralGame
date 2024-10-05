@@ -8,44 +8,26 @@ using UnityEngine.Events;
 
 public class HydroVents : MonoBehaviour
 {
-	Rigidbody rb; 
-	[SerializeField] Transform currentDirection;
-	[SerializeField] float currentForce;
+    [Header("Hydro Vent Collider")]
+    [SerializeField] GameObject hydroVentCollider;
+	[SerializeField] float acceleration;
 	[SerializeField] float maxSpeed;
+    [SerializeField] float oxygenDurationLoss;
+    [SerializeField] float ventHeight;
+    [SerializeField] float ventWidth;
 
-	[SerializeField] string playerTag;
-	[SerializeField] public UnityEvent OnOxygenDuration = new UnityEvent(); 
-	[SerializeField] public float oxygenDuration;
-    [HideInInspector] public float timer = 0;
+    [Header("Hydro Vent")]
+    [SerializeField] float ventDuration;
+    [SerializeField] float timeBetweenVents;
 
-
-
-
-
-	Oxygen oxygen; 
-	Vector3 bounceHeight; 
-
-	PlayerMovementController movementController; 
-
-	private void Start()
-	{
-		movementController = FindObjectOfType<PlayerMovementController>();
-		rb = GetComponent<Rigidbody>();
-        oxygen = FindObjectOfType<Oxygen>();
-		InvokeRepeating("OnTriggerStay", 10.0f, 0.3f);
+    private void Start() {
+        Invoke("SpawnVent", timeBetweenVents);
     }
 
-	 void OnTriggerStay(Collider collision)
-	{
-		if (collision.gameObject.tag == "Player" && movementController != null)
-		{
-
-			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed); 
-
-			movementController.AddVelocity(currentForce * currentDirection.forward, maxSpeed);
-				oxygen.ReduceOxygen(oxygenDuration); 
-
-}
-	 FindAnyObjectByType<Oxygen>();
-	}
+    private void SpawnVent() {
+        GameObject vent = Instantiate(hydroVentCollider, transform);
+        vent.GetComponent<HydroVentCollider>().InitalizeVent(acceleration, maxSpeed, oxygenDurationLoss, ventDuration, ventHeight, ventWidth);
+        vent.transform.position += Vector3.up * (ventHeight / 2);
+        Invoke("SpawnVent", timeBetweenVents);
+    }
 }
