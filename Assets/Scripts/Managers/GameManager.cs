@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject endScreen;
     [SerializeField] GameObject ipad;
     [SerializeField] GameObject playerCrosshair;
+    [SerializeField] AudioSource endDive;
     CameraController cameraController;
     DiveManager diveManager;
     GameObject player;
@@ -28,6 +29,11 @@ public class GameManager : MonoBehaviour
     public void EndDive() {
         SetPlayerEnable(false);
         endScreen.SetActive(true);
+
+        // Playing end dive sound effect
+        endDive.Stop();
+        endDive.Play();
+        
 
         // Starting new dive
         if(diveManager.IsLastDive()) {
