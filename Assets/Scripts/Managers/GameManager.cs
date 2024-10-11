@@ -13,11 +13,15 @@ public class GameManager : MonoBehaviour
     GameObject player;
     Vector3 playerInitalPosition;
 
+    List<WaterCurrents> waterCurrents;
+
     private void Start() {
         diveManager = FindObjectOfType<DiveManager>();
         cameraController = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerMovementController>().gameObject;
         playerInitalPosition = player.transform.position;
+        waterCurrents = new List<WaterCurrents>(FindObjectsOfType<WaterCurrents>());
+
 
         SetPlayerEnable(false);
     }
@@ -25,10 +29,16 @@ public class GameManager : MonoBehaviour
     public void StartDive() {
         SetPlayerEnable(true);
         FindObjectOfType<Oxygen>().StartTime();
+        foreach (WaterCurrents current in waterCurrents) {
+            current.SetCurrentEffect(true);
+        }
     }
     public void EndDive() {
         SetPlayerEnable(false);
         endScreen.SetActive(true);
+        foreach (WaterCurrents current in waterCurrents) {
+            current.SetCurrentEffect(false);
+        }
 
         // Playing end dive sound effect
         endDive.Stop();

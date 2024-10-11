@@ -19,6 +19,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] public float gravityAccel;
     [SerializeField] public float maxFallSpeed;
     [SerializeField] public float friction;
+
+    [SerializeField] bool miniGameMode = false;
     Vector3 currentVelocity;
 
     bool canMove = true;
@@ -33,6 +35,11 @@ public class PlayerMovementController : MonoBehaviour
             Transform camTransform = Camera.main.transform;
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
             Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + camTransform.forward * Input.GetAxis("Vertical");
+
+            // Disabling forward/backward movement for minigame mode
+            if(miniGameMode) { 
+                horizontalInput -= camTransform.forward * Input.GetAxis("Vertical"); 
+            }
 
             playerInput = verticalInput + horizontalInput;
             rotate.SetTargetDirection(playerInput.normalized);
