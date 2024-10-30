@@ -36,16 +36,22 @@ public class PlayerMovementController : MonoBehaviour
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
             Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + camTransform.forward * Input.GetAxis("Vertical");
 
-            // Disabling forward/backward movement for minigame mode
+            // Changing forward/backward movement for minigame mode
             if(miniGameMode) { 
-                horizontalInput -= camTransform.forward * Input.GetAxis("Vertical"); 
+                horizontalInput -= camTransform.forward * Input.GetAxis("Vertical");
+                verticalInput = Vector3.up * Input.GetAxis("Vertical");
             }
 
             playerInput = verticalInput + horizontalInput;
             rotate.SetTargetDirection(playerInput.normalized);
 
-            AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
-            AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
+            if(horizontalInput.magnitude > 0 && horizontalInput.magnitude > 0) {
+                AddVelocity((horizontalInput+verticalInput).normalized * horizontalAcceleration, horizontalMaxSpeed);
+            }
+            else {
+                AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
+                AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
+            }
         }
         anim.SetFloat("InputMag", playerInput.magnitude);
         movementAudio.IsSwimming(playerInput.magnitude > 0);
@@ -56,7 +62,7 @@ public class PlayerMovementController : MonoBehaviour
         canMove = value;
     }
     public void AddVelocity(Vector3 velocity, float speedLimit) {
-        if(Vector3.Dot(currentVelocity, velocity.normalized) < speedLimit) {
+        if (Vector3.Dot(currentVelocity, velocity.normalized) < speedLimit) {
             currentVelocity += velocity;
         }
     }
