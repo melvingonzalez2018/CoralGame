@@ -45,8 +45,8 @@ public class PlayerMovementController : MonoBehaviour
             playerInput = verticalInput + horizontalInput;
             rotate.SetTargetDirection(playerInput.normalized);
 
-            if(horizontalInput.magnitude > 0 && horizontalInput.magnitude > 0) {
-                AddVelocity((horizontalInput+verticalInput).normalized * horizontalAcceleration, horizontalMaxSpeed);
+            if(horizontalInput.magnitude > 0 && verticalInput.magnitude > 0) {
+                AddVelocity(playerInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
             }
             else {
                 AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
@@ -62,9 +62,9 @@ public class PlayerMovementController : MonoBehaviour
         canMove = value;
     }
     public void AddVelocity(Vector3 velocity, float speedLimit) {
-        if (Vector3.Dot(currentVelocity, velocity.normalized) < speedLimit) {
-            currentVelocity += velocity;
-        }
+        speedLimit = Mathf.Max(currentVelocity.magnitude, speedLimit);
+        currentVelocity += velocity;
+        currentVelocity = Vector3.ClampMagnitude(currentVelocity, speedLimit);
     }
 
     private void PhysicsUpdate() {
