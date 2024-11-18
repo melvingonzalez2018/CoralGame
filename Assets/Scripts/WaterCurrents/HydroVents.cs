@@ -27,7 +27,7 @@ public class HydroVents : MonoBehaviour
     private void SpawnVent() {
         GameObject vent = Instantiate(hydroVentCollider, transform);
         vent.GetComponent<HydroVentCollider>().InitalizeVent(acceleration, maxSpeed, oxygenDurationLoss, ventDuration, ventHeight, ventWidth);
-        vent.transform.position += Vector3.up * (ventHeight / 2);
+        vent.transform.position += transform.up * (ventHeight / 2);
         Invoke("SpawnVent", timeBetweenVents);
     }
 }

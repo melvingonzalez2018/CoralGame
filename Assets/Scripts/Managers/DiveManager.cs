@@ -24,6 +24,7 @@ public class DiveManager : MonoBehaviour
     public int GetCurrentDive() {
         return currentDive;
     }
+
     // return true if a new dive is started
     public void StartNewDive() {
         if(firstDive) {
