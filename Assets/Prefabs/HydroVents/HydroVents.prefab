@@ -48,9 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hydroVentCollider: {fileID: 4128655413263697030, guid: 076ebfefe1623ee46a29899a87294e9e,
     type: 3}
-  forceAdd: 10
+  acceleration: 0
   maxSpeed: 15
-  oxygenDurationLoss: 10
+  oxygenDurationLoss: 0.1
   ventHeight: 5
   ventWidth: 1
   ventDuration: 5
