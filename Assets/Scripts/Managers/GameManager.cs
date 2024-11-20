@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject ipad;
     [SerializeField] GameObject playerCrosshair;
     [SerializeField] AudioSource endDive;
+    [SerializeField] bool unlockBonusLevel = false;
     CameraController cameraController;
     DiveManager diveManager;
     GameObject player;
@@ -47,6 +48,9 @@ public class GameManager : MonoBehaviour
 
         // Starting new dive
         if(diveManager.IsLastDive()) {
+            if(unlockBonusLevel) {
+                PlayerPrefs.SetInt("UnlockedBonusLevel", 1);
+            }
             endScreen.GetComponent<EndScreen>().EndOfLevel();
             ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
         }
