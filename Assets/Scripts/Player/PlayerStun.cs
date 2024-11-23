@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerStun : MonoBehaviour {
+    [SerializeField] float invincibilityDuration = 0.5f;
     [SerializeField] Renderer render;
     [SerializeField] Animator anim;
     [SerializeField] Color stunColor;
     public UnityEvent OnLoseOxygen = new UnityEvent();
+    float invincibilityTimer = 0;
     Color startColor;
     Oxygen oxygen;
     
@@ -25,19 +27,29 @@ public class PlayerStun : MonoBehaviour {
                 render.material.color = startColor;
             }
         }
+        invincibilityTimer = Mathf.Max(invincibilityTimer-Time.deltaTime, 0);
     }
 
     public bool IsStunned() {
         return timer > 0;
     }
+    public bool CanDamageOxygen() {
+        return invincibilityTimer <= 0;
+    }
+
     public void StunPlayer(float duration) {
-        render.material.color = stunColor;
-        timer = duration;
-        anim.SetTrigger("Hurt");
+        if (!IsStunned()) {
+            render.material.color = stunColor;
+            timer = duration;
+            anim.SetTrigger("Hurt");
+        }
     }
     public void ReduceOxygen(float amount) {
-        oxygen.ReduceOxygen(amount);
-        anim.SetTrigger("Hurt");
-        OnLoseOxygen.Invoke();
+        if (CanDamageOxygen()) {
+            oxygen.ReduceOxygen(amount);
+            invincibilityTimer = invincibilityDuration;
+            anim.SetTrigger("Hurt");
+            OnLoseOxygen.Invoke();
+        }
     }
 }
