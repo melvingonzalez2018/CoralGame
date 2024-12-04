@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 474983242210355545}
   - component: {fileID: 6295195104147326729}
   - component: {fileID: 9120575881782353567}
+  - component: {fileID: 7296817711312459616}
   m_Layer: 7
   m_Name: JuvenileCoral
   m_TagString: Untagged
@@ -398,9 +399,12 @@ MonoBehaviour:
     type: 3}
   adultCoralPrefab: {fileID: 3938738571435580911, guid: 112626f7eb7705f40bf0d74e83d22014,
     type: 3}
-  hammerTime: 3
+  coralPickup: {fileID: 4404696710948287012, guid: 53087ab219000c84985731369069bf95,
+    type: 3}
+  hammerTime: 4
   hammerPerClick: 1
   hammerTimer: 0
+  maxHammerAngleOffset: 1
 --- !u!136 &474983242210355545
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -538,6 +542,24 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7296817711312459616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689873980207742186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90319f702be2e145b3418c8deed04a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMag: 0.5
+  duration: 1
+  decay: 5
+  OnCompleteEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4014597111965731063
 GameObject:
   m_ObjectHideFlags: 0

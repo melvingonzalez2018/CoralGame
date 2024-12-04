@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: -8644633209254669382}
   - component: {fileID: 9169625165112664535}
   - component: {fileID: 1233076319120568312}
+  - component: {fileID: -5842063169843014955}
   m_Layer: 7
   m_Name: FragmentedCoral
   m_TagString: Untagged
@@ -225,6 +226,24 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-5842063169843014955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133843982912026339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90319f702be2e145b3418c8deed04a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMag: 0.5
+  duration: 1
+  decay: 5
+  OnCompleteEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9166752240077965070
 GameObject:
   m_ObjectHideFlags: 0

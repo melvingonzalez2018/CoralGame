@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 9134024014578921729}
   - component: {fileID: 2701689104471725867}
   - component: {fileID: 5024046797214135705}
+  - component: {fileID: 376242893631452847}
   m_Layer: 0
   m_Name: DiverModelPivot
   m_TagString: Untagged
@@ -651,6 +652,21 @@ MonoBehaviour:
   smoothRotateTo: {fileID: 2701689104471725867}
   targetTransform: {fileID: 9134024014578921729}
   yScaleMin: 0.3
+--- !u!114 &376242893631452847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436000295598957267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90319f702be2e145b3418c8deed04a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMag: 0.5
+  duration: 1
+  decay: 5
 --- !u!1001 &1524341452761789477
 PrefabInstance:
   m_ObjectHideFlags: 0
