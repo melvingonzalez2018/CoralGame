@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JuvenileCoral : Coral {
     [SerializeField] AudioSource hammerAudio;
@@ -10,7 +11,16 @@ public class JuvenileCoral : Coral {
     [SerializeField] public float hammerTime;
     [SerializeField] float hammerPerClick;
     [HideInInspector] public float hammerTimer = 0;
+    [SerializeField] float maxHammerAngleOffset = 1f;
     bool canInteract = true;
+    Vector3 offsetUp = Vector3.zero;
+
+
+    override protected void MyStart() {
+        if(IsOnReef() && !IsHammeredIn()) {
+            InitalizeRandomUp();
+        }
+    }
 
     public override void Interact() {
         if (area != null) {
@@ -64,15 +74,30 @@ public class JuvenileCoral : Coral {
 
     private void HammerUpdate() {
         if (!IsHammeredIn()) {
+            GetComponent<ScaleWobble>().ActivateWobble();
+
+            // Calculating and applying hammered up
+            float percent = hammerTimer / hammerTime;
+            transform.up = Vector3.Lerp(offsetUp, upDirectionOnSurface, percent);
+
             hammerTimer += hammerPerClick;
             hammerAudio.Stop();
             hammerAudio.Play();
             if (IsHammeredIn()) {
+                transform.up = upDirectionOnSurface;
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
             }
         }
     }
 
+    private void InitalizeRandomUp() {
+        // Initalizing a random up direction for hammering
+        Vector2 randomUnit = Random.insideUnitCircle.normalized * maxHammerAngleOffset;
+        Vector3 offset = Quaternion.FromToRotation(Vector3.up, upDirectionOnSurface.normalized) * new Vector3(randomUnit.x, 0, randomUnit.y);
+        Vector3 randomUp = (upDirectionOnSurface.normalized + offset).normalized;
+        offsetUp = randomUp;
+        transform.up = offsetUp;
+    }
     public void FullyHammerIn() {
         hammerTimer = hammerTime;
     }

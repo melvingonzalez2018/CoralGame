@@ -401,9 +401,10 @@ MonoBehaviour:
     type: 3}
   coralPickup: {fileID: 4404696710948287012, guid: 53087ab219000c84985731369069bf95,
     type: 3}
-  hammerTime: 3
+  hammerTime: 4
   hammerPerClick: 1
   hammerTimer: 0
+  maxHammerAngleOffset: 1
 --- !u!136 &474983242210355545
 CapsuleCollider:
   m_ObjectHideFlags: 0
