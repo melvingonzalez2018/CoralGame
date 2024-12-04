@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -55,8 +56,10 @@ public class PlayerInteract : MonoBehaviour
             }
 
             if(hit.collider.gameObject.TryGetComponent(out Trash trash)) {
-                trash.InteractHighlight();
-                interactText.SetText("Pick Up");
+                if (trash.Interactable()) {
+                    trash.InteractHighlight();
+                    interactText.SetText("Pick Up");
+                }
             }
 
             // Checking for placeable area

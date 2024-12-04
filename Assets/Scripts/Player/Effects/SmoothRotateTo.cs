@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SmoothRotateTo : MonoBehaviour
 {
-    [SerializeField] Transform affectedTransform;
+    [SerializeField] public Transform affectedTransform;
     [SerializeField] [Range(0f, 1f)] float smoothMag;
-    Vector3 targetDirection;
+    public Vector3 targetDirection;
 
     private void Update() {
         affectedTransform.forward = Vector3.Lerp(affectedTransform.forward, targetDirection, smoothMag);
