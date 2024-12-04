@@ -76,8 +76,8 @@ GameObject:
   - component: {fileID: 5276418492264556536}
   - component: {fileID: 6417744435579195570}
   - component: {fileID: 993866941117397616}
-  - component: {fileID: -8364721579638665741}
   - component: {fileID: -1682937904830789864}
+  - component: {fileID: 7947762378079849266}
   m_Layer: 7
   m_Name: JuvenileCoralPickup
   m_TagString: Untagged
@@ -111,10 +111,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 183
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -139,6 +139,9 @@ MonoBehaviour:
   scaleMag: 0.5
   duration: 1
   decay: 5
+  OnCompleteEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &993866941117397616
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,23 +169,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-8364721579638665741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4404696710948287012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0de5727d1d54b9546a2429cd7334b916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attractDelay: 1
-  initalForce: 1
-  initalTorque: 0.1
-  playerContactSound: {fileID: 8828595712044948236, guid: 4b31c74ef722fe448883d8c8310a32fa,
-    type: 3}
 --- !u!114 &-1682937904830789864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,10 +183,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destoryDist: 0.1
   acceleration: 5
-  initalSpeed: 1
+  initalSpeed: 2
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7947762378079849266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404696710948287012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42e0c2eee529fb4d8ee231dd8a67dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractDelay: 1
+  initalForce: 1
+  initalTorque: 0.25
+  playerContactSound: {fileID: 8828595712044948236, guid: 4b31c74ef722fe448883d8c8310a32fa,
+    type: 3}
 --- !u!1 &4701808068752097436
 GameObject:
   m_ObjectHideFlags: 0
