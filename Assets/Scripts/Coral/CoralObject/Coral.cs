@@ -16,6 +16,10 @@ public abstract class Coral : MonoBehaviour {
     private void Start() {
         SetAreaUpdate();
         outline = GetComponent<Outline>();
+
+        if(TryGetComponent<ScaleWobble>(out ScaleWobble wobble)) {
+            wobble.ActivateWobble();
+        }
     }
 
     private void LateUpdate() {
