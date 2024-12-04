@@ -6,9 +6,11 @@ public class JuvenileCoral : Coral {
     [SerializeField] AudioSource hammerAudio;
     [SerializeField] GameObject takeCoralOneShot;
     [SerializeField] GameObject adultCoralPrefab;
+    [SerializeField] GameObject coralPickup;
     [SerializeField] public float hammerTime;
     [SerializeField] float hammerPerClick;
     [HideInInspector] public float hammerTimer = 0;
+    bool canInteract = true;
 
     public override void Interact() {
         if (area != null) {
@@ -38,6 +40,9 @@ public class JuvenileCoral : Coral {
     }
 
     public override bool CanInteract() {
+        if(!canInteract) {
+            return false;
+        }
         if(area.areaType == AreaType.NURSERY) {
             return true;
         }
@@ -82,11 +87,19 @@ public class JuvenileCoral : Coral {
     }
 
     public void PickUp() {
-        FindObjectOfType<StatTracking>().IterateCoralPickup();
+        // Playing audio
         Instantiate(takeCoralOneShot, transform.position, Quaternion.identity); // Playing pickup audio
+
+        // Setting up coral pickup
+        GameObject coralPickupInstance = Instantiate(coralPickup, transform.position, transform.rotation); // Playing pickup audio
         int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
-        FindAnyObjectByType<CoralStorage>().AddJuvenile(new StoredCoralData(modelIndex));
+        coralPickupInstance.GetComponent<JuvenileCoralPickup>().InitalizeCoral(modelIndex);
+
+        // Reducing area amount 
         area.MinusCoralCount();
+
+        // Setting up Attraction
+        canInteract = false;
         Destroy(gameObject);
     }
 }
