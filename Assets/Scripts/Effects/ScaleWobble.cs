@@ -29,7 +29,9 @@ public class ScaleWobble : MonoBehaviour
             OnCompleteEffect.AddListener(onComplete);
         }
     }
-
+    public bool EffectActive() {
+        return effectActive;
+    }
     // Update is called once per frame
     void Update()
     {
