@@ -32,7 +32,7 @@ abstract public class CoralPickup : MonoBehaviour {
 
     public void StartAttract() {
         // Triggering attraction
-        attractTo.Activate(ContactPlayer);
+        attractTo.Activate(FindAnyObjectByType<PlayerMovementController>().gameObject, ContactPlayer);
 
         // Disabling contact with terrain
         rb.useGravity = false;

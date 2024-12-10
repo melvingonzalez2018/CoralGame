@@ -297,11 +297,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destoryDist: 0.1
-  acceleration: 4
-  initalSpeed: 3
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
+  acceleration: 4
+  initalSpeed: 3
+  maxTime: 0.5
 --- !u!1001 &1116967100054189951
 PrefabInstance:
   m_ObjectHideFlags: 0
