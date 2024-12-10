@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public struct StoredCoralData {
     public int modelIndex;
@@ -16,13 +17,19 @@ public class CoralStorage : MonoBehaviour {
     [SerializeField] GameObject juvenileCoralPrefab;
     [SerializeField] GameObject fragmentedCoralPrefab;
     public Queue<StoredCoralData> fragmentCoral = new Queue<StoredCoralData>();
+    public UnityEvent OnGainFragment = new UnityEvent();
+    public UnityEvent OnUseFragment = new UnityEvent();
     public Queue<StoredCoralData> juvenileCoral = new Queue<StoredCoralData>();
+    public UnityEvent OnGainJuvenile = new UnityEvent();
+    public UnityEvent OnUseJuvenile = new UnityEvent();
 
     public void AddJuvenile(StoredCoralData coralData) {
+        OnGainJuvenile.Invoke();
         juvenileCoral.Enqueue(coralData);
     }
 
     public void AddFragment(StoredCoralData coralData) {
+        OnGainFragment.Invoke();
         fragmentCoral.Enqueue(coralData);
     }
 
@@ -53,6 +60,7 @@ public class CoralStorage : MonoBehaviour {
                     Coral coral = currentCoral.GetComponent<Coral>();
                     coral.InitalizeOnArea(area, pos);
                     coral.GetComponentInChildren<CoralModel>().SetCoralVisual(coralData.modelIndex);
+                    OnUseJuvenile.Invoke();
                     return true;
                 }
                 break;
@@ -64,6 +72,7 @@ public class CoralStorage : MonoBehaviour {
                     Coral coral = currentCoral.GetComponent<Coral>();
                     coral.InitalizeOnArea(area, pos);
                     coral.GetComponentInChildren<CoralModel>().SetCoralVisual(coralData.modelIndex);
+                    OnUseFragment.Invoke();
                     return true;
                 }
                 break;
