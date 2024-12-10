@@ -123,7 +123,7 @@ public class PlayerInteract : MonoBehaviour
             if (hit.collider.gameObject.TryGetComponent(out Trash trash)) {
                 garbagePickup.Stop();
                 garbagePickup.Play();
-                trash.PickUpTrash();
+                trash.TrashClicked();
             }
         }
     }

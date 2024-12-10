@@ -14,14 +14,16 @@ public class ScaleWobble : MonoBehaviour
     Vector3 initalScale;
     bool effectActive = false;
     float timer = 0f;
+    float setPercentModification = 1f;
 
     private void Start() {
         initalScale = transform.localScale;
     }
 
-    public void ActivateWobble(UnityAction onComplete = null) {
+    public void ActivateWobble(UnityAction onComplete = null, float percentageModification = 1) {
         timer = 0f;
         effectActive = true;
+        setPercentModification = percentageModification;
 
         if (onComplete != null) {
             OnCompleteEffect.AddListener(onComplete);
@@ -34,7 +36,7 @@ public class ScaleWobble : MonoBehaviour
         if (effectActive) {
             // Timer + effective scale
             timer = Mathf.Min(duration, timer + Time.deltaTime);
-            float calcScale = scaleMag * decaySinWave(timer / duration);
+            float calcScale = scaleMag * decaySinWave(timer / duration) * setPercentModification;
             transform.localScale = new Vector3(initalScale.x + scaleMag * -calcScale, initalScale.y + scaleMag * calcScale, initalScale.z + scaleMag * -calcScale);
 
             if(timer >= duration) {
