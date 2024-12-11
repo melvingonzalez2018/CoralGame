@@ -13,6 +13,7 @@ public class CoralPutDown : CoralPickup {
     public override void PlaceCoral(int modelIndex, CoralPlaceableArea area, Vector3 pos) {
         GameObject currentCoral = Instantiate(coralPrefab);
         Coral coral = currentCoral.GetComponent<Coral>();
+        area.MinusCoralCount();
         coral.InitalizeOnArea(area, pos);
         coral.GetComponentInChildren<CoralModel>().SetCoralVisual(modelIndex);
     }
