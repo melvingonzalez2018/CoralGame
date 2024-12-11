@@ -15,7 +15,7 @@ public class Trash : MonoBehaviour {
     Outline outline;
     bool interactable = true;
     private void Start() {
-        outline = GetComponent<Outline>();
+        outline = GetComponentInChildren<Outline>();
     }
 
     private void TrashInteract() {
