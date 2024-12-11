@@ -39,7 +39,7 @@ public class HydroVentCollider : MonoBehaviour
     void OnTriggerStay(Collider collision) {
         if (collision.gameObject.tag == "Player" && movementController != null) {
             movementController.AddVelocity(currentForce * transform.up, maxSpeed);
-            playerStun.ReduceOxygen(oxygenDurationLoss);
+            playerStun.ReduceOxygen(oxygenDurationLoss, transform.position, false);
         }
     }
 }
