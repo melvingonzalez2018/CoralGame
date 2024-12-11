@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 6417744435579195570}
   - component: {fileID: 993866941117397616}
   - component: {fileID: -1682937904830789864}
-  - component: {fileID: 7947762378079849266}
+  - component: {fileID: -7143970141789860318}
   m_Layer: 7
   m_Name: JuvenileCoralPickup
   m_TagString: Untagged
@@ -187,32 +187,8 @@ MonoBehaviour:
       m_Calls: []
   acceleration: 5
   initalSpeed: 2
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: -1.8460473
-      outSlope: -1.8460473
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.03389831
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   maxTime: 0.5
---- !u!114 &7947762378079849266
+--- !u!114 &-7143970141789860318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
