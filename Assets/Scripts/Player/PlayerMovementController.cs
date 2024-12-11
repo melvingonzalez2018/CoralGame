@@ -7,7 +7,6 @@ public class PlayerMovementController : MonoBehaviour
     [Header("References")]
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerStun stun;
-    [SerializeField] PlayerAudio movementAudio;
     [SerializeField] SmoothRotateTo rotate;
     [SerializeField] Animator anim;
 
@@ -54,7 +53,6 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
         anim.SetFloat("InputMag", playerInput.magnitude);
-        movementAudio.IsSwimming(playerInput.magnitude > 0);
         controller.Move(currentVelocity * Time.deltaTime);
     }
 
