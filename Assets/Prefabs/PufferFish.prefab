@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenDamage: 10
+  stunDuration: 0.25
   playerTag: Player
   collisionCooldown: 2
   clips:
@@ -269,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durationMax: 1.5
-  scaleMag: 0.75
+  scaleMag: 0.5
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
