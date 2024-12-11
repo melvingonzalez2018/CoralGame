@@ -996,6 +996,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
         type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
       propertyPath: OnEndTransition.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 959366390649402899}
@@ -1003,17 +1013,47 @@ PrefabInstance:
         type: 3}
       propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8920070468286981938}
+      objectReference: {fileID: 8119764790228987806}
     - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
         type: 3}
       propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1938009814930081226}
+      objectReference: {fileID: 8920070468286981938}
     - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
         type: 3}
       propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 8119764790228987806}
+      objectReference: {fileID: 1938009814930081226}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartNewDive
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DiveManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 199228902565847286, guid: 5614a022c866644459a1b6a5b4f2a24d,
+        type: 3}
+      propertyPath: OnMidTransition.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1902727423463089611, guid: 5614a022c866644459a1b6a5b4f2a24d,
         type: 3}
       propertyPath: m_Color.a
