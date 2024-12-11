@@ -118,7 +118,11 @@ public class JuvenileCoral : Coral {
         // Setting up coral pickup
         GameObject coralPickupInstance = Instantiate(coralPickup, transform.position, transform.rotation); // Playing pickup audio
         int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
-        coralPickupInstance.GetComponent<JuvenileCoralPickup>().InitalizeCoral(modelIndex);
+
+        // Initalizing Pickup
+        JuvenileCoralPickup pickup = coralPickupInstance.GetComponent<JuvenileCoralPickup>();
+        pickup.InitalizeCoral(modelIndex);
+        pickup.AttractToPlayer();
 
         // Reducing area amount 
         area.MinusCoralCount();

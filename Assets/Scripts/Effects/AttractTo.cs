@@ -66,6 +66,7 @@ public class AttractTo : MonoBehaviour {
         // Time Based
         timer += Time.deltaTime;
         transform.position = Vector3.LerpUnclamped(initalPos, target.transform.position, OverShootIn(Mathf.Min(timer / maxTime, 1)));
+        transform.rotation = Quaternion.LerpUnclamped(transform.rotation, target.transform.rotation, OverShootIn(Mathf.Min(timer / maxTime, 1)));
     }
 
     public float OverShootIn(float x) {

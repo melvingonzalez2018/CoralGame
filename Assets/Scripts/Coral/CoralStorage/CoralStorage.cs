@@ -14,14 +14,21 @@ public struct StoredCoralData {
 
 
 public class CoralStorage : MonoBehaviour {
-    [SerializeField] GameObject juvenileCoralPrefab;
-    [SerializeField] GameObject fragmentedCoralPrefab;
+    [SerializeField] GameObject juvenilePutDown;
+    [SerializeField] GameObject fragmentPutDown;
+    [SerializeField] GameObject coralTarget;
     public Queue<StoredCoralData> fragmentCoral = new Queue<StoredCoralData>();
     public UnityEvent OnGainFragment = new UnityEvent();
     public UnityEvent OnUseFragment = new UnityEvent();
     public Queue<StoredCoralData> juvenileCoral = new Queue<StoredCoralData>();
     public UnityEvent OnGainJuvenile = new UnityEvent();
     public UnityEvent OnUseJuvenile = new UnityEvent();
+
+    GameObject player;
+
+    private void Start() {
+        player = FindObjectOfType<PlayerMovementController>().gameObject;
+    }
 
     public void AddJuvenile(StoredCoralData coralData) {
         OnGainJuvenile.Invoke();
@@ -56,10 +63,21 @@ public class CoralStorage : MonoBehaviour {
                 if (GetJuvenileCount() > 0) {
                     StoredCoralData coralData = juvenileCoral.Dequeue();
 
-                    GameObject currentCoral = Instantiate(juvenileCoralPrefab);
-                    Coral coral = currentCoral.GetComponent<Coral>();
-                    coral.InitalizeOnArea(area, pos);
-                    coral.GetComponentInChildren<CoralModel>().SetCoralVisual(coralData.modelIndex);
+                    // Setting up putdown pickup
+                    GameObject coralPickupInstance = Instantiate(juvenilePutDown, player.transform.position, player.transform.rotation);
+
+                    // Initalizing and positioning target
+                    area.FindClosestPoint(pos, out RaycastHit hit);
+                    GameObject coralPutDownTarget = Instantiate(coralTarget, pos, Quaternion.identity);
+                    coralPutDownTarget.GetComponent<CoralPutDownTarget>().SetArea(area);
+                    coralPutDownTarget.transform.up = hit.normal;
+
+                    // Initalizing Pickup
+                    CoralPutDown pickup = coralPickupInstance.GetComponent<CoralPutDown>();
+                    pickup.InitalizeCoral(coralData.modelIndex);
+                    pickup.AttractToPlacement(coralData.modelIndex, coralPutDownTarget);
+
+                    // Event Trigger
                     OnUseJuvenile.Invoke();
                     return true;
                 }
@@ -68,10 +86,22 @@ public class CoralStorage : MonoBehaviour {
                 if (GetFragmentCount() > 0) {
                     StoredCoralData coralData = fragmentCoral.Dequeue();
 
-                    GameObject currentCoral = Instantiate(fragmentedCoralPrefab);
-                    Coral coral = currentCoral.GetComponent<Coral>();
-                    coral.InitalizeOnArea(area, pos);
-                    coral.GetComponentInChildren<CoralModel>().SetCoralVisual(coralData.modelIndex);
+                    // Setting up putdown pickup
+                    GameObject coralPickupInstance = Instantiate(fragmentPutDown, player.transform.position, player.transform.rotation);
+
+                    // Initalizing and positioning target
+                    area.FindClosestPoint(pos, out RaycastHit hit);
+                    GameObject coralPutDownTarget = Instantiate(coralTarget, pos, Quaternion.identity);
+                    coralPutDownTarget.GetComponent<CoralPutDownTarget>().SetArea(area);
+                    coralPutDownTarget.transform.up = hit.normal;
+                    
+
+                    // Initalizing Pickup
+                    CoralPutDown pickup = coralPickupInstance.GetComponent<CoralPutDown>();
+                    pickup.InitalizeCoral(coralData.modelIndex);
+                    pickup.AttractToPlacement(coralData.modelIndex, coralPutDownTarget);
+
+                    // Event Trigger
                     OnUseFragment.Invoke();
                     return true;
                 }

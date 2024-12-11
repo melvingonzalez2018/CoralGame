@@ -10,4 +10,7 @@ public class FragmentCoralPickup : CoralPickup {
         FindAnyObjectByType<CoralStorage>().AddFragment(new StoredCoralData(modelIndex));
         FindObjectOfType<StatTracking>().IterateCoralPickup();
     }
+    public override void PlaceCoral(int modelIndex, CoralPlaceableArea area, Vector3 pos) {
+        return; // no implementation
+    }
 }
