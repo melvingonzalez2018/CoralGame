@@ -36,8 +36,6 @@ public abstract class Coral : MonoBehaviour {
     public void InteractHighlight() {
         highlightTimer = Time.deltaTime;
         outline.enabled = true;
-        outline.LoadSmoothNormals();
-        outline.UpdateMaterialProperties();
     }
 
     private void SetAreaUpdate() {

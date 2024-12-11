@@ -21,7 +21,7 @@ public class Oxygen : MonoBehaviour
     }
 
     private void KillOxygen() {
-        ReduceOxygen(float.MaxValue);
+        ReduceOxygen(float.MaxValue/2);
     }
 
     public void StartTime() {

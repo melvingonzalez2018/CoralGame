@@ -13,6 +13,7 @@ public class SmoothRotateTo : MonoBehaviour
     }
 
     public void SetTargetDirection(Vector3 target) {
+        if(target == Vector3.zero) return;
         targetDirection = target;
     }
 }

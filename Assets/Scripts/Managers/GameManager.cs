@@ -52,12 +52,11 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("UnlockedBonusLevel", 1);
             }
             endScreen.GetComponent<EndScreen>().EndOfLevel();
-            ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
         }
         else {
             endScreen.GetComponent<EndScreen>().EndOfDive();
-            ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
         }
+        ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
     }
 
     private void SetPlayerEnable(bool value) {
