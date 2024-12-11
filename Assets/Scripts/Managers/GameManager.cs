@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartDive() {
-        Debug.Log("start dive");
         SetPlayerEnable(true);
         FindObjectOfType<Oxygen>().StartTime();
         foreach (WaterCurrents current in waterCurrents) {
