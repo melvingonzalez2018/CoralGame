@@ -10,12 +10,14 @@ public class Trash : MonoBehaviour {
     AttractTo attractTo;
     Rigidbody rb;
     Collider collider;
+    ParticleSystem bubbleBurst;
 
     float highlightTimer;
     Outline outline;
     bool interactable = true;
     private void Start() {
         outline = GetComponentInChildren<Outline>();
+        bubbleBurst = GetComponentInChildren<ParticleSystem>();
     }
 
     private void TrashInteract() {
@@ -33,6 +35,8 @@ public class Trash : MonoBehaviour {
     public void TrashClicked() {
         if (interactable) {
             TrashInteract();
+            interactable = false;
+            bubbleBurst.Play();
 
             // Random upward force
             Vector2 offset = Random.insideUnitCircle.normalized;

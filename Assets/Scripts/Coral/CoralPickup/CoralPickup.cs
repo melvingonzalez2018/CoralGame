@@ -7,6 +7,7 @@ abstract public class CoralPickup : MonoBehaviour {
     [SerializeField] float initalForce = 1f;
     [SerializeField] float initalTorque = 1f;
     [SerializeField] GameObject playerContactSound;
+    ParticleSystem bubbleBurst;
     AttractTo attractTo;
     Rigidbody rb;
     Collider collider;
@@ -21,6 +22,8 @@ abstract public class CoralPickup : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         attractTo = GetComponent<AttractTo>();
+        bubbleBurst = GetComponentInChildren<ParticleSystem>();
+        bubbleBurst.Play();
 
         // Initalizing coral model
         GetComponentInChildren<CoralModel>().SetCoralVisual(modelIndex);

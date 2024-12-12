@@ -86,6 +86,7 @@ public class JuvenileCoral : Coral {
             if (IsHammeredIn()) {
                 transform.up = upDirectionOnSurface;
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
+                bubbleBurst.Play();
             }
         }
     }

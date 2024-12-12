@@ -31,6 +31,7 @@ public class AdultCoral : Coral
 
             // Adjusting variables
             fragmentAvailable = false;
+            bubbleBurst.Play();
         }
     }
 
