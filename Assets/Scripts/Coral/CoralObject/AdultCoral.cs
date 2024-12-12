@@ -9,7 +9,6 @@ public class AdultCoral : Coral
     bool fragmentAvailable = true;
 
     public bool GetFragmentAvailable() {
-        Debug.Log("test");
         return fragmentAvailable;
     }
 

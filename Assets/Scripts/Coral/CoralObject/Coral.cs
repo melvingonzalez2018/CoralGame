@@ -17,12 +17,14 @@ public abstract class Coral : MonoBehaviour {
 
     virtual protected void MyStart() { }
 
-    private void Start() {
-        SetAreaUpdate();
+    private void Awake() {
         outline = GetComponentInChildren<Outline>();
         bubbleBurst = GetComponentInChildren<ParticleSystem>();
+    }
 
-        if(TryGetComponent<ScaleWobble>(out ScaleWobble wobble)) {
+    private void Start() {
+        SetAreaUpdate();
+        if (TryGetComponent<ScaleWobble>(out ScaleWobble wobble)) {
             wobble.ActivateWobble();
         }
         MyStart();
@@ -77,6 +79,7 @@ public abstract class Coral : MonoBehaviour {
             }
             area = newArea;
             area.AddCoralCount();
+            bubbleBurst.Play();
             upDirectionOnSurface = transform.up;
         }
     }

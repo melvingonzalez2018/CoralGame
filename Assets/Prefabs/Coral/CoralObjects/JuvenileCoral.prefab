@@ -343,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultStick: 1
   area: {fileID: 0}
+  bubbleBurst: {fileID: 0}
   hammerAudio: {fileID: 6295195104147326729}
   takeCoralOneShot: {fileID: 8828595712044948236, guid: f3ae81e890368d9408966d281549e76e,
     type: 3}
@@ -796,17 +797,17 @@ PrefabInstance:
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.639999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}

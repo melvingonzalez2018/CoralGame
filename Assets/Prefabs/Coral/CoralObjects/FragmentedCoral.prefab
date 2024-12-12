@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultStick: 1
   area: {fileID: 0}
+  bubbleBurst: {fileID: 0}
   juvenileCoralPrefab: {fileID: 3689873980207742186, guid: 62866b7fc225072488987e68bdf805af,
     type: 3}
 --- !u!136 &9169625165112664535
@@ -512,17 +513,17 @@ PrefabInstance:
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 7d8c803dadb77814880922be999e1042,
         type: 3}
