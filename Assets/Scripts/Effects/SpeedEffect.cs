@@ -42,11 +42,11 @@ public class SpeedEffect : MonoBehaviour {
             // Applying effect
             float ratio = timer / durationMax;
             if (ratio < 0.5f) {
-                //linearFollowPath.SetSpeed(Mathf.LerpUnclamped(initalSpeed, initalSpeed * (1+scaleMag), EaseOutExpo(Mathf.Min(ratio * 2, 1))));
+                linearFollowPath.SetSpeed(Mathf.LerpUnclamped(initalSpeed, initalSpeed * (1+scaleMag), EaseOutExpo(Mathf.Min(ratio * 2, 1))));
                 animator.speed = Mathf.LerpUnclamped(1, 1 * (1 + scaleMag), EaseOutExpo(Mathf.Min(ratio * 2, 1)));
             }
             else {
-                //linearFollowPath.SetSpeed(Mathf.LerpUnclamped(initalSpeed * (1+scaleMag), initalSpeed, EaseInExpo(Mathf.Min(ratio * 2 - 0.5f, 1))));
+                linearFollowPath.SetSpeed(Mathf.LerpUnclamped(initalSpeed * (1+scaleMag), initalSpeed, EaseInExpo(Mathf.Min(ratio * 2 - 0.5f, 1))));
                 animator.speed = Mathf.LerpUnclamped(1 * (1 + scaleMag), 1, EaseOutExpo(Mathf.Min(ratio * 2, 1)));
             }
 
