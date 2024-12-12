@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,12 +13,14 @@ public class PlayerStun : MonoBehaviour {
     float invincibilityTimer = 0;
     Color startColor;
     Oxygen oxygen;
+    PlayerMovementController playerMovementController;
     
     float timer = 0;
 
     private void Start() {
         startColor = render.material.color;
         oxygen = FindObjectOfType<Oxygen>();
+        playerMovementController = FindAnyObjectByType<PlayerMovementController>();
     }
 
     private void Update() {
@@ -44,12 +47,18 @@ public class PlayerStun : MonoBehaviour {
             anim.SetTrigger("Hurt");
         }
     }
-    public void ReduceOxygen(float amount) {
+    public void ReduceOxygen(float amount, Vector3 sourcePos, bool knockBack) {
         if (CanDamageOxygen()) {
             oxygen.ReduceOxygen(amount);
             invincibilityTimer = invincibilityDuration;
             anim.SetTrigger("Hurt");
             OnLoseOxygen.Invoke();
+            if (knockBack) {
+                playerMovementController.KnockBack(sourcePos);
+            }
         }
+    }
+    public void KnockBack(Vector3 sourcePos) {
+        playerMovementController.KnockBack(sourcePos);
     }
 }

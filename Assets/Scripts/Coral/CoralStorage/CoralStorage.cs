@@ -77,6 +77,8 @@ public class CoralStorage : MonoBehaviour {
                     pickup.InitalizeCoral(coralData.modelIndex);
                     pickup.AttractToPlacement(coralData.modelIndex, coralPutDownTarget);
 
+                    area.AddCoralCount();
+
                     // Event Trigger
                     OnUseJuvenile.Invoke();
                     return true;
@@ -100,6 +102,8 @@ public class CoralStorage : MonoBehaviour {
                     CoralPutDown pickup = coralPickupInstance.GetComponent<CoralPutDown>();
                     pickup.InitalizeCoral(coralData.modelIndex);
                     pickup.AttractToPlacement(coralData.modelIndex, coralPutDownTarget);
+                    
+                    area.AddCoralCount();
 
                     // Event Trigger
                     OnUseFragment.Invoke();

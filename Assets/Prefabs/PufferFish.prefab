@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3189160716048297087}
   - component: {fileID: 8581535843365017260}
   - component: {fileID: 7466145569973577337}
+  - component: {fileID: 8762930374732146786}
   m_Layer: 0
   m_Name: PufferFish
   m_TagString: Untagged
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenDamage: 10
+  stunDuration: 0.25
   playerTag: Player
   collisionCooldown: 2
   clips:
@@ -255,6 +257,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8762930374732146786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782461118951492605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e132be0aae6d2947a3a602299ac0ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationMax: 1.5
+  scaleMag: 0.5
+  OnCompleteEffect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8619843378687980005
 GameObject:
   m_ObjectHideFlags: 0

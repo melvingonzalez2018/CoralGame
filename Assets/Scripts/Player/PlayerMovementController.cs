@@ -18,6 +18,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] public float gravityAccel;
     [SerializeField] public float maxFallSpeed;
     [SerializeField] public float friction;
+    [SerializeField] public float knockBackForce = 3f;
 
     [SerializeField] bool miniGameMode = false;
     Vector3 currentVelocity;
@@ -63,6 +64,11 @@ public class PlayerMovementController : MonoBehaviour
         speedLimit = Mathf.Max(currentVelocity.magnitude, speedLimit);
         currentVelocity += velocity;
         currentVelocity = Vector3.ClampMagnitude(currentVelocity, speedLimit);
+    }
+
+    public void KnockBack(Vector3 sourcePos) {
+        Vector3 diff = transform.position - sourcePos;
+        currentVelocity = diff.normalized * knockBackForce;
     }
 
     private void PhysicsUpdate() {

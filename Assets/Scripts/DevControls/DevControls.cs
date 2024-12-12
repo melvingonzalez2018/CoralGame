@@ -17,7 +17,7 @@ public class DevControls : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.R)) {
-            ipad.SetTrigger("TransitionIn");
+            //ipad.SetTrigger("TransitionIn");
             storage.AddFragment(new StoredCoralData(0));
             storage.AddJuvenile(new StoredCoralData(0));
         }

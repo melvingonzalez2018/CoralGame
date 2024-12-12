@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class PufferFish : MonoBehaviour
 {
     [SerializeField] float oxygenDamage; // The reduction in oxygen on collision
+    [SerializeField] float stunDuration = 0.25f;
     [SerializeField] string playerTag;
     [SerializeField] float collisionCooldown;
     [SerializeField] List<AudioClip> clips;
@@ -12,9 +13,11 @@ public class PufferFish : MonoBehaviour
     [HideInInspector] public UnityEvent OnCollide = new UnityEvent();
     float collisionTimer = 0;
     PlayerStun playerStun;
+    ScaleWobblePuff puffEffect;
 
     private void Start() {
         playerStun = FindObjectOfType<PlayerStun>();
+        puffEffect = GetComponent<ScaleWobblePuff>();
     }
     private void Update() {
         collisionTimer = Mathf.Min(collisionTimer+Time.deltaTime, collisionCooldown);
@@ -23,7 +26,8 @@ public class PufferFish : MonoBehaviour
         if(playerStun != null && collisionTimer >= collisionCooldown) {
             FindObjectOfType<StatTracking>().IteratePufferCollision();
             PlayPop();
-            playerStun.ReduceOxygen(oxygenDamage);
+            playerStun.ReduceOxygen(oxygenDamage, transform.position, true);
+            playerStun.StunPlayer(stunDuration); // Breif stun preventing the player from inputting and distrupting knockback
             collisionTimer = 0f;
         }
     }
@@ -37,6 +41,9 @@ public class PufferFish : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == playerTag) {
             ReduceOxygen();
+            if (!puffEffect.IsActive()) {
+                puffEffect.ActivateEffect();
+            }
         }
     }
 }

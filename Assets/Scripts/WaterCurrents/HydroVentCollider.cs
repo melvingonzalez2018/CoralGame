@@ -8,6 +8,7 @@ public class HydroVentCollider : MonoBehaviour
     [SerializeField] CapsuleCollider col;
     PlayerMovementController movementController;
     PlayerStun playerStun;
+    AudioSource hitSound;
     float currentForce;
     float maxSpeed;
     float oxygenDurationLoss;
@@ -15,6 +16,7 @@ public class HydroVentCollider : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        hitSound = GetComponent<AudioSource>();
         movementController = FindObjectOfType<PlayerMovementController>();
         playerStun = FindObjectOfType<PlayerStun>();
     }
@@ -39,7 +41,10 @@ public class HydroVentCollider : MonoBehaviour
     void OnTriggerStay(Collider collision) {
         if (collision.gameObject.tag == "Player" && movementController != null) {
             movementController.AddVelocity(currentForce * transform.up, maxSpeed);
-            playerStun.ReduceOxygen(oxygenDurationLoss);
+            playerStun.ReduceOxygen(oxygenDurationLoss, transform.position, false);
+            if(!hitSound.isPlaying) {
+                hitSound.Play();
+            }
         }
     }
 }

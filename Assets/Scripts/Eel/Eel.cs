@@ -8,8 +8,13 @@ public class Eel : MonoBehaviour {
     [SerializeField] float collisionCooldown;
     float collisionTimer = 0;
     AudioSource zapAudio;
+    SpeedEffect speedEffect;
+    ScaleWobblePuff scaleWobblePuff;
+
     private void Start() {
         zapAudio = GetComponent<AudioSource>();
+        speedEffect = GetComponent<SpeedEffect>();
+        scaleWobblePuff = GetComponent<ScaleWobblePuff>();
     }
 
     private void Update() {
@@ -18,7 +23,8 @@ public class Eel : MonoBehaviour {
     public void StunPlayer(PlayerStun playerStun) {
         if (collisionTimer >= collisionCooldown) {
             FindObjectOfType<StatTracking>().IterateEelCollision();
-            playerStun.StunPlayer(stunDuration);
+            playerStun.StunPlayer(stunDuration); // Stun effect
+            playerStun.KnockBack(transform.position); // For the sake of knockback
             collisionTimer = 0f;
         }
     }
@@ -30,6 +36,12 @@ public class Eel : MonoBehaviour {
                 zapAudio.Stop();
                 zapAudio.Play();
                 StunPlayer(playerStun);
+                if (!speedEffect.IsActive()) {
+                    speedEffect.ActivateEffect();
+                }
+                if (!scaleWobblePuff.IsActive()) {
+                    scaleWobblePuff.ActivateEffect();
+                }
             }
         }
     }
