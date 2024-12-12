@@ -9,6 +9,7 @@ public class AdultCoral : Coral
     bool fragmentAvailable = true;
 
     public bool GetFragmentAvailable() {
+        Debug.Log("test");
         return fragmentAvailable;
     }
 
@@ -31,6 +32,7 @@ public class AdultCoral : Coral
 
             // Adjusting variables
             fragmentAvailable = false;
+            bubbleBurst.Play();
         }
     }
 
