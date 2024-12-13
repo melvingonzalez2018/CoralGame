@@ -38,7 +38,7 @@ public class ScaleWobblePuff : MonoBehaviour {
                 transform.localScale = Vector3.LerpUnclamped(intialScale, intialScale + (Vector3.one * scaleMag), EaseOutElastic(Mathf.Min(ratio*2, 1)));
             }
             else {
-                transform.localScale = Vector3.LerpUnclamped(intialScale + (Vector3.one * scaleMag), intialScale, EaseInElastic(Mathf.Min(ratio*2-0.5f, 1)));
+                transform.localScale = Vector3.LerpUnclamped(intialScale + (Vector3.one * scaleMag), intialScale, EaseInOvershoot(Mathf.Min(ratio*2-0.5f, 1)));
             }
 
             // Ending effect
@@ -58,11 +58,10 @@ public class ScaleWobblePuff : MonoBehaviour {
             : Mathf.Pow(2, -10 * x) * Mathf.Sin((x* 10f - 0.75f) * c4) + 1;
     }
 
-    float EaseInElastic(float x) {
-        float c4 = (2 * Mathf.PI) / 3;
+    float EaseInOvershoot(float x) {
+        float c1 = 1.70158f;
+        float c3 = c1 + 1f;
 
-        return x == 0f ? 0
-            : x == 1f ? 1
-            : -Mathf.Pow(2, 10 * x - 10) * Mathf.Sin((x * 10f - 10.75f) * c4);
+        return c3 * x * x * x - c1 * x * x;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerStun : MonoBehaviour {
     [SerializeField] float invincibilityDuration = 0.5f;
+    [SerializeField] float takeDamageStunDefault = 0.15f;
     [SerializeField] Renderer render;
     [SerializeField] Animator anim;
     [SerializeField] Color stunColor;
@@ -53,6 +54,7 @@ public class PlayerStun : MonoBehaviour {
             invincibilityTimer = invincibilityDuration;
             anim.SetTrigger("Hurt");
             OnLoseOxygen.Invoke();
+            StunPlayer(takeDamageStunDefault);
             if (knockBack) {
                 playerMovementController.KnockBack(sourcePos);
             }
