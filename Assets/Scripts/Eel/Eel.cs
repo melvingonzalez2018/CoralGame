@@ -10,11 +10,13 @@ public class Eel : MonoBehaviour {
     AudioSource zapAudio;
     SpeedEffect speedEffect;
     ScaleWobblePuff scaleWobblePuff;
+    ParticleSystem electricBurst;
 
     private void Start() {
         zapAudio = GetComponent<AudioSource>();
         speedEffect = GetComponent<SpeedEffect>();
         scaleWobblePuff = GetComponent<ScaleWobblePuff>();
+        electricBurst = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update() {
@@ -38,6 +40,7 @@ public class Eel : MonoBehaviour {
                 StunPlayer(playerStun);
                 if (!speedEffect.IsActive()) {
                     speedEffect.ActivateEffect();
+                    electricBurst.Play();
                 }
                 if (!scaleWobblePuff.IsActive()) {
                     scaleWobblePuff.ActivateEffect();

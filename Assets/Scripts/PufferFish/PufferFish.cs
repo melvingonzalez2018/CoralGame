@@ -14,10 +14,12 @@ public class PufferFish : MonoBehaviour
     float collisionTimer = 0;
     PlayerStun playerStun;
     ScaleWobblePuff puffEffect;
+    ParticleSystem bubbleEffect;
 
     private void Start() {
         playerStun = FindObjectOfType<PlayerStun>();
         puffEffect = GetComponent<ScaleWobblePuff>();
+        bubbleEffect = GetComponentInChildren<ParticleSystem>();
     }
     private void Update() {
         collisionTimer = Mathf.Min(collisionTimer+Time.deltaTime, collisionCooldown);
@@ -27,7 +29,6 @@ public class PufferFish : MonoBehaviour
             FindObjectOfType<StatTracking>().IteratePufferCollision();
             PlayPop();
             playerStun.ReduceOxygen(oxygenDamage, transform.position, true);
-            playerStun.StunPlayer(stunDuration); // Breif stun preventing the player from inputting and distrupting knockback
             collisionTimer = 0f;
         }
     }
@@ -43,6 +44,7 @@ public class PufferFish : MonoBehaviour
             ReduceOxygen();
             if (!puffEffect.IsActive()) {
                 puffEffect.ActivateEffect();
+                bubbleEffect.Play();
             }
         }
     }

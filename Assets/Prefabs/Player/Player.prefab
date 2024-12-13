@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityDuration: 0.5
+  takeDamageStunDefault: 0.25
   render: {fileID: 3658171238383925359}
   anim: {fileID: 1882949988266270038}
   stunColor: {r: 0.3735848, g: 0.3735848, b: 0.3735848, a: 1}
@@ -1378,17 +1379,17 @@ PrefabInstance:
     - target: {fileID: 1447906723244758343, guid: 81eac36cf3f03c743b94d5a7d69aa0d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 81eac36cf3f03c743b94d5a7d69aa0d7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1650001
+      value: 0.558
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 81eac36cf3f03c743b94d5a7d69aa0d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06700003
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 1447906723244758343, guid: 81eac36cf3f03c743b94d5a7d69aa0d7,
         type: 3}
