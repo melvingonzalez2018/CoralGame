@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject playerCrosshair;
     [SerializeField] AudioSource endDive;
     [SerializeField] bool unlockBonusLevel = false;
+
+    [Header("Cursor")]
+    [SerializeField] Texture2D mouseTex;
+    [SerializeField] Vector2 hotspot;
+
     CameraController cameraController;
     DiveManager diveManager;
     GameObject player;
@@ -68,6 +73,7 @@ public class GameManager : MonoBehaviour
         if (!value) {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.SetCursor(mouseTex, hotspot, CursorMode.Auto);
         }
         else {
             Cursor.visible = false;

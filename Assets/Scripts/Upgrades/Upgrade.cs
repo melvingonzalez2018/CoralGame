@@ -11,14 +11,13 @@ public abstract class Upgrade : MonoBehaviour
     UpgradeDisplayManager upgradeDisplayManager;
 
     private void Start() {
+        upgradeDisplayManager = FindObjectOfType<UpgradeDisplayManager>(true);
         diveManager = FindObjectOfType<DiveManager>();
 
         if(diveNumber < diveManager.numberOfDives) {
             diveManager.OnStartDiveEvents[diveNumber].AddListener(UpgradeTrigger);
             diveManager.OnStartDiveEvents[diveNumber].AddListener(CreateUpgradeDisplay);
         }
-
-        upgradeDisplayManager = FindObjectOfType<UpgradeDisplayManager>();
     }
 
     private void CreateUpgradeDisplay() {
