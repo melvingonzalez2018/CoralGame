@@ -13,12 +13,14 @@ public class PufferFish : MonoBehaviour
     [HideInInspector] public UnityEvent OnCollide = new UnityEvent();
     float collisionTimer = 0;
     PlayerStun playerStun;
-    ScaleWobblePuff puffEffect;
+    ScaleWobble puffEffect;
+    SpeedEffect speedEffect;
     ParticleSystem bubbleEffect;
 
     private void Start() {
         playerStun = FindObjectOfType<PlayerStun>();
-        puffEffect = GetComponent<ScaleWobblePuff>();
+        puffEffect = GetComponent<ScaleWobble>();
+        speedEffect = GetComponent<SpeedEffect>();
         bubbleEffect = GetComponentInChildren<ParticleSystem>();
     }
     private void Update() {
@@ -42,9 +44,12 @@ public class PufferFish : MonoBehaviour
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == playerTag) {
             ReduceOxygen();
-            if (!puffEffect.IsActive()) {
-                puffEffect.ActivateEffect();
+            if (!puffEffect.EffectActive()) {
+                puffEffect.ActivateWobble();
                 bubbleEffect.Play();
+            }
+            if(!speedEffect.IsActive()) {
+                speedEffect.ActivateEffect();
             }
         }
     }

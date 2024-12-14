@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: 3189160716048297087}
   - component: {fileID: 8581535843365017260}
   - component: {fileID: 7466145569973577337}
-  - component: {fileID: 8762930374732146786}
+  - component: {fileID: 3122960315965590058}
+  - component: {fileID: 8795736005100260466}
   m_Layer: 0
   m_Name: PufferFish
   m_TagString: Untagged
@@ -258,7 +259,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8762930374732146786
+--- !u!114 &3122960315965590058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,11 +268,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 6782461118951492605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e132be0aae6d2947a3a602299ac0ecf, type: 3}
+  m_Script: {fileID: 11500000, guid: c90319f702be2e145b3418c8deed04a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationMax: 1.5
-  scaleMag: 0.5
+  scaleMag: 0.75
+  duration: 1
+  decay: 5
+  OnCompleteEffect:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8795736005100260466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782461118951492605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f8897633ce34a46bb12ba6941d4fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationMax: 2
+  scaleMag: 2
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []

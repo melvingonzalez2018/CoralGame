@@ -9,13 +9,13 @@ public class Eel : MonoBehaviour {
     float collisionTimer = 0;
     AudioSource zapAudio;
     SpeedEffect speedEffect;
-    ScaleWobblePuff scaleWobblePuff;
+    ScaleWobble scaleWobblePuff;
     ParticleSystem electricBurst;
 
     private void Start() {
         zapAudio = GetComponent<AudioSource>();
         speedEffect = GetComponent<SpeedEffect>();
-        scaleWobblePuff = GetComponent<ScaleWobblePuff>();
+        scaleWobblePuff = GetComponent<ScaleWobble>();
         electricBurst = GetComponentInChildren<ParticleSystem>();
     }
 
@@ -42,8 +42,8 @@ public class Eel : MonoBehaviour {
                     speedEffect.ActivateEffect();
                     electricBurst.Play();
                 }
-                if (!scaleWobblePuff.IsActive()) {
-                    scaleWobblePuff.ActivateEffect();
+                if (!scaleWobblePuff.EffectActive()) {
+                    scaleWobblePuff.ActivateWobble();
                 }
             }
         }

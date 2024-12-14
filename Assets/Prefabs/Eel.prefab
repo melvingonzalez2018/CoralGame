@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 7929027318169029143}
   - component: {fileID: 5704903632881506425}
   - component: {fileID: 9066391803753544676}
-  - component: {fileID: 5858916667232472857}
+  - component: {fileID: 910188889456817621}
   m_Layer: 0
   m_Name: Eel
   m_TagString: Untagged
@@ -390,7 +390,7 @@ MonoBehaviour:
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5858916667232472857
+--- !u!114 &910188889456817621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,11 +399,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3884155240790581674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e132be0aae6d2947a3a602299ac0ecf, type: 3}
+  m_Script: {fileID: 11500000, guid: c90319f702be2e145b3418c8deed04a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationMax: 0.5
-  scaleMag: 0.25
+  scaleMag: 0.5
+  duration: 1
+  decay: 5
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
