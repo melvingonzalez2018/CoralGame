@@ -42,8 +42,8 @@ public class JuvenileCoral : Coral {
         if(IsOnReef() && IsHammeredIn()) {
             FindObjectOfType<StatTracking>().IterateCoralGrown();
 
-            GameObject currentCoral = Instantiate(adultCoralPrefab, transform.position, Quaternion.identity);
-            //currentCoral.GetComponent<Coral>().InitalizeOnArea(area, transform.position); // Setting area
+            GameObject currentCoral = Instantiate(adultCoralPrefab, transform.position, transform.rotation);
+            currentCoral.GetComponentInChildren<CoralModel>().SetCoralVisual(GetComponentInChildren<CoralModel>().currentVisualIndex); // Setting coral visual
             area.MinusCoralCount();
             Destroy(gameObject);
         }
@@ -86,6 +86,7 @@ public class JuvenileCoral : Coral {
             if (IsHammeredIn()) {
                 transform.up = upDirectionOnSurface;
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
+                bubbleBurst.Play();
             }
         }
     }
@@ -118,7 +119,11 @@ public class JuvenileCoral : Coral {
         // Setting up coral pickup
         GameObject coralPickupInstance = Instantiate(coralPickup, transform.position, transform.rotation); // Playing pickup audio
         int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
-        coralPickupInstance.GetComponent<JuvenileCoralPickup>().InitalizeCoral(modelIndex);
+
+        // Initalizing Pickup
+        JuvenileCoralPickup pickup = coralPickupInstance.GetComponent<JuvenileCoralPickup>();
+        pickup.InitalizeCoral(modelIndex);
+        pickup.AttractToPlayer();
 
         // Reducing area amount 
         area.MinusCoralCount();

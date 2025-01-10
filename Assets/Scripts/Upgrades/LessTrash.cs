@@ -17,7 +17,7 @@ public class LessTrash : Upgrade
 
         for(int i = 0; i < amount; i++) {
             trash = FindObjectsOfType<Trash>();
-            trash[Mathf.FloorToInt(Random.value * trash.Length)].PickUpTrash(); // picking up random trash
+            trash[Mathf.FloorToInt(Random.value * trash.Length)].ContactPlayer(); // picking up random trash
         }
     }
 }

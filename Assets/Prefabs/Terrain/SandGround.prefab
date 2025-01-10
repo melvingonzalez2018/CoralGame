@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7503827343584241653}
   - component: {fileID: 5214091220067077749}
   - component: {fileID: 2976928636068116994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4683855056282261477}
   - component: {fileID: 8348432221741680214}
   - component: {fileID: 8232025666538669607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8089801546441256343}
   - component: {fileID: 1994642936141676089}
   - component: {fileID: 8870760604103801572}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3152881638343927048}
   - component: {fileID: 8034508930036494613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 3548883966036341556}
   - component: {fileID: 8271796869906269295}
   - component: {fileID: 6114457417621735004}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3924629864078114971}
   - component: {fileID: 3777768360723506425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 0,-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,11 +464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: 0
     z: -1
-  distance: 1
+  distance: 0
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 8034508930036494613}
@@ -5157,7 +5157,7 @@ GameObject:
   - component: {fileID: 7425014833154945703}
   - component: {fileID: 5496682224906082836}
   - component: {fileID: 5916676742703227656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5249,7 +5249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7616597116312919694}
   - component: {fileID: 8662276571359677950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SandGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5287,22 +5287,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2233139025001918732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c503e08679b9d8d408f0a3e55874ae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000, guid: edfc8cc3e84e1f941b38b46cf8e979ec, type: 2}
   guiOpenObjectSelector: 0
-  guiTiles: 0
+  guiTiles: 1
   tiles:
     allowMove: 1
+    generateLimited: 1
+    generateCenter:
+      x: 0
+      z: 0
     generateInfinite: 1
     generateRange: 2
     retainMargin: 1
     genAroundMainCam: 1
     genAroundObjsTag: 0
     genAroundTag: 
+    genAroundCoordinate: 0
+    genCoordinate:
+      x: 0
+      z: 0
     serializedTiles:
     - {fileID: 562721027525330180}
     - {fileID: 2021260092605199826}
@@ -5421,6 +5429,7 @@ MonoBehaviour:
     microSplatApplyType: 0
     useCustomControlTextures: 0
     microSplatNormals: 0
+    microSplatTexArrConfig: {fileID: 0}
     megaSplatTexList: {fileID: 0}
     vegetationPackage: {fileID: 0}
     assignComponent: 0
@@ -5429,7 +5438,7 @@ MonoBehaviour:
     sourceMultiPackageVsProTagName: 
   guiSettings: 0
   guiTileSettings: 1
-  guiOutputsSettings: 0
+  guiOutputsSettings: 1
   guiExposedVariables: 0
   guiTerrainSettings: 1
   guiDraftSettings: 0
@@ -5459,7 +5468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3811438705629828733}
   - component: {fileID: 864796520400698618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 0,1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5496,11 +5505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: 0
     z: 1
-  distance: 2.3333333
+  distance: 2
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 6942251574441232743}
@@ -10188,7 +10197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866524825582339954}
   - component: {fileID: 7027843961387595756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 1,-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10225,11 +10234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: 1
     z: -1
-  distance: 2
+  distance: 1
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 3505327875627957029}
@@ -14917,7 +14926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3766337377171187792}
   - component: {fileID: 3505327875627957029}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14962,7 +14971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670138166137830299}
   - component: {fileID: 1138126223823803657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15008,7 +15017,7 @@ GameObject:
   - component: {fileID: 3083861192271029930}
   - component: {fileID: 1526618230954970792}
   - component: {fileID: 1813210087084207438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15101,7 +15110,7 @@ GameObject:
   - component: {fileID: 7598797466814062963}
   - component: {fileID: 6773862645645514785}
   - component: {fileID: 365556714164355725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15194,7 +15203,7 @@ GameObject:
   - component: {fileID: 7406715096027401463}
   - component: {fileID: 8033298414380500030}
   - component: {fileID: 5925166517886787082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15286,7 +15295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8671930403708490109}
   - component: {fileID: 1251206046819431731}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15331,7 +15340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2687392469799308030}
   - component: {fileID: 328861030866906785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15376,7 +15385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7570928978068634236}
   - component: {fileID: 907745625649036290}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 1,1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15413,11 +15422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: 1
     z: 1
-  distance: 2.6666667
+  distance: 2.3333333
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 1138126223823803657}
@@ -20106,7 +20115,7 @@ GameObject:
   - component: {fileID: 4734868968757007920}
   - component: {fileID: 3488711126068550660}
   - component: {fileID: 7893739616269357132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20199,7 +20208,7 @@ GameObject:
   - component: {fileID: 5820089538855227469}
   - component: {fileID: 4528139498904377343}
   - component: {fileID: 7873875453703612764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20292,7 +20301,7 @@ GameObject:
   - component: {fileID: 2171701217281954247}
   - component: {fileID: 8440893912786411648}
   - component: {fileID: 4554278740357882794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20384,7 +20393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5518882355793745082}
   - component: {fileID: 4467103752967392493}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile -1,1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20421,11 +20430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: -1
     z: 1
-  distance: 2
+  distance: 2.3333333
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 8735819231991214368}
@@ -25114,7 +25123,7 @@ GameObject:
   - component: {fileID: 3036912643058038498}
   - component: {fileID: 4571887743667411288}
   - component: {fileID: 1358097014817747029}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25206,7 +25215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7880371028082771466}
   - component: {fileID: 8490737270955063926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile -1,0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25243,11 +25252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: -1
     z: 0
-  distance: 1
+  distance: 1.5
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 9121658665202286914}
@@ -29935,7 +29944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8883920560603473657}
   - component: {fileID: 8000564507092710167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 1,0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29972,11 +29981,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: 1
     z: 0
-  distance: 2.3333333
+  distance: 1.5
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 521949007862641847}
@@ -34664,7 +34673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5567794930831131955}
   - component: {fileID: 2021260092605199826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile -1,-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34701,11 +34710,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: -1
     z: -1
-  distance: 0
+  distance: 1
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 1251206046819431731}
@@ -39394,7 +39403,7 @@ GameObject:
   - component: {fileID: 8760357472784813691}
   - component: {fileID: 4689054722775843515}
   - component: {fileID: 6542430366924343349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39487,7 +39496,7 @@ GameObject:
   - component: {fileID: 223372346806103740}
   - component: {fileID: 1728983626031149984}
   - component: {fileID: 5423476331794102567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39580,7 +39589,7 @@ GameObject:
   - component: {fileID: 7580606464056118315}
   - component: {fileID: 3056112883118852249}
   - component: {fileID: 6036879466107251364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39672,7 +39681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133547420771190937}
   - component: {fileID: 8735819231991214368}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39718,7 +39727,7 @@ GameObject:
   - component: {fileID: 6871672204850685640}
   - component: {fileID: 7266688420745949434}
   - component: {fileID: 846928144512481727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39810,7 +39819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058523576124062413}
   - component: {fileID: 6942251574441232743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39855,7 +39864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7496910378614848070}
   - component: {fileID: 562721027525330180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile 0,0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39892,11 +39901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6aab46c7bb5864a937d9c551c65589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapMagic: {fileID: 8662276571359677950}
+  mapMagic: {fileID: 0}
   coord:
     x: 0
     z: 0
-  distance: 1.5
+  distance: 1
   preview: 1
   defaultTerrainData: {fileID: 0}
   objectsPool: {fileID: 328861030866906785}
@@ -44584,7 +44593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4172608802911959384}
   - component: {fileID: 9121658665202286914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44629,7 +44638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 894108536625400619}
   - component: {fileID: 521949007862641847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44675,7 +44684,7 @@ GameObject:
   - component: {fileID: 2806936158180336728}
   - component: {fileID: 1940055197232107704}
   - component: {fileID: 5527109577142155786}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44768,7 +44777,7 @@ GameObject:
   - component: {fileID: 6842150876742995127}
   - component: {fileID: 7412236009703053833}
   - component: {fileID: 8259887266686433315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Draft Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

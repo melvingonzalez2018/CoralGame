@@ -7,7 +7,6 @@ public class PlayerMovementController : MonoBehaviour
     [Header("References")]
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerStun stun;
-    [SerializeField] PlayerAudio movementAudio;
     [SerializeField] SmoothRotateTo rotate;
     [SerializeField] Animator anim;
 
@@ -19,6 +18,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] public float gravityAccel;
     [SerializeField] public float maxFallSpeed;
     [SerializeField] public float friction;
+    [SerializeField] public float knockBackForce = 3f;
 
     [SerializeField] bool miniGameMode = false;
     Vector3 currentVelocity;
@@ -54,7 +54,6 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
         anim.SetFloat("InputMag", playerInput.magnitude);
-        movementAudio.IsSwimming(playerInput.magnitude > 0);
         controller.Move(currentVelocity * Time.deltaTime);
     }
 
@@ -65,6 +64,11 @@ public class PlayerMovementController : MonoBehaviour
         speedLimit = Mathf.Max(currentVelocity.magnitude, speedLimit);
         currentVelocity += velocity;
         currentVelocity = Vector3.ClampMagnitude(currentVelocity, speedLimit);
+    }
+
+    public void KnockBack(Vector3 sourcePos) {
+        Vector3 diff = transform.position - sourcePos;
+        currentVelocity = diff.normalized * knockBackForce;
     }
 
     private void PhysicsUpdate() {

@@ -10,36 +10,55 @@ public class Trash : MonoBehaviour {
     AttractTo attractTo;
     Rigidbody rb;
     Collider collider;
+    ParticleSystem bubbleBurst;
 
     float highlightTimer;
     Outline outline;
     bool interactable = true;
     private void Start() {
-        outline = GetComponent<Outline>();
+        outline = GetComponentInChildren<Outline>();
+        bubbleBurst = GetComponentInChildren<ParticleSystem>();
     }
 
-    public void PickUpTrash() {
+    private void TrashInteract() {
         // Initalize other values
         GetComponent<ScaleWobble>().ActivateWobble();
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         attractTo = GetComponent<AttractTo>();
         Invoke("StartAttract", attractDelay);
-
+        
         // Trash Updates
         interactable = false;
+    }
 
-        // Random upward force
-        Vector2 offset = Random.insideUnitCircle.normalized;
-        Vector3 direction = new Vector3(offset.x, 1, offset.y).normalized;
-        rb.constraints = RigidbodyConstraints.None;
-        rb.AddForce(direction * initalForce, ForceMode.Impulse);
-        rb.AddTorque(Random.onUnitSphere * initalTorque, ForceMode.Impulse);
+    public void TrashClicked() {
+        if (interactable) {
+            TrashInteract();
+            interactable = false;
+            bubbleBurst.Play();
+
+            // Random upward force
+            Vector2 offset = Random.insideUnitCircle.normalized;
+            Vector3 direction = new Vector3(offset.x, 1, offset.y).normalized;
+            rb.constraints = RigidbodyConstraints.None;
+            rb.AddForce(direction * initalForce, ForceMode.Impulse);
+            rb.AddTorque(Random.onUnitSphere * initalTorque, ForceMode.Impulse);
+        }
+    }
+
+    public void TrashCollision() {
+        if (Interactable()) {
+            TrashInteract();
+
+            // Trash Updates
+            StartAttract();
+        }
     }
 
     public void StartAttract() {
         // Triggering attraction
-        attractTo.Activate(ContactPlayer);
+        attractTo.Activate(FindObjectOfType<PlayerMovementController>().gameObject, ContactPlayer);
 
         // Disabling contact with terrain
         rb.useGravity = false;

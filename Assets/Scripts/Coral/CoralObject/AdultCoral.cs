@@ -20,13 +20,18 @@ public class AdultCoral : Coral
             // Creating pickup
             GameObject coralPickupInstance = Instantiate(fragmentPickup, transform.position, transform.rotation);
             int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
-            coralPickupInstance.GetComponent<FragmentCoralPickup>().InitalizeCoral(modelIndex);
+
+            // Initalizing Pickup
+            FragmentCoralPickup pickup = coralPickupInstance.GetComponent<FragmentCoralPickup>();
+            pickup.InitalizeCoral(modelIndex);
+            pickup.AttractToPlayer();
 
             // Juice
             GetComponent<ScaleWobble>().ActivateWobble();
 
             // Adjusting variables
             fragmentAvailable = false;
+            bubbleBurst.Play();
         }
     }
 

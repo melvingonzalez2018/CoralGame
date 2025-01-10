@@ -18,12 +18,6 @@ public class SelectRandomTrashModel : MonoBehaviour
         SetModelIndex(index);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetModelIndex(int index) {
         foreach(GameObject model in trashModels) {
             model.SetActive(false);
