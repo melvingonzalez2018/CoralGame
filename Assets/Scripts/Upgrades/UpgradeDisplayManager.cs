@@ -11,15 +11,9 @@ public class UpgradeDisplayManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        Invoke("CreateTextUpdate", displayDelay);
+        Invoke("TextUpdateDelay", displayDelay);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public void AddUpgradeText(string text) {
         upgradeToDisplay.Enqueue(text);
     }
@@ -28,12 +22,15 @@ public class UpgradeDisplayManager : MonoBehaviour
         textObj.GetComponent<TMP_Text>().text = text;
     }
 
+    private void TextUpdateDelay() {
+        Invoke("CreateTextUpdate", displayDelay);
+    }
+
     private void CreateTextUpdate() {
         if(upgradeToDisplay.Count > 0 && isActiveAndEnabled) {
             CreateUpgradeText(upgradeToDisplay.Peek());
             upgradeToDisplay.Dequeue();
+            Invoke("CreateTextUpdate", displayDelay);
         }
-
-        Invoke("CreateTextUpdate", displayDelay);
     }
 }

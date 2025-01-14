@@ -5,6 +5,7 @@ using UnityEngine;
 public class AdultCoral : Coral
 {
     [SerializeField] AudioSource harvestSource;
+    [SerializeField] GameObject fragmentPickup;
     bool fragmentAvailable = true;
 
     public bool GetFragmentAvailable() {
@@ -13,11 +14,24 @@ public class AdultCoral : Coral
 
     public override void Interact() {
         if (fragmentAvailable) {
+            // Audio
             harvestSource.Play();
 
+            // Creating pickup
+            GameObject coralPickupInstance = Instantiate(fragmentPickup, transform.position, transform.rotation);
             int modelIndex = GetComponentInChildren<CoralModel>().currentVisualIndex;
-            FindObjectOfType<CoralStorage>().AddFragment(new StoredCoralData(modelIndex));
+
+            // Initalizing Pickup
+            FragmentCoralPickup pickup = coralPickupInstance.GetComponent<FragmentCoralPickup>();
+            pickup.InitalizeCoral(modelIndex);
+            pickup.AttractToPlayer();
+
+            // Juice
+            GetComponent<ScaleWobble>().ActivateWobble();
+
+            // Adjusting variables
             fragmentAvailable = false;
+            bubbleBurst.Play();
         }
     }
 
