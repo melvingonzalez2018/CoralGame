@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1934599554159529654}
   - component: {fileID: 7104916144175968179}
+  - component: {fileID: 7402040233935079000}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -83,6 +84,24 @@ MonoBehaviour:
   coralModels: []
   currentVisualIndex: 0
   owner: {fileID: 2848710208497380570}
+--- !u!114 &7402040233935079000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217785467871800274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3938738571435580911
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultStick: 0
   area: {fileID: 0}
+  bubbleBurst: {fileID: 0}
   harvestSource: {fileID: 6148800577261236427}
   fragmentPickup: {fileID: 4404696710948287012, guid: c3a9f1f82c6495949846eb36169fa54f,
     type: 3}
-  bubbleBurst: {fileID: 0}
 --- !u!136 &7581440157739951949
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -294,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6723201147881599804
 Transform:
   m_ObjectHideFlags: 0
