@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037b5cf8c820eb546b9af2a310ca1182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diveNumber: 0
+  diveNumber: 10
+  upgradeText: 
   amount: 2
 --- !u!114 &6525270287979638064
 MonoBehaviour:
@@ -61,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b6c79ca10d8c44bbf6172c6cf5b5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diveNumber: 1
+  diveNumber: 10
+  upgradeText: 
   percentDecrease: 0.2
 --- !u!114 &4840074174070508803
 MonoBehaviour:
@@ -75,7 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c578061be3b9745ad1da2c59736720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diveNumber: 1
+  diveNumber: 10
+  upgradeText: 
   setDuration: 180
 --- !u!114 &7057842792585828803
 MonoBehaviour:
@@ -89,7 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f939cea9623706f4fb749b24e5e6359a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diveNumber: 2
+  diveNumber: 10
+  upgradeText: 
   horizontalAcceleration: 0
   horizontalMaxSpeed: 10
   verticalAccelleration: 0
