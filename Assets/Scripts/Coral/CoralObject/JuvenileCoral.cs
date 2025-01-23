@@ -56,9 +56,9 @@ public class JuvenileCoral : Coral {
         if(area.areaType == AreaType.REEF && !IsHammeredIn()) {
             return true;
         }
-        if (canInteract) {
-            return true;
-        }
+        //if (canInteract) {
+        //    return true;
+        //}
         return false;
     }
 
