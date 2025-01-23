@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] AudioSource placeCoral;
     [SerializeField] AudioSource garbagePickup;
     [SerializeField] LayerMask interactable;
+    [SerializeField] bool minigameMode = false;
     CoralPlaceableArea[] areas;
     CoralStorage coralStorage;
     InteractText interactText;
@@ -59,7 +60,7 @@ public class PlayerInteract : MonoBehaviour
             }
 
             if(hit.collider.gameObject.TryGetComponent(out Trash trash)) {
-                if (trash.Interactable()) {
+                if (trash.Interactable() && !minigameMode) {
                     trash.InteractHighlight();
                     interactText.SetText("Pick Up");
                 }
