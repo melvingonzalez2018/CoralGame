@@ -13,6 +13,9 @@ public class CoralStorageUI : MonoBehaviour
     [SerializeField] TMP_Text juvenileText;
     [SerializeField] float maxScale = 1.5f;
     [SerializeField] float lerpMag = 0.5f;
+    [SerializeField] float fontScaleIncrease;
+    [SerializeField] int amountForMaxFont;
+    float intialFontSize;
     RectTransform babyRect;
     RectTransform juvenileRect;
 
@@ -24,6 +27,7 @@ public class CoralStorageUI : MonoBehaviour
 
         babyRect = babyParent.GetComponent<RectTransform>();
         juvenileRect = juvenileParent.GetComponent<RectTransform>();
+        intialFontSize = babyText.fontSize;
     }
 
     private void Update() {
@@ -31,8 +35,17 @@ public class CoralStorageUI : MonoBehaviour
         ScaleEffectUpdate();
     }
     private void UpdateUI() {
-        babyText.text = owner.GetFragmentCount().ToString();
-        juvenileText.text = owner.GetJuvenileCount().ToString();
+        // Getting coral amounts
+        int fragmentAmount = owner.GetFragmentCount();
+        int juvenileAmount = owner.GetJuvenileCount();
+        
+        // Updating the text
+        babyText.text = fragmentAmount.ToString();
+        juvenileText.text = juvenileAmount.ToString();
+
+        // Updating scale
+        babyText.fontSize = Mathf.Lerp(intialFontSize, intialFontSize+fontScaleIncrease, (float)fragmentAmount / amountForMaxFont);
+        juvenileText.fontSize = Mathf.Lerp(intialFontSize, intialFontSize + fontScaleIncrease, (float)juvenileAmount / amountForMaxFont);
     }
 
     private void ScaleEffectUpdate() {

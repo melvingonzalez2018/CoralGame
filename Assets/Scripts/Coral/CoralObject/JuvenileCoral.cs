@@ -50,16 +50,20 @@ public class JuvenileCoral : Coral {
     }
 
     public override bool CanInteract() {
-        if(!canInteract) {
-            return false;
-        }
         if(area.areaType == AreaType.NURSERY) {
             return true;
         }
-        if(area.areaType == AreaType.REEF && !IsHammeredIn()) {
+        if(OnReefAndHammerable()) {
             return true;
         }
+        //if (canInteract) {
+        //    return true;
+        //}
         return false;
+    }
+
+    public bool OnReefAndHammerable() {
+        return area.areaType == AreaType.REEF && !IsHammeredIn();
     }
 
     public override string GetInteractText() {
@@ -84,6 +88,7 @@ public class JuvenileCoral : Coral {
             hammerAudio.Stop();
             hammerAudio.Play();
             if (IsHammeredIn()) {
+                canInteract = false;
                 transform.up = upDirectionOnSurface;
                 FindObjectOfType<StatTracking>().IterateCoralHammered();
                 bubbleBurst.Play();
