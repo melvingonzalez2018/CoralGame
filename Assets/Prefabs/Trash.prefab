@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4731630171729768937}
   - component: {fileID: 5576225676827531504}
+  - component: {fileID: 3071567158920277158}
   m_Layer: 7
   m_Name: TrashModels
   m_TagString: Untagged
@@ -129,6 +130,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb3e1fc7fa28094ca3ea399437dc9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3071567158920277158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945912330464519205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3003030015416993316
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5374242382346693514
 Transform:
   m_ObjectHideFlags: 0
