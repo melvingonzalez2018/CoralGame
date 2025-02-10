@@ -189,7 +189,7 @@ MonoBehaviour:
       m_Calls: []
   acceleration: 4.5
   initalSpeed: 2
-  maxTime: 0.25
+  maxTime: 0.22
 --- !u!114 &-7143970141789860318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,8 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42e0c2eee529fb4d8ee231dd8a67dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractDelay: 0.5
-  initalForce: 4.5
+  attractDelay: 0.3
+  initalForce: 2.5
   initalTorque: 0.8
   playerContactSound: {fileID: 8828595712044948236, guid: 4b31c74ef722fe448883d8c8310a32fa,
     type: 3}
