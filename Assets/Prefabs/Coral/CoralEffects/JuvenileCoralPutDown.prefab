@@ -187,9 +187,9 @@ MonoBehaviour:
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
-  acceleration: 5
+  acceleration: 4.5
   initalSpeed: 2
-  maxTime: 0.5
+  maxTime: 0.22
 --- !u!114 &-5852203058397906423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4318e839a4ece5f40bb37cea205b19cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractDelay: 1
-  initalForce: 1
-  initalTorque: 0.25
+  attractDelay: 0.35
+  initalForce: 4
+  initalTorque: 0.8
   playerContactSound: {fileID: 8828595712044948236, guid: 4b31c74ef722fe448883d8c8310a32fa,
     type: 3}
   coralPrefab: {fileID: 3689873980207742186, guid: 62866b7fc225072488987e68bdf805af,

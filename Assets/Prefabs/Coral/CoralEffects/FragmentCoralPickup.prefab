@@ -187,9 +187,9 @@ MonoBehaviour:
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
-  acceleration: 5
+  acceleration: 4.5
   initalSpeed: 2
-  maxTime: 0.5
+  maxTime: 0.25
 --- !u!114 &1796192847921049690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc957fcdb5639514bae0c09261998464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractDelay: 1
-  initalForce: 1
-  initalTorque: 0.25
+  attractDelay: 0.35
+  initalForce: 1.8
+  initalTorque: 0.8
   playerContactSound: {fileID: 8828595712044948236, guid: 4b31c74ef722fe448883d8c8310a32fa,
     type: 3}
 --- !u!1 &4701808068752097436
