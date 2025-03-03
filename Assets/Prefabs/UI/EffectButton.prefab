@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 397039859530100649}
   - component: {fileID: 2690911265873138075}
   - component: {fileID: 2155462881777090849}
+  - component: {fileID: 3459208396242721081}
   m_Layer: 5
   m_Name: EffectButton
   m_TagString: Untagged
@@ -344,6 +345,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3459208396242721081}
+          m_TargetAssemblyTypeName: ButtonClickScale, Assembly-CSharp
+          m_MethodName: ScaleDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3459208396242721081}
+          m_TargetAssemblyTypeName: ButtonClickScale, Assembly-CSharp
+          m_MethodName: ScaleNormal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2690911265873138075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,3 +433,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
+--- !u!114 &3459208396242721081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8426361675654491917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb5d99670d9a114781056fe4d6c9a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDown: 0.9

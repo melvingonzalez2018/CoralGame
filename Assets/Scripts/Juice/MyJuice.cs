@@ -22,6 +22,10 @@ public abstract class MyJuice : MonoBehaviour {
         effectActive = true;
     }
 
+    public void Cancel() {
+        EndOfEffect();
+    }
+
     private void Update() {
         if (effectActive) {
             timer -= Time.deltaTime;
@@ -29,12 +33,16 @@ public abstract class MyJuice : MonoBehaviour {
             EffectUpdate(EaseFunction(1 - (timer / duration)), scale);
 
             if (timer <= 0) {
-                OnCompleteEffect.Invoke();
-                ResetValue();
-                effectActive = false;
-                timer = duration;
+                EndOfEffect();
             }
         }
+    }
+
+    private void EndOfEffect() {
+        OnCompleteEffect.Invoke();
+        ResetValue();
+        effectActive = false;
+        timer = duration;
     }
 
 }
