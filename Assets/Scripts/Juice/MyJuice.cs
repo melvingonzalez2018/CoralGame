@@ -45,4 +45,7 @@ public abstract class MyJuice : MonoBehaviour {
         timer = duration;
     }
 
+    public bool IsEffectActive() {
+        return effectActive;
+    }
 }
