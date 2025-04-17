@@ -15,6 +15,7 @@ public class HydroVents : MonoBehaviour
     [SerializeField] float oxygenDurationLoss;
     [SerializeField] float ventHeight;
     [SerializeField] float ventWidth;
+    [SerializeField] float initalTimeOffset;
 
     [Header("Hydro Vent")]
     [SerializeField] float ventDuration;
@@ -23,7 +24,7 @@ public class HydroVents : MonoBehaviour
     ParticleSystem bubbleVent;
 
     private void Start() {
-        Invoke("SpawnVent", timeBetweenVents);
+        Invoke("SpawnVent", initalTimeOffset);
         bubbleVent = GetComponentInChildren<ParticleSystem>();
     }
 
