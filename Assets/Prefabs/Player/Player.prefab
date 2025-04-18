@@ -412,10 +412,10 @@ MonoBehaviour:
   stun: {fileID: 8364193506925464743}
   rotate: {fileID: 2701689104471725867}
   anim: {fileID: 1882949988266270038}
-  horizontalAcceleration: 3
-  horizontalMaxSpeed: 5
+  horizontalAcceleration: 4
+  horizontalMaxSpeed: 6
   verticalAccelleration: 1
-  verticalMaxSpeed: 3
+  verticalMaxSpeed: 4
   gravityAccel: 0.1
   maxFallSpeed: 0.5
   friction: 0.3
@@ -449,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6436000295598957267}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.000000089406974, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1056,7 +1056,7 @@ PrefabInstance:
     - target: {fileID: 7750767033338072888, guid: 3420bf1c9cc30cf47896f4f43fb9d0e4,
         type: 3}
       propertyPath: reach
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7750767033338072888, guid: 3420bf1c9cc30cf47896f4f43fb9d0e4,
         type: 3}

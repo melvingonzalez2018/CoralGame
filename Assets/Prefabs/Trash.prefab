@@ -303,8 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941ff6c098ce3b945a66cf079e12a206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractDelay: 2
-  initalForce: 1
+  attractDelay: 0.3
+  initalForce: 2.5
   initalTorque: 1
   playerContactSound: {fileID: 8828595712044948236, guid: 4b31c74ef722fe448883d8c8310a32fa,
     type: 3}
@@ -392,9 +392,9 @@ MonoBehaviour:
   OnCompleteEffect:
     m_PersistentCalls:
       m_Calls: []
-  acceleration: 4
-  initalSpeed: 3
-  maxTime: 0.5
+  acceleration: 4.5
+  initalSpeed: 2
+  maxTime: 0.22
 --- !u!96 &771579979120887597
 TrailRenderer:
   serializedVersion: 3
