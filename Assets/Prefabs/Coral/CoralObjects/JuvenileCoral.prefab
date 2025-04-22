@@ -135,7 +135,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1.5, y: 1.5}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2889428227684678411
 CanvasRenderer:
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.9905858, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -492,9 +492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9edcdffb8d31b74a925ee065d3d8475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 4014597111965731063}
-  icon: {fileID: 6671652530528659081}
   owner: {fileID: 6036555521796658167}
+  hammerIcon: {fileID: 21300000, guid: 85dabf3808d21e048adf97b2a08463aa, type: 3}
+  coralIcon: {fileID: 21300000, guid: 9fbfdbe258a9b0a409e36c339f9657de, type: 3}
+  iconImage: {fileID: 6671652530528659081}
+  size: 3
 --- !u!1 &6907786673532364066
 GameObject:
   m_ObjectHideFlags: 0
