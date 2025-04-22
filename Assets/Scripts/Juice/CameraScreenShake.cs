@@ -26,6 +26,6 @@ public class CameraScreenShake : MyJuice
     }
 
     protected override float EaseFunction(float t) {
-        return Mathf.Pow(1 - t, 5);
+        return 1-(Mathf.Sqrt(1 - Mathf.Pow(t - 1, 2)));
     }
 }
