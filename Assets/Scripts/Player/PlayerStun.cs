@@ -49,6 +49,7 @@ public class PlayerStun : MonoBehaviour {
             render.material.color = stunColor;
             timer = duration;
             anim.SetTrigger("Hurt");
+            shake.Activate();
         }
     }
     public void ReduceOxygen(float amount, Vector3 sourcePos, bool knockBack) {
