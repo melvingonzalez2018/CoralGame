@@ -20,6 +20,7 @@ public abstract class MyJuice : MonoBehaviour {
     public void Activate() {
         timer = duration;
         effectActive = true;
+        Debug.Log("activate in juice");
     }
 
     public void Cancel() {
