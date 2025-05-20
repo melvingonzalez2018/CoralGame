@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class AttractTo : MonoBehaviour {
     [Header("Universal Variables")]
-    [SerializeField] float destoryDist = 0.1f;
+    float destoryDist = 0.1f;
     GameObject target;
     bool canAttract = false;
     public UnityEvent OnCompleteEffect = new UnityEvent();
@@ -35,11 +35,7 @@ public class AttractTo : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (canAttract) {
-            Vector3 differentToTarget = target.transform.position - transform.position;
-
-            TimeBasedUpdate();
-
-            if (differentToTarget.magnitude < destoryDist) {
+            if (TimeBasedUpdate()) {
                 canAttract = false;
                 OnCompleteEffect.Invoke();
             }
@@ -62,11 +58,14 @@ public class AttractTo : MonoBehaviour {
         initalPos = transform.position;
     }
 
-    private void TimeBasedUpdate() {
+    private bool TimeBasedUpdate() {
         // Time Based
         timer += Time.deltaTime;
-        transform.position = Vector3.LerpUnclamped(initalPos, target.transform.position, OverShootIn(Mathf.Min(timer / maxTime, 1)));
-        transform.rotation = Quaternion.LerpUnclamped(transform.rotation, target.transform.rotation, OverShootIn(Mathf.Min(timer / maxTime, 1)));
+        float percentMaxTime = timer / maxTime;
+        transform.position = Vector3.LerpUnclamped(initalPos, target.transform.position, EaseInExpo(Mathf.Min(timer / maxTime, 1)));
+        transform.rotation = Quaternion.LerpUnclamped(transform.rotation, target.transform.rotation, EaseInExpo(Mathf.Min(timer / maxTime, 1)));
+
+        return percentMaxTime >= 1f;
     }
 
     public float OverShootIn(float x) {
@@ -74,5 +73,9 @@ public class AttractTo : MonoBehaviour {
         float c3 = c1 + 1f;
 
         return c3 * x * x * x - c1 * x * x;
+    }
+
+    public float EaseInExpo(float x) {
+        return x == 0 ? 0 : Mathf.Pow(2, 10 * x - 10);
     }
 }
