@@ -10,6 +10,7 @@ public class PlayerStun : MonoBehaviour {
     [SerializeField] Renderer render;
     [SerializeField] Animator anim;
     [SerializeField] Color stunColor;
+    [SerializeField] LoseOxygenEffect loseOxygenEffect;
     public UnityEvent OnLoseOxygen = new UnityEvent();
     float invincibilityTimer = 0;
     Color startColor;
@@ -59,6 +60,7 @@ public class PlayerStun : MonoBehaviour {
             anim.SetTrigger("Hurt");
             OnLoseOxygen.Invoke();
             StunPlayer(takeDamageStunDefault);
+            loseOxygenEffect.TriggerParticle();
             if (knockBack) {
                 playerMovementController.KnockBack(sourcePos);
                 shake.Activate();
