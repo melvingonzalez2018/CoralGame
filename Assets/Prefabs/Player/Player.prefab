@@ -413,12 +413,12 @@ MonoBehaviour:
   rotate: {fileID: 2701689104471725867}
   anim: {fileID: 1882949988266270038}
   horizontalAcceleration: 4
-  horizontalMaxSpeed: 6
-  verticalAccelleration: 1
-  verticalMaxSpeed: 4
+  horizontalMaxSpeed: 6.5
+  verticalAccelleration: 4
+  verticalMaxSpeed: 5
   gravityAccel: 0.1
   maxFallSpeed: 0.5
-  friction: 0.3
+  friction: 2
   knockBackForce: 15
   miniGameMode: 0
 --- !u!1 &6436000295598957267
@@ -1052,11 +1052,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7750767033338072888, guid: 3420bf1c9cc30cf47896f4f43fb9d0e4,
-        type: 3}
-      propertyPath: reach
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7750767033338072888, guid: 3420bf1c9cc30cf47896f4f43fb9d0e4,
         type: 3}

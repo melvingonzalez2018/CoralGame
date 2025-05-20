@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coralPlacementDisplay: {fileID: 0}
-  reach: 1
+  reach: 15
   coralOffsetFromSurface: 0.05
   placeCoral: {fileID: 0}
+  garbagePickup: {fileID: 0}
   interactable:
     serializedVersion: 2
     m_Bits: 128
+  minigameMode: 0
