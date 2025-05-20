@@ -64,6 +64,10 @@ public class JuvenileCoral : Coral {
         return area.areaType == AreaType.REEF && !IsHammeredIn();
     }
 
+    public bool OnNursury() {
+        return area.areaType == AreaType.NURSERY;
+    }
+
     public override string GetInteractText() {
         if (area.areaType == AreaType.NURSERY) {
             return "Pick Up";

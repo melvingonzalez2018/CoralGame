@@ -18,10 +18,13 @@ public class PlayerStun : MonoBehaviour {
     
     float timer = 0;
 
+    CameraScreenShake shake;
+
     private void Start() {
         startColor = render.material.color;
         oxygen = FindObjectOfType<Oxygen>();
         playerMovementController = FindAnyObjectByType<PlayerMovementController>();
+        shake = FindObjectOfType<CameraScreenShake>();
     }
 
     private void Update() {
@@ -46,6 +49,7 @@ public class PlayerStun : MonoBehaviour {
             render.material.color = stunColor;
             timer = duration;
             anim.SetTrigger("Hurt");
+            shake.Activate();
         }
     }
     public void ReduceOxygen(float amount, Vector3 sourcePos, bool knockBack) {
@@ -57,10 +61,12 @@ public class PlayerStun : MonoBehaviour {
             StunPlayer(takeDamageStunDefault);
             if (knockBack) {
                 playerMovementController.KnockBack(sourcePos);
+                shake.Activate();
             }
         }
     }
     public void KnockBack(Vector3 sourcePos) {
         playerMovementController.KnockBack(sourcePos);
+        shake.Activate();
     }
 }

@@ -296,6 +296,8 @@ GameObject:
   - component: {fileID: 6979216470523753775}
   - component: {fileID: 4494955873234715032}
   - component: {fileID: 3411391780232190588}
+  - component: {fileID: 2834214649131806605}
+  - component: {fileID: 4531244104850509624}
   m_Layer: 0
   m_Name: FreeLook
   m_TagString: Untagged
@@ -469,6 +471,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeLook: {fileID: 6979216470523753775}
+--- !u!114 &2834214649131806605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317958269920042494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_ApplyAfter: 3
+  m_PreserveComposition: 1
+--- !u!114 &4531244104850509624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2317958269920042494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b378ad63b9ecf044a7e8013dfc465ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  scale: 0.5
+  OnCompleteEffect:
+    m_PersistentCalls:
+      m_Calls: []
+  offset: {fileID: 0}
 --- !u!1 &3892962211758073419
 GameObject:
   m_ObjectHideFlags: 0
