@@ -11,7 +11,7 @@ public class Oxygen : MonoBehaviour
     bool runTimer = false;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.N)) {
+        if (Input.GetKeyDown(KeyCode.N) && runTimer) {
             KillOxygen();
         }
 
@@ -21,7 +21,7 @@ public class Oxygen : MonoBehaviour
     }
 
     private void KillOxygen() {
-        ReduceOxygen(float.MaxValue);
+        ReduceOxygen(float.MaxValue/2);
     }
 
     public void StartTime() {

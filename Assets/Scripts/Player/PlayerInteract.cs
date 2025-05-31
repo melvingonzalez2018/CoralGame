@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
@@ -10,9 +11,11 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] AudioSource placeCoral;
     [SerializeField] AudioSource garbagePickup;
     [SerializeField] LayerMask interactable;
+    [SerializeField] bool minigameMode = false;
     CoralPlaceableArea[] areas;
     CoralStorage coralStorage;
     InteractText interactText;
+    CoralLimitInfoText limitInfoText;
     bool canInteract = true;
 
     private void Start() {
@@ -20,6 +23,7 @@ public class PlayerInteract : MonoBehaviour
         coralPlacementDisplay.SetActive(false);
         areas = FindObjectsOfType<CoralPlaceableArea>();
         interactText = FindObjectOfType<InteractText>(true);
+        limitInfoText = FindObjectOfType<CoralLimitInfoText>(true);
         Debug.Log(interactText);
     }
 
@@ -42,6 +46,7 @@ public class PlayerInteract : MonoBehaviour
     private void CoralInteractDisplay(Ray ray) {
         // Default value
         interactText.SetText("");
+        limitInfoText.SetText("");
         coralPlacementDisplay.SetActive(false);
 
         // Raycasting
@@ -55,8 +60,10 @@ public class PlayerInteract : MonoBehaviour
             }
 
             if(hit.collider.gameObject.TryGetComponent(out Trash trash)) {
-                trash.InteractHighlight();
-                interactText.SetText("Pick Up");
+                if (trash.Interactable() && !minigameMode) {
+                    trash.InteractHighlight();
+                    interactText.SetText("Pick Up");
+                }
             }
 
             // Checking for placeable area
@@ -67,12 +74,15 @@ public class PlayerInteract : MonoBehaviour
                     Vector3 coralPlacement = hit.point - (ray.direction * coralOffsetFromSurface);
                     area.OrientCoralToSurface(coralPlacementDisplay.transform, coralPlacement);
 
-                    // Settin gnull if there is none
+                    // Setting null if there is none
                     CoralPlaceableDisplay display = coralPlacementDisplay.GetComponent<CoralPlaceableDisplay>();
 
+                    string displayText = "";
                     // Setting coral type
                     switch (area.areaType) {
                         case AreaType.NURSERY:
+
+                            displayText = "Nursery\nCoral Limit: ";
                             if(coralStorage.GetFragmentCount() > 0) {
                                 display.SetCoral(coralStorage.fragmentCoral.Peek().modelIndex, true);
                                 interactText.SetText("Put Down"); // Interact UI
@@ -82,6 +92,7 @@ public class PlayerInteract : MonoBehaviour
                             }
                             break;
                         case AreaType.REEF:
+                            displayText = "Reef\nCoral Limit: ";
                             if (coralStorage.GetJuvenileCount() > 0) {
                                 display.SetCoral(coralStorage.juvenileCoral.Peek().modelIndex, false);
                                 interactText.SetText("Put Down"); // Interact UI
@@ -91,6 +102,16 @@ public class PlayerInteract : MonoBehaviour
                             }
                             break;
                     }
+
+                    // Setting Interact Cursor Info
+                    area.InteractHighlight();
+                    if (area.limitedCoral) {
+                        displayText += area.placedCoral.ToString() + "/" + area.maxCoralPlacable.ToString();
+                    }
+                    else {
+                        displayText = "";
+                    }
+                    limitInfoText.SetText(displayText);
                 }
             }
         }
@@ -120,7 +141,7 @@ public class PlayerInteract : MonoBehaviour
             if (hit.collider.gameObject.TryGetComponent(out Trash trash)) {
                 garbagePickup.Stop();
                 garbagePickup.Play();
-                trash.PickUpTrash();
+                trash.TrashClicked();
             }
         }
     }

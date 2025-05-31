@@ -7,7 +7,6 @@ public class PlayerMovementController : MonoBehaviour
     [Header("References")]
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerStun stun;
-    [SerializeField] PlayerAudio movementAudio;
     [SerializeField] SmoothRotateTo rotate;
     [SerializeField] Animator anim;
 
@@ -19,6 +18,9 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] public float gravityAccel;
     [SerializeField] public float maxFallSpeed;
     [SerializeField] public float friction;
+    [SerializeField] public float knockBackForce = 3f;
+
+    [SerializeField] bool miniGameMode = false;
     Vector3 currentVelocity;
 
     bool canMove = true;
@@ -32,16 +34,27 @@ public class PlayerMovementController : MonoBehaviour
             // Player Input
             Transform camTransform = Camera.main.transform;
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
-            Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + camTransform.forward * Input.GetAxis("Vertical");
+            Vector3 forwardVector = Quaternion.Euler(0, -90f, 0) * camTransform.right; // taking the right vector and rotating it 90 to point forward
+            Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + forwardVector * Input.GetAxis("Vertical");
+
+            // Changing forward/backward movement for minigame mode
+            if(miniGameMode) { 
+                horizontalInput -= camTransform.forward * Input.GetAxis("Vertical");
+                verticalInput = Vector3.up * Input.GetAxis("Vertical");
+            }
 
             playerInput = verticalInput + horizontalInput;
             rotate.SetTargetDirection(playerInput.normalized);
 
-            AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
-            AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
+            if(horizontalInput.magnitude > 0 && verticalInput.magnitude > 0) {
+                AddVelocity(playerInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
+            }
+            else {
+                AddVelocity(horizontalInput.normalized * horizontalAcceleration, horizontalMaxSpeed);
+                AddVelocity(verticalInput.normalized * verticalAccelleration, verticalMaxSpeed);
+            }
         }
         anim.SetFloat("InputMag", playerInput.magnitude);
-        movementAudio.IsSwimming(playerInput.magnitude > 0);
         controller.Move(currentVelocity * Time.deltaTime);
     }
 
@@ -49,9 +62,14 @@ public class PlayerMovementController : MonoBehaviour
         canMove = value;
     }
     public void AddVelocity(Vector3 velocity, float speedLimit) {
-        if(Vector3.Dot(currentVelocity, velocity.normalized) < speedLimit) {
-            currentVelocity += velocity;
-        }
+        speedLimit = Mathf.Max(currentVelocity.magnitude, speedLimit);
+        currentVelocity += velocity;
+        currentVelocity = Vector3.ClampMagnitude(currentVelocity, speedLimit);
+    }
+
+    public void KnockBack(Vector3 sourcePos) {
+        Vector3 diff = transform.position - sourcePos;
+        currentVelocity = diff.normalized * knockBackForce;
     }
 
     private void PhysicsUpdate() {

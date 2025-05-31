@@ -44,9 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59ccfe9f1a3bd844bca8d6897cbb012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  juvenileCoralPrefab: {fileID: 7133843982912026339, guid: 4fe0fa46276c88048820de9fc7ecd27b,
+  juvenilePutDown: {fileID: 4404696710948287012, guid: 1d59e6107e6ad3c4d89a3784f475a04a,
     type: 3}
-  fragmentedCoralPrefab: {fileID: 7133843982912026339, guid: 4fe0fa46276c88048820de9fc7ecd27b,
+  fragmentPutDown: {fileID: 4404696710948287012, guid: a17196186dc4e4e4fb9d7e40f42dcf88,
     type: 3}
-  fragmentCoral: 0
-  juvenileCoral: 0
+  coralTarget: {fileID: 4060150342393984347, guid: 649f604c50978c145b1e213541554b63,
+    type: 3}
+  OnGainFragment:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUseFragment:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGainJuvenile:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUseJuvenile:
+    m_PersistentCalls:
+      m_Calls: []

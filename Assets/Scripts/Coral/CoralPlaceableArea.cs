@@ -17,11 +17,28 @@ public class CoralPlaceableArea : MonoBehaviour
     [HideInInspector] public int placedCoral = 0;
 
     [SerializeField] List<Collider> placeableSurfaces;
+    Outline outline;
     Collider areaCollider;
+    float highlightTimer;
     private void Awake() {
         //foreach (Collider childCollider in transform.GetComponentsInChildren<Collider>()) {
         //    placeableSurfaces.Add(childCollider);
         //}
+    }
+    private void Start() {
+        outline = GetComponent<Outline>();
+    }
+
+    private void LateUpdate() {
+        highlightTimer -= Time.deltaTime;
+        if (highlightTimer < 0) {
+            outline.enabled = false;
+        }
+    }
+
+    public void InteractHighlight() {
+        highlightTimer = Time.deltaTime;
+        outline.enabled = true;
     }
 
     private bool UseOverlapCollider() {

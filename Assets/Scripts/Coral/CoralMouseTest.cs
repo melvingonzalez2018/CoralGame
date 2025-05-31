@@ -35,7 +35,7 @@ public class CoralMouseTest : MonoBehaviour
                     fish.ReduceOxygen();
                 }
                 if (hit.collider.gameObject.TryGetComponent(out Trash trash)) {
-                    trash.PickUpTrash();
+                    trash.TrashClicked();
                 }
             }
         }

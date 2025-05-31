@@ -6,7 +6,7 @@ public class LinearFollowPath : MonoBehaviour
 {
     [SerializeField] FollowPath path;
     [SerializeField] float reachPointDist; // The distance away from the next point 
-    [SerializeField] float speed; // How fast the object moves
+    [SerializeField] public float speed; // How fast the object moves
     [SerializeField] [Range(0f,1f)] float rotationMag;
     Transform nextPoint;
     int pathIndex = 0;
@@ -23,6 +23,10 @@ public class LinearFollowPath : MonoBehaviour
 
     public void SetIsFollow(bool value) {
         isFollowing = value;
+    }
+
+    public void SetSpeed(float newSpeed) {
+        speed = newSpeed;
     }
 
     private void MoveUpdate() {

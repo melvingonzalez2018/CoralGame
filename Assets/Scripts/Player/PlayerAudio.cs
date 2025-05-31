@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAudio : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip swimmingClip;
     bool isSwimming = false;
 
     private void Update() {
@@ -20,5 +19,9 @@ public class PlayerAudio : MonoBehaviour
 
     public void IsSwimming(bool value) {
         isSwimming = value;
+    }
+    public void PlaySwimAudio() {
+        audioSource.Stop();
+        audioSource.Play();
     }
 }

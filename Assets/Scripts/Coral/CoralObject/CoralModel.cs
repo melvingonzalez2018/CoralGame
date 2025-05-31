@@ -11,10 +11,12 @@ public class CoralModel : MonoBehaviour {
         for(int i = 0; i < transform.childCount; i++) {
             coralModels.Add(transform.GetChild(i).gameObject);
         }
+    }
 
-        if(currentVisual == null) {
+    private void Start() {
+        if (currentVisual == null) {
             int possibleIndex = Mathf.FloorToInt(Random.value * coralModels.Count); // Setting random visual
-            if(possibleIndex == coralModels.Count) { possibleIndex--; } // Dealing with edge case
+            if (possibleIndex == coralModels.Count) { possibleIndex--; } // Dealing with edge case
             SetCoralVisual(possibleIndex);
         }
     }

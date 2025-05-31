@@ -5,17 +5,29 @@ using UnityEngine;
 public abstract class Coral : MonoBehaviour {
     [SerializeField] AreaType defaultStick;
     [SerializeField] protected CoralPlaceableArea area = null; // Area, set this as the intial area for the coral
+    [SerializeField] protected ParticleSystem bubbleBurst;
+    protected Vector3 upDirectionOnSurface = Vector3.zero;
     float highlightTimer;
     Outline outline;
-
+    
     public abstract void Interact();
     public abstract void DiveStartUpdate();
     public abstract bool CanInteract();
     public abstract string GetInteractText();
 
+    virtual protected void MyStart() { }
+
+    private void Awake() {
+        outline = GetComponentInChildren<Outline>();
+        bubbleBurst = GetComponentInChildren<ParticleSystem>();
+    }
+
     private void Start() {
         SetAreaUpdate();
-        outline = GetComponent<Outline>();
+        if (TryGetComponent<ScaleWobble>(out ScaleWobble wobble)) {
+            wobble.ActivateWobble();
+        }
+        MyStart();
     }
 
     private void LateUpdate() {
@@ -67,6 +79,8 @@ public abstract class Coral : MonoBehaviour {
             }
             area = newArea;
             area.AddCoralCount();
+            bubbleBurst.Play();
+            upDirectionOnSurface = transform.up;
         }
     }
 }

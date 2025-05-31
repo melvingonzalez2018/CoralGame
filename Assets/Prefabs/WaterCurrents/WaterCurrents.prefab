@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDirection: {fileID: 2025983954544424455}
-  currentForce: 15
-  maxSpeed: 15
+  currentForce: 20
+  maxSpeed: 25
   playerTag: Player
 --- !u!65 &5691470138094187803
 BoxCollider:
@@ -205,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7283722610950912651
 Transform:
   m_ObjectHideFlags: 0

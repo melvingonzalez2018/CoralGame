@@ -318,6 +318,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8774064719508998095}
     m_Modifications:
+    - target: {fileID: 517280693650858804, guid: 1fc7312695c7eed4eb927388ccc9ca09,
+        type: 3}
+      propertyPath: upgradeText
+      value: More Starting Coral
+      objectReference: {fileID: 0}
     - target: {fileID: 1586048635160556989, guid: 1fc7312695c7eed4eb927388ccc9ca09,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,6 +377,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Upgrades
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840074174070508803, guid: 1fc7312695c7eed4eb927388ccc9ca09,
+        type: 3}
+      propertyPath: upgradeText
+      value: Increase Air Tanks
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525270287979638064, guid: 1fc7312695c7eed4eb927388ccc9ca09,
+        type: 3}
+      propertyPath: upgradeText
+      value: Less Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057842792585828803, guid: 1fc7312695c7eed4eb927388ccc9ca09,
+        type: 3}
+      propertyPath: upgradeText
+      value: Faster Movement
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
