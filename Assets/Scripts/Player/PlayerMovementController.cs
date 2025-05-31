@@ -34,7 +34,8 @@ public class PlayerMovementController : MonoBehaviour
             // Player Input
             Transform camTransform = Camera.main.transform;
             Vector3 verticalInput = new Vector3(0f, Input.GetAxis("Jump"), 0f);
-            Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + camTransform.forward * Input.GetAxis("Vertical");
+            Vector3 forwardVector = Quaternion.Euler(0, -90f, 0) * camTransform.right; // taking the right vector and rotating it 90 to point forward
+            Vector3 horizontalInput = camTransform.right * Input.GetAxis("Horizontal") + forwardVector * Input.GetAxis("Vertical");
 
             // Changing forward/backward movement for minigame mode
             if(miniGameMode) { 

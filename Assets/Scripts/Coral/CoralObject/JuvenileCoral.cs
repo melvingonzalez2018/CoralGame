@@ -40,8 +40,6 @@ public class JuvenileCoral : Coral {
 
     public override void DiveStartUpdate() {
         if(IsOnReef() && IsHammeredIn()) {
-            FindObjectOfType<StatTracking>().IterateCoralGrown();
-
             GameObject currentCoral = Instantiate(adultCoralPrefab, transform.position, transform.rotation);
             currentCoral.GetComponentInChildren<CoralModel>().SetCoralVisual(GetComponentInChildren<CoralModel>().currentVisualIndex); // Setting coral visual
             area.MinusCoralCount();
@@ -64,6 +62,10 @@ public class JuvenileCoral : Coral {
 
     public bool OnReefAndHammerable() {
         return area.areaType == AreaType.REEF && !IsHammeredIn();
+    }
+
+    public bool OnNursury() {
+        return area.areaType == AreaType.NURSERY;
     }
 
     public override string GetInteractText() {

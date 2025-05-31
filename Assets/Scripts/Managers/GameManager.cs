@@ -40,8 +40,12 @@ public class GameManager : MonoBehaviour
         }
     }
     public void EndDive() {
+        EndScreen endscreenComponent = endScreen.GetComponent<EndScreen>();
+
         SetPlayerEnable(false);
+        FindObjectOfType<StatTracking>().SaveStats(diveManager.currentDive); // saving stats
         endScreen.SetActive(true);
+        endscreenComponent.LoadEndScreen(diveManager.currentDive);
         foreach (WaterCurrents current in waterCurrents) {
             current.SetCurrentEffect(false);
         }
@@ -56,10 +60,10 @@ public class GameManager : MonoBehaviour
             if(unlockBonusLevel) {
                 PlayerPrefs.SetInt("UnlockedBonusLevel", 1);
             }
-            endScreen.GetComponent<EndScreen>().EndOfLevel();
+            endscreenComponent.EndOfLevel();
         }
         else {
-            endScreen.GetComponent<EndScreen>().EndOfDive();
+            endscreenComponent.EndOfDive();
         }
         ipad.GetComponent<Animator>().SetTrigger("TransitionIn");
     }

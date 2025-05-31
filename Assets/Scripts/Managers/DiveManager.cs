@@ -7,7 +7,7 @@ public class DiveManager : MonoBehaviour
 {
     [SerializeField] public int numberOfDives;
     public List<UnityEvent> OnStartDiveEvents = new List<UnityEvent>();
-    int currentDive = 0;
+    public int currentDive = 0;
     bool firstDive = true;
 
     private void Awake() {
